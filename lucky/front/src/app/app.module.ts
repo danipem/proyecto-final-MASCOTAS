@@ -6,8 +6,6 @@ import { FormsModule } from '@angular/forms';
 //Importamos las clases de los componentes creados por nosotros
 import { AplicacionComponent } from './componentes/raiz/aplicacion.component';
 import { ErrorComponent } from './componentes/error/error.component';
-import { ComoQuieresEntrarComponent } from './componentes/como-quieres-entrar/como-quieres-entrar.component';
-import { LoginComponent } from './componentes/login/login.component';
 
 
 const rutasApp: Routes = [
@@ -23,9 +21,7 @@ const rutasApp: Routes = [
   //Declaramos los componentes creados
   declarations: [
     AplicacionComponent,
-    ErrorComponent,
-    ComoQuieresEntrarComponent,
-    LoginComponent
+    ErrorComponent
   ],
   //Importamos modulos internos
   imports: [
