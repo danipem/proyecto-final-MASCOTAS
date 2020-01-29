@@ -1,7 +1,7 @@
-const express = require('express'); //equivalente a import, es un modulo para importar modulos
-const bodyParser = require('body-parser'); //TODO: importar y usar modulo middle-ware CORS
+const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const Usuario = require('./modelo')
+const Usuario = require('./modelos/usuarios')
 const cors = require('cors'); // es una libreria
 const app = express();
 const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
@@ -9,31 +9,31 @@ const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect('mongodb://127.0.0.1:27017/db_usuarios'); // es la direccion ip local (es lo mismo que localhost). Si no existe crea la bbdd y si existe se conecta
+//Conexión a la base de datos luckyDB. Si la base de datos no existe será creada.
+mongoose.connect('mongodb://127.0.0.1:27017/luckyDB'); // es la direccion ip local (es lo mismo que localhost).
 
-//Con esta variable me conecto a la base de datos de mongo
+//Variable con la que conectaremos a la base de datos de mongoo
 const conexion = mongoose.connection;
 
-//Siempre que nos conectemos tenemos que poner open. Si se conecta satisfactoriamente se muestra el console.log
+//Realizamos la conexion a la base de datos y si se conecta exitosamente se muestra un mensaje.
 conexion.once("open", function () {
-    console.log(" 0) - Mongoose on fire");
+    console.log(" 0) - Conectado a la base de datos lucky");
 })
-//TODO: 
-// el middle ware es un sotware instermediario para la serializacion y 
-// deserializacion (parseo) automática
 
-//El listen muestra en que puerto estamos conectados.
+//Función que nos muestra el puerto al que estamos conectados. Actualmente no lo necesitamos así que
+//hemos comentado el mensaje
 app.listen(PORT, function () {
-        console.log("servidor ejecutandose en " + PORT);
-    }); // express funciona con funciones CallBk
+    
+    //console.log("servidor ejecutandose en " + PORT);
+
+});
 
 const rutasAPI = express.Router();
-//y este objeto va a hacer de intermediario entre URL/api/usuarios
-app.use("/api/usuarios", rutasAPI);
 
+//Va a ser nuestro intermediario en la URL.
+app.use("/api/lucky", rutasAPI);
 
-
-
+/*
 rutasAPI.route("/registro").post((req, res)=>{
     //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js
     let nuevoUsuario = new Usuario(req.body);
@@ -54,32 +54,7 @@ rutasAPI.route("/registro").post((req, res)=>{
 
 });
 
-/*
-//http://127.0.0.1:4000/api/usuarios/registro método POST
-function recibirRegistroPost(peticionHTTP, respuestaHTTP) { //es el (req, res)
-    console.log(" 2) - La peticion HTTP comienza a ser procesada");
 
-    //deberiamos recibir un JSOn con el nuevo usuario 
-    //asi que creamos un Obj Schema y le pasamos el JSON ya convertido en obj JS 
-    // gracias al body.Parse
-    let nuevoUsuario = new Usuario(peticionHTTP.body);
-    let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
-    promesaDeGuardado.then(usuario => { //cuando tengas datos invocas a la funcion usuario-promesa
-        console.log(" 4) - Se ha registrado en bbdd");
-        respuestaHTTP.status(200).json({ //status 200 indica ok y devolvemos un json 
-            "Usuario": "guardado" //si esta ok devolvemos el mensaje ok
-        })
-    })
-    promesaDeGuardado.catch(error => {
-        console.log(" 4) - Se fue a la puta");
-        respuestaHTTP.status(400).send("Se fue a la puta")
-    });
-    console.log(" 3) - la peticion HTTP ha sido procesada");
-
-}
-
-rutasAPI.route("/registro").post(recibirRegistroPost);
-*/
 
 
 rutasAPI.route("/listado").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
@@ -169,4 +144,4 @@ rutasAPI.route("/editar/:id").put(function (req, res) {
         }
     })
     
-});
+});*/
