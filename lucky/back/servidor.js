@@ -5,6 +5,7 @@ const Usuario = require('./modelos/usuarios')
 const cors = require('cors'); // es una libreria
 const app = express();
 const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
+const protectoras = require('./modelos/protectoras');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -29,7 +30,7 @@ conexion.once("open", function () {
 //Función que nos muestra el puerto al que estamos conectados. Actualmente no lo necesitamos así que
 //hemos comentado el mensaje
 app.listen(PORT, function () {
-    
+
     //console.log("servidor ejecutandose en " + PORT);
 
 });
@@ -176,7 +177,7 @@ rutasAPI.route("/editar/:id").put(function (req, res) {
         }
     })
 <<<<<<< Updated upstream
-    
+
 });*/
 =======
 
