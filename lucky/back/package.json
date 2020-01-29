@@ -1,7 +1,7 @@
 {
-  "name": "app-backend",
+  "name": "back",
   "version": "0.0.1",
-  "description": "API Rest Express+Mongoose",
+  "description": "API Rest Mongoose LuckyDB",
   "main": "index.js",
   "scripts": {
     "startDev": "nodemon servidor.js"
