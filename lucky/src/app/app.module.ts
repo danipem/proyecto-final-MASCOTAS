@@ -1,18 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Router, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+//Importamos las clases de los componentes creados por nosotros
+import { AplicacionComponent } from './componentes/raiz/aplicacion.component';
+import { ErrorComponent } from './componentes/error/error.component';
+
+
+const rutasApp: Routes = [
+
+          {
+          path: "**",
+          component: ErrorComponent
+          }
+
+]
 
 @NgModule({
+  //Declaramos los componentes creados
   declarations: [
-    AppComponent
+    AplicacionComponent,
+    ErrorComponent
   ],
+  //Importamos modulos internos
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule, 
+    RouterModule.forRoot(rutasApp,{enableTracing: true})
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AplicacionComponent]
 })
-export class AppModule { }
+export class AppModule {
+  //Puede ser una clase vacia.
+ }
