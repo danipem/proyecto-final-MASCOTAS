@@ -33,6 +33,20 @@ const rutasAPI = express.Router();
 //Va a ser nuestro intermediario en la URL.
 app.use("/api/lucky", rutasAPI);
 
+
+
+rutasAPI("/login").post(( req, res) => {
+
+    Usuario.findOne({AND:{email: req.body.email, password: req.body.password}},(error, usuario) => {
+        if (error) {
+            console.log("Error al obtener el usuario con id "+ idUsuario);
+        } else {
+            res.json(usuario);
+        }
+    })   
+
+})
+
 /*
 rutasAPI.route("/registro").post((req, res)=>{
     //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js
