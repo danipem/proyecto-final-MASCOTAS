@@ -19,6 +19,12 @@ const conexion = mongoose.connection;
 conexion.once("open", function () {
     console.log(" 0) - Conectado a la base de datos lucky");
 })
+<<<<<<< Updated upstream
+=======
+//TODO:
+// el middle ware es un sotware instermediario para la serializacion y
+// deserializacion (parseo) automática
+>>>>>>> Stashed changes
 
 //Función que nos muestra el puerto al que estamos conectados. Actualmente no lo necesitamos así que
 //hemos comentado el mensaje
@@ -38,7 +44,7 @@ rutasAPI.route("/registro").post((req, res)=>{
     //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js
     let nuevoUsuario = new Usuario(req.body);
     let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
-    
+
     promesaDeGuardado.then(usuario=>{
         //mostramos el status 200 si se ha insertado correctamente
         res.status(200).json({
@@ -54,11 +60,37 @@ rutasAPI.route("/registro").post((req, res)=>{
 
 });
 
+<<<<<<< Updated upstream
+=======
+/*
+//http://127.0.0.1:4000/api/usuarios/registro método POST
+function recibirRegistroPost(peticionHTTP, respuestaHTTP) { //es el (req, res)
+    console.log(" 2) - La peticion HTTP comienza a ser procesada");
+
+    //deberiamos recibir un JSOn con el nuevo usuario
+    //asi que creamos un Obj Schema y le pasamos el JSON ya convertido en obj JS
+    // gracias al body.Parse
+    let nuevoUsuario = new Usuario(peticionHTTP.body);
+    let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
+    promesaDeGuardado.then(usuario => { //cuando tengas datos invocas a la funcion usuario-promesa
+        console.log(" 4) - Se ha registrado en bbdd");
+        respuestaHTTP.status(200).json({ //status 200 indica ok y devolvemos un json
+            "Usuario": "guardado" //si esta ok devolvemos el mensaje ok
+        })
+    })
+    promesaDeGuardado.catch(error => {
+        console.log(" 4) - Se fue a la puta");
+        respuestaHTTP.status(400).send("Se fue a la puta")
+    });
+    console.log(" 3) - la peticion HTTP ha sido procesada");
+
+}
+>>>>>>> Stashed changes
 
 
 
 rutasAPI.route("/listado").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
-    Usuario.find(function (err, coleccionUsuarios) { //le decimos al esquema de mongoose, "busca todo " 
+    Usuario.find(function (err, coleccionUsuarios) { //le decimos al esquema de mongoose, "busca todo "
         //y cuando hayas encontrado invocas a la function err, (va a pasar tanto el error como los datos)
         if (err) {
             console.log("err"); //si error contiene un error mostramos el error en consola
@@ -87,19 +119,19 @@ rutasAPI.route("/eliminar/:id").delete((req, res) => {
                 })
             } else {
                 console.log('AAACIERTOOOO!!!');
-                
+
                 res.json( {
                     mensaje: "OK"
                 })
-                
+
             }
         })
     }
-   
+
 })
 
 rutasAPI.route("/editado/:id").get(async(req,res) => {
-    
+
     let idUsuario = req.params.id;
     if( idUsuario === "undefined"){
         res.json({
@@ -114,7 +146,7 @@ rutasAPI.route("/editado/:id").get(async(req,res) => {
             } else {
                 res.json(usuario);
             }
-        })   
+        })
     }
 
 })
@@ -122,9 +154,9 @@ rutasAPI.route("/editado/:id").get(async(req,res) => {
 rutasAPI.route("/editar/:id").put(function (req, res) {
     let user = new Usuario(req.body);
     user._id = req.params.id;
-    
+
     Usuario.findById(user._id, function (err, us) {
-        
+
         for (const prop in req.body) {
             us[prop] = req.body[prop]
         }
@@ -143,5 +175,10 @@ rutasAPI.route("/editar/:id").put(function (req, res) {
             });
         }
     })
+<<<<<<< Updated upstream
     
 });*/
+=======
+
+});
+>>>>>>> Stashed changes
