@@ -41,9 +41,18 @@ rutasAPI.route("/login").post((req, res) => {
 
     Usuario.findOne({email: req.body.email, password: req.body.password},(error, usuario) => {
 
+     if (error){
+         res.json({
+             status: res.status(400),
+             mensaje: "error",
+             valido: false,
+             error: error
+         })
+     }
+     else{
         if(usuario === null){
             res.json({
-                mensaje: "Usuario incorrecto",
+                mensaje: "incorrecto",
                 valido: false,
                 usuario: usuario
             })
@@ -55,15 +64,74 @@ rutasAPI.route("/login").post((req, res) => {
             })
             console.log(usuario);
         }
+     }
 
-        if (error) {
-            console.log("Usuario no valido ");
-            res.json({
-                mensaje: "Usuario no válido"
-            })
+    })
+
+})
+
+rutasAPI.route("/registro").post((req, res)=>{
+
+  let nuevoUsuario = new Usuario(req.body);
+  let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
+
+  promesaDeGuardado.then(usuario=>{
+      //mostramos el status 200 si se ha insertado correctamente
+      res.status(200).json({
+          "Usuario": "Usuario Guardado"
+      })
+
+  })
+  promesaDeGuardado.catch(err=>{
+      res.status(400).send("error usuario no se guardo ")
+  })
+
+  console.log("Usuario registrado");
+
+});
+
+// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/protectoras
+rutasAPI.route("/protectoras").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
+  Protectoras.find(function (err, Protectoras) { //le decimos al esquema de mongoose, "busca todo "
+      //y cuando hayas encontrado invocas a la function err, (va a pasar tanto el error como los datos)
+      if (err) {
+          console.log("err"); //si error contiene un error mostramos el error en consola
+          // y si todo ha ido bien `pedimos devolver la coleccion en formato JSON
+      } else {
+          resRespuestaHttp.json(Protectoras);
+          //se invoca a la query db.protectoras.find(), es un método de mongoose
+      }
+    })
+  });
+
+
+// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/animales
+rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
+    Animal.find(function (err, coleccionAnimales) {
+        if (err) {
+            console.log("err");
         } else {
-            res.json(usuario);
+            resRespuestaHttp.json(coleccionAnimales);
         }
+    });
+});
+
+
+/*
+rutasAPI.route("/registro").post((req, res)=>{
+    //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js
+    let nuevoUsuario = new Usuario(req.body);
+    let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
+
+    promesaDeGuardado.then(usuario=>{
+        //mostramos el status 200 si se ha insertado correctamente
+        res.status(200).json({
+            "Usuario": "Usuario Guardado"
+        })
+    })
+    //Muestro el status 400 si ha ocurrio un error
+    promesaDeGuardado.catch(err=>{
+        res.status(400).send("Se fue a la verga")
     })
 
 });
@@ -79,7 +147,4 @@ rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
         }
     });
 });
-
-
-
-
+*/

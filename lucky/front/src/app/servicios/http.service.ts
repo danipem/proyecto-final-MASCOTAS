@@ -30,9 +30,17 @@ export class HttpService {
     
     let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
     login.subscribe(datosMsj =>{
-        alert(datosMsj.mensaje);
-        console.log(datosMsj.valido);
-        console.log(datosMsj.usuario);
+        
+        if(datosMsj.mensaje === "error" && datosMsj.valido=== false){
+          alert("Error")
+        }else if(datosMsj.mensaje === "incorrecto" && datosMsj.valido === false){
+          alert("Usuario Incorrecto");
+        }else{
+          alert(datosMsj.mensaje);
+          console.log(datosMsj.valido);
+          console.log(datosMsj.usuario);
+        }
+        
     });
 
   }
