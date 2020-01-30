@@ -1,18 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Router, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 //Importamos las clases de los componentes creados por nosotros
 import { AplicacionComponent } from './componentes/raiz/aplicacion.component';
 import { ErrorComponent } from './componentes/error/error.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
 
 
 const rutasApp: Routes = [
 
           {
-          path: "**",
-          component: ErrorComponent
+            path: "inicio",
+            component: InicioComponent
+          },
+          {
+            path:"",
+            redirectTo:"inicio",
+            pathMatch:"full"},
+          {
+            path: "**",
+            component: ErrorComponent
           }
 
 ]
@@ -21,7 +30,8 @@ const rutasApp: Routes = [
   //Declaramos los componentes creados
   declarations: [
     AplicacionComponent,
-    ErrorComponent
+    ErrorComponent,
+    InicioComponent
   ],
   //Importamos modulos internos
   imports: [

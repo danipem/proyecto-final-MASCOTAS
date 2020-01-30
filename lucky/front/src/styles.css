@@ -984,4 +984,9 @@ textarea {
             order: 1;
   }
 }
+
+.fondo {
+  background-image: url("src/assets/imagenes/fondo.png");
+  background-size: cover;
+}
 /*# sourceMappingURL=styles.css.map */

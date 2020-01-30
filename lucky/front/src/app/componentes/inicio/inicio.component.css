@@ -1,0 +1,18 @@
+.inicio {
+  height: 100%;
+  width: 100%;
+  background-image: url("src/assets/imagenes/fondo.png");
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: self-end;
+  -webkit-box-align: self-end;
+      -ms-flex-align: self-end;
+          align-items: self-end;
+}
+/*# sourceMappingURL=inicio.component.css.map */
