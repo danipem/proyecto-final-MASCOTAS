@@ -82,19 +82,4 @@ rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
 
 
 
-// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/protectoras
-rutasAPI.route("/protectoras").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
-  Protectoras.find(function (err, Protectoras) { //le decimos al esquema de mongoose, "busca todo "
-      //y cuando hayas encontrado invocas a la function err, (va a pasar tanto el error como los datos)
-      if (err) {
-          console.log("err"); //si error contiene un error mostramos el error en consola
-          // y si todo ha ido bien `pedimos devolver la coleccion en formato JSON
-      } else {
-          resRespuestaHttp.json(Protectoras);
-          //se invoca a la query db.protectoras.find(), es un método de mongoose
-      }
-    })
-  });
-
-
 

@@ -1,17 +1,52 @@
-mongoose.connect('mongodb://127.0.0.1:27017/luckyDB');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const Usuario = require('./modelos/usuarios');
+const cors = require('cors'); // es una libreria
+const app = express();
+const PORT = 4100; //las constantes que no van a variar nunca se ponen en mayusc
 
 
+app.use(bodyParser.json());
+app.use(cors());
 
+//Conexión a la base de datos luckyDB. Si la base de datos no existe será creada.
+mongoose.connect('mongodb://127.0.0.1:27017/luckyDB'); // es la direccion ip local (es lo mismo que localhost).
+
+//Variable con la que conectaremos a la base de datos de mongoo
+const conexion = mongoose.connection;
+
+//Realizamos la conexion a la base de datos y si se conecta exitosamente se muestra un mensaje.
+conexion.once("open", function () {
+  console.log(" 0) - Conectado a la base de datos lucky");
+})
+
+//Función que nos muestra el puerto al que estamos conectados. Actualmente no lo necesitamos así que
+//hemos comentado el mensaje
+app.listen(PORT, function () {
+
+  //console.log("servidor ejecutandose en " + PORT);
+
+});
+
+const rutasAPI = express.Router();
+
+//Va a ser nuestro intermediario en la URL.
+app.use("/api/lucky", rutasAPI);
+
+
+//Subir /registro /protectoras
 rutasAPI.route("/registro").post((req, res)=>{
   //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js
   let nuevoUsuario = new Usuario(req.body);
   let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
-
+  console.log("hola");
   promesaDeGuardado.then(usuario=>{
       //mostramos el status 200 si se ha insertado correctamente
       res.status(200).json({
           "Usuario": "Usuario Guardado"
       })
+      console.log(usuario);
   })
   promesaDeGuardado.catch(err=>{
       res.status(400).send("error usuario no se guardo ")
@@ -20,6 +55,20 @@ rutasAPI.route("/registro").post((req, res)=>{
   console.log("La request ha sido procesada")
 
 });
+
+// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/protectoras
+rutasAPI.route("/protectoras").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
+  Protectoras.find(function (err, Protectoras) { //le decimos al esquema de mongoose, "busca todo "
+      //y cuando hayas encontrado invocas a la function err, (va a pasar tanto el error como los datos)
+      if (err) {
+          console.log("err"); //si error contiene un error mostramos el error en consola
+          // y si todo ha ido bien `pedimos devolver la coleccion en formato JSON
+      } else {
+          resRespuestaHttp.json(Protectoras);
+          //se invoca a la query db.protectoras.find(), es un método de mongoose
+      }
+    })
+  });
 
 rutasAPI.route("/eliminar/:id").delete((req, res) => {
   let idUsuario = req.params.id;

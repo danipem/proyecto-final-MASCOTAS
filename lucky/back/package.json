@@ -4,7 +4,8 @@
   "description": "API Rest Mongoose LuckyDB",
   "main": "index.js",
   "scripts": {
-    "startDev": "nodemon servidor.js"
+    "startDev": "nodemon servidor.js",
+    "startDev2": "nodemon insertUsu.js"
   },
   "keywords": [],
   "author": "",
