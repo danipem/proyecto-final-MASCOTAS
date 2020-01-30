@@ -24,7 +24,7 @@
                 <button (click)="clickIniciarSesion()" class="login__boton-iniciar">Iniciar sesión</button>
             </div>
             <div class="">
-                <button (click)="clickCrearUsuario()" class="login__boton-crear">Crear cuenta</button>
+                <button (click)="clickCrearUsuario()" [routerLink]="['/registro']"class="login__boton-crear">Crear cuenta</button>
             </div>
         </div>
     </div>
