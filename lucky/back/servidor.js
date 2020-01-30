@@ -20,12 +20,6 @@ const conexion = mongoose.connection;
 conexion.once("open", function () {
     console.log(" 0) - Conectado a la base de datos lucky");
 })
-<<<<<<< Updated upstream
-=======
-//TODO:
-// el middle ware es un sotware instermediario para la serializacion y
-// deserializacion (parseo) automática
->>>>>>> Stashed changes
 
 //Función que nos muestra el puerto al que estamos conectados. Actualmente no lo necesitamos así que
 //hemos comentado el mensaje
@@ -92,32 +86,6 @@ rutasAPI.route("/registro").post((req, res)=>{
 
 });
 
-<<<<<<< Updated upstream
-=======
-/*
-//http://127.0.0.1:4000/api/usuarios/registro método POST
-function recibirRegistroPost(peticionHTTP, respuestaHTTP) { //es el (req, res)
-    console.log(" 2) - La peticion HTTP comienza a ser procesada");
-
-    //deberiamos recibir un JSOn con el nuevo usuario
-    //asi que creamos un Obj Schema y le pasamos el JSON ya convertido en obj JS
-    // gracias al body.Parse
-    let nuevoUsuario = new Usuario(peticionHTTP.body);
-    let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
-    promesaDeGuardado.then(usuario => { //cuando tengas datos invocas a la funcion usuario-promesa
-        console.log(" 4) - Se ha registrado en bbdd");
-        respuestaHTTP.status(200).json({ //status 200 indica ok y devolvemos un json
-            "Usuario": "guardado" //si esta ok devolvemos el mensaje ok
-        })
-    })
-    promesaDeGuardado.catch(error => {
-        console.log(" 4) - Se fue a la puta");
-        respuestaHTTP.status(400).send("Se fue a la puta")
-    });
-    console.log(" 3) - la peticion HTTP ha sido procesada");
-
-}
->>>>>>> Stashed changes
 
 
 
@@ -207,10 +175,5 @@ rutasAPI.route("/editar/:id").put(function (req, res) {
             });
         }
     })
-<<<<<<< Updated upstream
 
 });*/
-=======
-
-});
->>>>>>> Stashed changes
