@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 //El objeto que nos insertara los usuarios en la base de datos.
 // TODO validaciones.
-let protectoras = new Schema({
+let Protectoras = new Schema({
 
     id: {
       type: String
@@ -29,6 +29,6 @@ let protectoras = new Schema({
 
   });
 
-  module.exports = mongoose.model('Protectoras', protectoras);
+  module.exports = mongoose.model('Protectoras', Protectoras);
 
 
