@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   clickIniciarSesion() {
-    console.log('Click OK')
+    //console.log('Click OK')
     this.clientHttp.iniciarUsuarioBD(this.usuario);
 
   }

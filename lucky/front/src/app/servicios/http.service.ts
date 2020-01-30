@@ -38,7 +38,7 @@ export class HttpService {
   }
 
   existeEmail(email : String):Boolean{
-    
+
     let valido;
     let comprobacion = this.clientHttp.patch<Mensaje>("http://127.0.0.1:4000/api/lucky/compraremail73hg4h4", email);
     comprobacion.subscribe(datosMsj =>{
@@ -67,6 +67,8 @@ export class HttpService {
           alert(datosMsj.mensaje);
           console.log(datosMsj.valido);
           console.log(datosMsj.usuario);
+          this.listaUsuarios.push(datosMsj.usuario);
+          this.guardarLocalStrg();
         }
         
     });
@@ -125,8 +127,18 @@ export class HttpService {
     //this.listaUsuarios.push(clonado);
     this.listaUsuarios.push(user);
     this.guardarLocalStrg();
+
+    find({ciudad: "Madrdrid", especie: "perro", })
   }
 */
+  guardarLocalStrg(){
+
+    let usuarioLocalStorage= JSON.stringify(this.listaUsuarios);
+
+    window.localStorage.setItem("usuarioRegistrado", usuarioLocalStorage);
+
+  }
+
   cargaLocalStrg(){
     let obtenDatosLStr = window.localStorage.getItem("listaUsuarios");
 
