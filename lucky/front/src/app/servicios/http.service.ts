@@ -24,6 +24,17 @@ export class HttpService {
 
   insertarUsuariosBD(usuario: UsuarioEnt){
 
+    let registro = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
+    registro.subscribe(datos =>{
+      if(datos.valido){
+        alert(datos.mensaje);
+      }else{
+        alert(datos.mensaje);
+      }
+      
+    })
+
+
   }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
