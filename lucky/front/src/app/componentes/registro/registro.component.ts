@@ -11,7 +11,7 @@ import { HttpService } from "../../servicios/http.service";
 export class RegistroComponent /*implements OnInit*/ {
   usuarioNuevo: UsuarioEnt;
   camposInvalid = false;
-
+  existe : Boolean;
   
   constructor(private infUsu: HttpService ) {
     this.usuarioNuevo = new UsuarioEnt();
@@ -24,7 +24,7 @@ export class RegistroComponent /*implements OnInit*/ {
     this.usuarioNuevo.ciudad = "";
     this.usuarioNuevo.codPostal;
     this.usuarioNuevo.password = "";
-    
+    this.existe = true;
     
    }
 
@@ -37,16 +37,27 @@ export class RegistroComponent /*implements OnInit*/ {
   }
 
   alPerderFocoEmail() {
-     let exite = this.infUsu.existeEmail(this.usuarioNuevo.email);
-     
-     if(exite === true){
-      alert("No existe")
+     this.infUsu.existeEmail(this.usuarioNuevo, this.alSaberSiEmailExiste);
+  }
+  alSaberSiEmailExiste(valido: boolean) {
+    if(valido){
+      
+      alert("Este email ya existe");
+
     }else{
-      alert("existe");
+
+      alert("no existe");
     }
   }
-
   ngOnInit() {
   }
- 
+ /*
+  getClass(opcion){
+    if(opcion){
+      return "pinta-rojo"
+    }else{
+      return "pinta-verde"
+    }
+  }*/
+
 }

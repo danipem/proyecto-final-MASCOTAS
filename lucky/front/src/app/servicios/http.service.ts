@@ -37,21 +37,13 @@ export class HttpService {
 
   }
 
-  existeEmail(email : String):Boolean{
-    
-    let valido;
-    let comprobacion = this.clientHttp.patch<Mensaje>("http://127.0.0.1:4000/api/lucky/compraremail73hg4h4", email);
+  existeEmail(usuario : UsuarioEnt, funCallbk: any){
+    const valido = false;
+    let comprobacion = this.clientHttp.post<Mensaje>(`http://127.0.0.1:4000/api/lucky/compraremail73hg4h4`,usuario);
     comprobacion.subscribe(datosMsj =>{
-        
-        if(datosMsj.valido === false){
-          valido =  false;
-        }else{
-          valido = true;
-        }
-        
+        //alert(datosMsj.mensaje);
+        funCallbk(datosMsj.valido ) ;        
     });
-
-    return valido;
 }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
