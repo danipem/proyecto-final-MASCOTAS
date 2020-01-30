@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioEnt } from "../../entidades/usuarioEnt";
+import { HttpService } from "../../servicios/http.service";
 
 
 @Component({
@@ -7,13 +8,12 @@ import { UsuarioEnt } from "../../entidades/usuarioEnt";
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.sass']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroComponent /*implements OnInit*/ {
   usuarioNuevo: UsuarioEnt;
-  //infoUsuarios: AlmacenUsuarios;
   camposInvalid = false;
 
   
-  constructor( ) {
+  constructor(private infUsu: HttpService ) {
     this.usuarioNuevo = new UsuarioEnt();
     this.usuarioNuevo.nombre = "";
     this.usuarioNuevo.apellidos = "";
@@ -24,7 +24,7 @@ export class RegistroComponent implements OnInit {
     this.usuarioNuevo.ciudad = "";
     this.usuarioNuevo.codPostal;
     this.usuarioNuevo.password = "";
-   // this.infoUsuarios = infUsu;
+    
     
    }
 
@@ -40,13 +40,13 @@ export class RegistroComponent implements OnInit {
     console.log('Email:' + this.usuarioNuevo.email);
     console.log('Password: ' + this.usuarioNuevo.password);
     
-    //this.infoUsuarios.insertarUsuariosDb(this.usuarioNuevo);
+    this.infUsu.insertarUsuariosBD(this.usuarioNuevo);
     /*Esto nos permite crear un nuevo Usuario vacio, no hace falta la clonacion del usuario */
     this.usuarioNuevo = new UsuarioEnt();
 
   }
 
-  ngOnInit() {
-  }
+  // ngOnInit() {
+  // }
 
 }
