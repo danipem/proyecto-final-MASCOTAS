@@ -7,9 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { AplicacionComponent } from './componentes/raiz/aplicacion.component';
 import { ErrorComponent } from './componentes/error/error.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 
 const rutasApp: Routes = [
+          {
+          path: "registro",
+          component: RegistroComponent
+          },
 
           {
             path: "inicio",
@@ -31,7 +36,8 @@ const rutasApp: Routes = [
   declarations: [
     AplicacionComponent,
     ErrorComponent,
-    InicioComponent
+    InicioComponent,
+    RegistroComponent
   ],
   //Importamos modulos internos
   imports: [

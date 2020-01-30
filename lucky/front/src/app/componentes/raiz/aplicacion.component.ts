@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
 @Component ({   //Objeto metadatos(caracteristicas)
     selector:'app-componente-raiz',
     template: `<router-outlet></router-outlet>`,
+
     //Caracteristicas (metadatos) 
 })
 
