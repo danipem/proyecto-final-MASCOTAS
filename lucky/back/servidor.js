@@ -6,6 +6,7 @@ const cors = require('cors'); // es una libreria
 const app = express();
 const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
 const protectoras = require('./modelos/protectoras');
+const Animal = require('./modelos/animales')
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -64,6 +65,19 @@ rutasAPI.route("/login").post((req, res) => {
     })   
 
 })
+
+
+// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/animales
+rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) { 
+    Animal.find(function (err, coleccionAnimales) {  
+        if (err) {
+            console.log("err"); 
+        } else {
+            resRespuestaHttp.json(coleccionAnimales); 
+        }
+    });
+});
+
 
 /*
 rutasAPI.route("/registro").post((req, res)=>{
