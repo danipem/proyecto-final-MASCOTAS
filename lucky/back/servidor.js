@@ -40,10 +40,19 @@ app.use("/api/lucky", rutasAPI);
 rutasAPI.route("/login").post((req, res) => {
 
     Usuario.findOne({email: req.body.email, password: req.body.password},(error, usuario) => {
-        
+
+     if (error){
+         res.json({
+             status: res.status(400),
+             mensaje: "error",
+             valido: false,
+             error: error
+         })
+     }
+     else{
         if(usuario === null){
             res.json({
-                mensaje: "Usuario incorrecto",
+                mensaje: "incorrecto",
                 valido: false,
                 usuario: usuario
             })
@@ -54,16 +63,9 @@ rutasAPI.route("/login").post((req, res) => {
                 usuario: usuario
             })
             console.log(usuario);
-        }
-
-        if (error) {
-            console.log("Usuario no valido ");
-            res.json({
-                mensaje: "Usuario no válido"
-            })
-        } else {
-            res.json(usuario);
-        }
+        }   
+     }
+    
     })   
 
 })
