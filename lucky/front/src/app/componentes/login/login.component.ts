@@ -11,5 +11,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  clickIniciarSesion(): void{
+    console.log('Click OK')
+
+  }
+  clickCrearUsuario():void{
+    console.log(('Ese clickeo bueno'));
+    
+  }
 
 }

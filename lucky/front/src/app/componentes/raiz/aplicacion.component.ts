@@ -5,9 +5,9 @@ import { Component } from "@angular/core";
     selector:'app-componente-raiz',
     template: ` <div class="container">
                     <div class="wrapper">
-                        <div class="row">
+                        <div>
                             <div class="col-sm">
-                                <h1>{{titulo}}</h1>
+                              
                                     <router-outlet></router-outlet>
                                     </div>
                                 </div>
@@ -22,4 +22,5 @@ export class AplicacionComponent{
     //Aqui los datos del UI y su funcionalidad, 
     //tambien se llama a esto modelo del componente
     titulo: string = "Gestion de Usuarios";
+
 }
