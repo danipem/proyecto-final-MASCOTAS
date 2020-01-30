@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const Usuario = require('./modelos/usuarios')
+const Usuario = require('./modelos/usuarios');
 const cors = require('cors'); // es una libreria
 const app = express();
 const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
 const protectoras = require('./modelos/protectoras');
-const Animal = require('./modelos/animales')
+const Animal = require('./modelos/animales');
 
 app.use(bodyParser.json());
 app.use(cors());
