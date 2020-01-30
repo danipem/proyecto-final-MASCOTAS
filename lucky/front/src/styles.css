@@ -984,4 +984,74 @@ textarea {
             order: 1;
   }
 }
+
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.login__logo {
+  background: url("src/app/componentes/login/imagenes/logo.png") no-repeat fixed center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.login__password {
+  background-image: url("src/app/componentes/login/imagenes/ojo.png");
+  background-size: cover;
+}
+
+.login__botones {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.login__botones2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.fondo {
+  background-image: url("src/assets/imagenes/fondo.png");
+  background-size: cover;
+}
+p {
+  font-size: 16pt;
+  font-family: Barlow-Regular;
+  color: #01748e;
+}
+
+h2 {
+  color: black;
+  font-size: 19pt;
+  text-align: center;
+}
+
+registro {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 /*# sourceMappingURL=styles.css.map */

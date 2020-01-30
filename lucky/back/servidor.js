@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const Usuario = require('./modelos/usuarios')
+const Usuario = require('./modelos/usuarios');
 const cors = require('cors'); // es una libreria
 const app = express();
 const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
 const protectoras = require('./modelos/protectoras');
+const Animal = require('./modelos/animales');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -34,17 +35,51 @@ const rutasAPI = express.Router();
 //Va a ser nuestro intermediario en la URL.
 app.use("/api/lucky", rutasAPI);
 
-rutasAPI.route("/protectoras").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
-  Usuario.find(function (err, protectoras) { //le decimos al esquema de mongoose, "busca todo "
-      //y cuando hayas encontrado invocas a la function err, (va a pasar tanto el error como los datos)
-      if (err) {
-          console.log("err"); //si error contiene un error mostramos el error en consola
-          // y si todo ha ido bien `pedimos devolver la coleccion en formato JSON
-      } else {
-          resRespuestaHttp.json(protectoras);
-          //se invoca a la query db.protectoras.find(), es un método de mongoose
-      }
-  });
+<<<<<<< HEAD
+
+=======
+
+
+rutasAPI.route("/login").post((req, res) => {
+
+    Usuario.findOne({email: req.body.email, password: req.body.password},(error, usuario) => {
+
+        if(usuario === null){
+            res.json({
+                mensaje: "Usuario incorrecto",
+                valido: false
+            })
+        }else{
+            res.json({
+                mensaje: "Usuario correcto",
+                valido: true
+            })
+            console.log(usuario);
+        }
+
+        if (error) {
+            console.log("Usuario no valido ");
+            res.json({
+                mensaje: "Usuario no válido"
+            })
+        } else {
+            res.json(usuario);
+        }
+    })
+
+})
+
+
+// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/animales
+rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
+    Animal.find(function (err, coleccionAnimales) {
+        if (err) {
+            console.log("err");
+        } else {
+            resRespuestaHttp.json(coleccionAnimales);
+        }
+    });
+>>>>>>> a34e2c63ed3f1323a361f72b022904db1a6c4301
 });
 
 
@@ -69,32 +104,6 @@ rutasAPI.route("/registro").post((req, res)=>{
 
 });
 
-<<<<<<< Updated upstream
-=======
-/*
-//http://127.0.0.1:4000/api/usuarios/registro método POST
-function recibirRegistroPost(peticionHTTP, respuestaHTTP) { //es el (req, res)
-    console.log(" 2) - La peticion HTTP comienza a ser procesada");
-
-    //deberiamos recibir un JSOn con el nuevo usuario
-    //asi que creamos un Obj Schema y le pasamos el JSON ya convertido en obj JS
-    // gracias al body.Parse
-    let nuevoUsuario = new Usuario(peticionHTTP.body);
-    let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
-    promesaDeGuardado.then(usuario => { //cuando tengas datos invocas a la funcion usuario-promesa
-        console.log(" 4) - Se ha registrado en bbdd");
-        respuestaHTTP.status(200).json({ //status 200 indica ok y devolvemos un json
-            "Usuario": "guardado" //si esta ok devolvemos el mensaje ok
-        })
-    })
-    promesaDeGuardado.catch(error => {
-        console.log(" 4) - Se fue a la puta");
-        respuestaHTTP.status(400).send("Se fue a la puta")
-    });
-    console.log(" 3) - la peticion HTTP ha sido procesada");
-
-}
->>>>>>> Stashed changes
 
 
 
@@ -184,10 +193,5 @@ rutasAPI.route("/editar/:id").put(function (req, res) {
             });
         }
     })
-<<<<<<< Updated upstream
 
 });*/
-=======
-
-});
->>>>>>> Stashed changes

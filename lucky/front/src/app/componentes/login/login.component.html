@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="col-xs-12 middle-xs login">
+        <div class="login__logo">
+            <img src="../../../assets/imagenes/logo.png" alt="logo">
+        </div>
+
+        <h2 class="login__hola">¡Hola! Para continuar, inicia sesión o crea una cuenta</h2>
+
+        <div class="login__campos">
+            <div class="login__email">
+                <input type="text" placeholder="ejemplo@gmail.com" />
+            </div>
+            <div class="login__password">
+                <input type="password" placeholder="9090ejemplo" />
+                <!-- <img class="   login__foto-ojo" src="../../../assets/iconos/ojo.png" alt="ojo"/> -->
+            </div>
+            
+                <p class="login__olvidado">¿Has olvidado tu contraseña?</p>
+            
+        </div>
+
+        <div class="login__botones">
+            <div class="">
+                <button (click)="clickIniciarSesion()" class="login__boton-iniciar">Iniciar sesión</button>
+            </div>
+            <div class="">
+                <button (click)="clickCrearUsuario()" [routerLink]="['/registro']"class="login__boton-crear">Crear cuenta</button>
+            </div>
+        </div>
+    </div>
+</div>
