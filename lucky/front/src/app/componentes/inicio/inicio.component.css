@@ -1,8 +1,12 @@
 .inicio {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   background-image: url("src/assets/imagenes/fondo.png");
   background-size: cover;
+}
+
+.inicio__contenido {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,9 +14,169 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  justify-items: self-end;
-  -webkit-box-align: self-end;
-      -ms-flex-align: self-end;
-          align-items: self-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.inicio__contenedor {
+  padding-top: 65vh;
+  height: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.inicio__titulo {
+  color: #0e363d;
+  font-size: 20pt;
+  text-align: center;
+}
+
+.inicio__botones {
+  width: 260px;
+  text-align: center;
+  background-color: #01748e;
+  height: 53px;
+  color: white;
+  font-size: 21px;
+  border-radius: 7px;
+  border: 1px solid #01748e;
+}
+
+.inicio__texto {
+  color: #0e363d;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media screen and (orientation: landscape) {
+  .inicio {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("src/assets/imagenes/fondo.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .inicio__contenedor {
+    padding-top: 0;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    justify-items: space-around;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .inicio__contenedor {
+    padding-top: 55vh;
+    height: 40%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .inicio__titulo {
+    color: #0e363d;
+    font-size: 40pt;
+    text-align: center;
+  }
+  .inicio__botones {
+    width: 392pt;
+    text-align: center;
+    background-color: #01748e;
+    height: 80pt;
+    color: white;
+    font-size: 32pt;
+    border-radius: 10pt;
+    border: 1px solid #01748e;
+  }
+  .inicio__texto {
+    font-size: 24pt;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .inicio__contenedor {
+    padding-top: 55vh;
+    height: 40%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .inicio__titulo {
+    color: #0e363d;
+    font-size: 46pt;
+    text-align: center;
+  }
+  .inicio__botones {
+    width: 400pt;
+    text-align: center;
+    background-color: #01748e;
+    height: 80pt;
+    color: white;
+    font-size: 38pt;
+    border-radius: 10pt;
+    border: 1px solid #01748e;
+  }
+  .inicio__texto {
+    font-size: 30pt;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .inicio__contenedor {
+    padding-top: 0;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .inicio__titulo {
+    color: #0e363d;
+    font-size: 46pt;
+    text-align: center;
+  }
+  .inicio__botones {
+    width: 400pt;
+    text-align: center;
+    background-color: #01748e;
+    height: 80pt;
+    color: white;
+    font-size: 38pt;
+    border-radius: 10pt;
+    border: 1px solid #01748e;
+  }
+  .inicio__texto {
+    font-size: 30pt;
+  }
 }
 /*# sourceMappingURL=inicio.component.css.map */

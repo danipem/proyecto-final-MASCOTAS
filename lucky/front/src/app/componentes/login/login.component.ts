@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioEnt } from "../../entidades/usuarioEnt";
+import { HttpService } from '../../servicios/http.service';
+
 
 @Component({
   selector: 'app-login',
@@ -7,14 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  usuario: UsuarioEnt;
+
+  constructor(private clientHttp: HttpService) {
+    this.usuario = new UsuarioEnt();
+    this.usuario.email = "";
+    this.usuario.password = "";
+  }
+
+  clickIniciarSesion() {
+    console.log('Click OK')
+    this.clientHttp.iniciarUsuarioBD(this.usuario);
+
+  }
+  
 
   ngOnInit() {
   }
-  clickIniciarSesion(): void{
-    console.log('Click OK')
 
-  }
   clickCrearUsuario():void{
     console.log(('Ese clickeo bueno'));
     

@@ -44,12 +44,14 @@ rutasAPI.route("/login").post((req, res) => {
         if(usuario === null){
             res.json({
                 mensaje: "Usuario incorrecto",
-                valido: false
+                valido: false,
+                usuario: usuario
             })
         }else{
             res.json({
                 mensaje: "Usuario correcto",
-                valido: true
+                valido: true,
+                usuario: usuario
             })
             console.log(usuario);
         }
