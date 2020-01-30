@@ -1,27 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
+import {UsuarioEnt} from "../entidades/usuarioEnt"
+import { Mensaje } from '../entidades/mensaje';
 @Injectable({
   providedIn: 'root'
 })
 
 export class HttpService {
 
-  insertarUsuariosBD(Usuario){
+  private listaUsuarios: UsuarioEnt[];
 
-  }
-/*
-  private listaUsuarios: Usuario[];
   //private nombreUsuario: Usuario[];
 
   constructor(private clientHttp: HttpClient) {
     //this.nombreUsuario = [];
 
     this.cargaLocalStrg();
+
     if(this.listaUsuarios == null || typeof this.listaUsuarios === "undefined"){
       this.listaUsuarios =[];
     }
   }
 
+  insertarUsuariosBD(usuario: UsuarioEnt){
+
+  }
+
+  iniciarUsuarioBD(usuario: UsuarioEnt){
+    
+    let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
+    login.subscribe(datosMsj =>{
+        alert(datosMsj.mensaje);
+        console.log(datosMsj.valido);
+        console.log(datosMsj.usuario);
+    });
+
+  }
+/*
   //Pasamos el objeto usuario con los datos que cogemos del formulario.
   //si el usuario es insertado correctamente en el array retornamos true para mostrar
   //un mensaje de usuario insertado correctamente
@@ -75,7 +90,7 @@ export class HttpService {
     this.listaUsuarios.push(user);
     this.guardarLocalStrg();
   }
-
+*/
   cargaLocalStrg(){
     let obtenDatosLStr = window.localStorage.getItem("listaUsuarios");
 
@@ -86,5 +101,5 @@ export class HttpService {
     return this.listaUsuarios;
 
   }
-*/
+
 }
