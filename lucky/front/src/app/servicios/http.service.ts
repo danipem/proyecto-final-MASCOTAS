@@ -24,7 +24,27 @@ export class HttpService {
 
   insertarUsuariosBD(usuario: UsuarioEnt){
 
+    let registro = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/registro", usuario);
+    registro.subscribe(datos =>{
+      if(datos.valido){
+        alert(datos.mensaje);
+      }else{
+        alert(datos.mensaje);
+      }
+      
+    })
+
+
   }
+
+  existeEmail(usuario : UsuarioEnt, funCallbk: any){
+    const valido = false;
+    let comprobacion = this.clientHttp.post<Mensaje>(`http://127.0.0.1:4000/api/lucky/compraremail73hg4h4`,usuario);
+    comprobacion.subscribe(datosMsj =>{
+        //alert(datosMsj.mensaje);
+        funCallbk(datosMsj.valido ) ;        
+    });
+}
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
     

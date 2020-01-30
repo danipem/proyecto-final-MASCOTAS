@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //El objeto que nos insertara los usuarios en la base de datos.
 // TODO validaciones.
-let Usuario = new Schema({ 
+let Usuario = new Schema({
     nombre: {
         type: String
     },
