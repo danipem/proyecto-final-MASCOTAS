@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioEnt } from 'src/app/entidades/usuarioEnt';
+
 
 @Component({
   selector: 'app-login',
@@ -7,14 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  usuario: UsuarioEnt
+
+  constructor() {
+    this.usuario.email = "";
+    this.usuario.password = "";
+  }
+
+  clickIniciarSesion() {
+    console.log('Click OK')
+    this.usuario
+  }
+  
 
   ngOnInit() {
   }
-  clickIniciarSesion(): void{
-    console.log('Click OK')
 
-  }
   clickCrearUsuario():void{
     console.log(('Ese clickeo bueno'));
     

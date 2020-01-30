@@ -1,4 +1,4 @@
-export class Usuario {
+export class UsuarioEnt {
     public nombre: String;
     public apellidos: String;
     public edad: Number;
