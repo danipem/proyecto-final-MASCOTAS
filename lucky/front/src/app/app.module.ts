@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Router, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 
 //Importamos las clases de los componentes creados por nosotros
 import { AplicacionComponent } from './componentes/raiz/aplicacion.component';
@@ -49,6 +50,7 @@ const rutasApp: Routes = [
   imports: [
     BrowserModule,
     FormsModule, 
+    HttpClientModule,
     RouterModule.forRoot(rutasApp,{enableTracing: true})
   ],
   providers: [],

@@ -3,6 +3,7 @@ p {
   font-family: 'Barlow-Medium', sans-serif;
   color: #01748e;
   margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 h2 {
@@ -23,7 +24,7 @@ h2 {
   margin-bottom: 1em;
   border-style: none;
   border-bottom: 1px solid gray;
-  font-size: 10pt;
+  font-size: 1em;
   width: 95%;
   font-family: 'Barlow-Medium';
 }
@@ -32,11 +33,12 @@ h2 {
   width: 95%;
   background: #fa9c93;
   font-family: 'Barlow-Medium', sans-serif;
-  font-size: 21.25px;
+  font-size: 1.33em;
   color: white;
   margin-top: 1em;
   border-radius: 5px;
   border-style: none;
+  height: 40pt;
 }
 
 .registro__privacidad {
