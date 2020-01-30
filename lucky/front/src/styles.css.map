@@ -5,7 +5,9 @@
         "styles.sass",
         "styles/utils/reset.scss",
         "styles/utils/grid.scss",
-        "app/componentes/login/login.component.sass"
+        "app/componentes/login/login.component.sass",
+        "app/componentes/inicio/inicio.component.sass",
+        "app/componentes/registro/registro.component.sass"
     ],
     "names": [],
     "file": "styles.css"

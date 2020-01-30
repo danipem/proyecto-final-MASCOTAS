@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Router, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { AplicacionComponent } from './componentes/raiz/aplicacion.component';
 import { ErrorComponent } from './componentes/error/error.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 
 const rutasApp: Routes = [
@@ -15,8 +17,21 @@ const rutasApp: Routes = [
           component: LoginComponent
           },
           {
-          path: "**",
-          component: ErrorComponent
+          path: "registro",
+          component: RegistroComponent
+          },
+
+          {
+            path: "inicio",
+            component: InicioComponent
+          },
+          {
+            path:"",
+            redirectTo:"inicio",
+            pathMatch:"full"},
+          {
+            path: "**",
+            component: ErrorComponent
           }
 
 ]
@@ -26,7 +41,9 @@ const rutasApp: Routes = [
   declarations: [
     AplicacionComponent,
     ErrorComponent,
-    LoginComponent
+    LoginComponent,
+    InicioComponent,
+    RegistroComponent
   ],
   //Importamos modulos internos
   imports: [

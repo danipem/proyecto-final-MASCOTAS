@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const Usuario = require('./modelos/usuarios')
+const Usuario = require('./modelos/usuarios');
 const cors = require('cors'); // es una libreria
 const app = express();
 const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
+const protectoras = require('./modelos/protectoras');
+const Animal = require('./modelos/animales');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -23,7 +25,7 @@ conexion.once("open", function () {
 //Función que nos muestra el puerto al que estamos conectados. Actualmente no lo necesitamos así que
 //hemos comentado el mensaje
 app.listen(PORT, function () {
-    
+
     //console.log("servidor ejecutandose en " + PORT);
 
 });
@@ -33,12 +35,56 @@ const rutasAPI = express.Router();
 //Va a ser nuestro intermediario en la URL.
 app.use("/api/lucky", rutasAPI);
 
+
+
+rutasAPI.route("/login").post((req, res) => {
+
+    Usuario.findOne({email: req.body.email, password: req.body.password},(error, usuario) => {
+        
+        if(usuario === null){
+            res.json({
+                mensaje: "Usuario incorrecto",
+                valido: false
+            })
+        }else{
+            res.json({
+                mensaje: "Usuario correcto",
+                valido: true
+            })
+            console.log(usuario);
+        }
+
+        if (error) {
+            console.log("Usuario no valido ");
+            res.json({
+                mensaje: "Usuario no válido"
+            })
+        } else {
+            res.json(usuario);
+        }
+    })   
+
+})
+
+
+// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/animales
+rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) { 
+    Animal.find(function (err, coleccionAnimales) {  
+        if (err) {
+            console.log("err"); 
+        } else {
+            resRespuestaHttp.json(coleccionAnimales); 
+        }
+    });
+});
+
+
 /*
 rutasAPI.route("/registro").post((req, res)=>{
     //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js
     let nuevoUsuario = new Usuario(req.body);
     let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
-    
+
     promesaDeGuardado.then(usuario=>{
         //mostramos el status 200 si se ha insertado correctamente
         res.status(200).json({
@@ -58,7 +104,7 @@ rutasAPI.route("/registro").post((req, res)=>{
 
 
 rutasAPI.route("/listado").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
-    Usuario.find(function (err, coleccionUsuarios) { //le decimos al esquema de mongoose, "busca todo " 
+    Usuario.find(function (err, coleccionUsuarios) { //le decimos al esquema de mongoose, "busca todo "
         //y cuando hayas encontrado invocas a la function err, (va a pasar tanto el error como los datos)
         if (err) {
             console.log("err"); //si error contiene un error mostramos el error en consola
@@ -87,19 +133,19 @@ rutasAPI.route("/eliminar/:id").delete((req, res) => {
                 })
             } else {
                 console.log('AAACIERTOOOO!!!');
-                
+
                 res.json( {
                     mensaje: "OK"
                 })
-                
+
             }
         })
     }
-   
+
 })
 
 rutasAPI.route("/editado/:id").get(async(req,res) => {
-    
+
     let idUsuario = req.params.id;
     if( idUsuario === "undefined"){
         res.json({
@@ -114,7 +160,7 @@ rutasAPI.route("/editado/:id").get(async(req,res) => {
             } else {
                 res.json(usuario);
             }
-        })   
+        })
     }
 
 })
@@ -122,9 +168,9 @@ rutasAPI.route("/editado/:id").get(async(req,res) => {
 rutasAPI.route("/editar/:id").put(function (req, res) {
     let user = new Usuario(req.body);
     user._id = req.params.id;
-    
+
     Usuario.findById(user._id, function (err, us) {
-        
+
         for (const prop in req.body) {
             us[prop] = req.body[prop]
         }
@@ -143,5 +189,5 @@ rutasAPI.route("/editar/:id").put(function (req, res) {
             });
         }
     })
-    
+
 });*/

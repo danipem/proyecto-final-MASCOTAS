@@ -3,17 +3,7 @@ import { Component } from "@angular/core";
 
 @Component ({   //Objeto metadatos(caracteristicas)
     selector:'app-componente-raiz',
-    template: ` <div class="container">
-                    <div class="wrapper">
-                        <div>
-                            <div class="col-sm">
-                              
-                                    <router-outlet></router-outlet>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`
-
+    template: `<router-outlet></router-outlet>`,
 
     //Caracteristicas (metadatos) 
 })

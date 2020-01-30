@@ -1,0 +1,132 @@
+.inicio
+   height: 100vh
+   width: 100vw
+   background-image: url("src/assets/imagenes/fondo.png")
+   background-size:  cover
+   
+   &__contenido
+      height: 100%
+      display: flex
+      flex-direction: row
+      justify-content: center
+   
+   &__botones
+      padding-top: 65vh
+      height: 30%
+      display: flex
+      flex-direction: column
+      justify-content: space-around
+
+   &__titulo
+      color: rgb(14,54 ,61 )
+      font-size: 20pt
+      text-align: center
+
+   @media screen and ( orientation: landscape )
+      height: 100vh
+      width: 100vw
+      
+      background-image: url("src/assets/imagenes/fondo.png")
+      background-size: 100% 100%
+      background-repeat: no-repeat
+
+      &__botones
+         padding-top: 0
+         height: 100vh
+         display: flex
+         flex-direction: column
+         justify-items: space-around
+   
+   @media screen and(min-width: 768px)    
+      &__botones
+         padding-top: 55vh
+         height: 40%
+         display: flex
+         flex-direction: column
+         justify-content: space-around
+         
+      &__titulo
+         color: rgb(14,54 ,61 )
+         font-size: 40pt
+         text-align: center
+
+      a      
+         width: 392pt
+         text-align: center
+         background-color: rgb(1,116 ,142 )
+         height: 80pt
+         color: white
+         font-size: 32pt
+         border-radius: 10pt
+         border: 1px solid rgb(1,116 ,142 )
+
+      p
+         font-size: 24pt
+   
+   @media screen and(min-width: 992px)
+
+      &__botones
+         padding-top: 55vh
+         height: 40%
+         display: flex
+         flex-direction: column
+         justify-content: space-around
+         
+      &__titulo
+         color: rgb(14,54 ,61 )
+         font-size: 46pt
+         text-align: center
+
+      a      
+         width: 400pt
+         text-align: center
+         background-color: rgb(1,116 ,142 )
+         height: 80pt
+         color: white
+         font-size: 38pt
+         border-radius: 10pt
+         border: 1px solid rgb(1,116 ,142 )
+
+      p
+         font-size: 30pt
+   @media screen and(min-width: 1200px)
+
+      &__botones
+         padding-top: 0
+         height: 100vh
+         display: flex
+         flex-direction: column
+         justify-content: space-around
+         
+      &__titulo
+         color: rgb(14,54 ,61 )
+         font-size: 46pt
+         text-align: center
+
+      a      
+         width: 400pt
+         text-align: center
+         background-color: rgb(1,116 ,142 )
+         height: 80pt
+         color: white
+         font-size: 38pt
+         border-radius: 10pt
+         border: 1px solid rgb(1,116 ,142 )
+
+      p
+         font-size: 30pt   
+
+p
+   color: rgb(14,54 ,61 )
+   font-size: 16px
+   text-align: center
+
+a
+   width: 260px
+   text-align: center
+   background-color: rgb(1,116 ,142 )
+   height: 53px
+   color: white
+   font-size: 21px
+   border-radius: 7px
+   border: 1px solid rgb(1,116 ,142 )
