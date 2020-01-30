@@ -82,7 +82,6 @@ rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
     });
 });
 
-
 /*
 rutasAPI.route("/registro").post((req, res)=>{
     //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js

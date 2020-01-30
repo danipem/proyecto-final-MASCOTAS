@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid row">
     <div class="col-xs-12 middle-xs login">
         <div class="login__logo">
             <img src="../../../assets/imagenes/logo.png" alt="logo">
@@ -11,10 +11,14 @@
                 <input type="text" placeholder="ejemplo@gmail.com" name="email" [(ngModel)]="usuario.email"/>
             </div>
             <div class="login__password">
-                <input type="password" placeholder="9090ejemplo" name="password" [(ngModel)]="usuario.password" />
+                <input type="{{showPassword?'text':'password'}}" placeholder="password"/>
+                <div class="login__fotillo">
+                <input type="checkbox" class="login__foto-ojo" title="Show Password" [(ngModel)]="showPassword" ng-checked="showPassword">
+            </div>
+                <!-- <input type="password" placeholder="9090ejemplo"  name="password" [(ngModel)]="usuario.password" /> -->
                 <!-- <img class="   login__foto-ojo" src="../../../assets/iconos/ojo.png" alt="ojo"/> -->
             </div>
-            
+
                 <p class="login__olvidado">¿Has olvidado tu contraseña?</p>
             
         </div>
@@ -28,4 +32,5 @@
             </div>
         </div>
     </div>
+    
 </div>
