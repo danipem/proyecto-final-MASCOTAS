@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioEnt } from 'src/app/entidades/usuarioEnt';
+import { HttpService } from '../../servicios/http.service';
 
 
 @Component({
@@ -11,14 +12,15 @@ export class LoginComponent implements OnInit {
 
   usuario: UsuarioEnt
 
-  constructor() {
+  constructor(private clientHttp: HttpService) {
     this.usuario.email = "";
     this.usuario.password = "";
   }
 
   clickIniciarSesion() {
     console.log('Click OK')
-    this.usuario
+    this.clientHttp.iniciarUsuarioBD(this.usuario);
+    
   }
   
 
