@@ -18,20 +18,14 @@ const conexion = mongoose.connection;
 
 //Realizamos la conexion a la base de datos y si se conecta exitosamente se muestra un mensaje.
 conexion.once("open", function () {
-    console.log(" 0) - Conectado a la base de datos lucky");
+  console.log(" 0) - Conectado a la base de datos lucky");
 })
-<<<<<<< Updated upstream
-=======
-//TODO:
-// el middle ware es un sotware instermediario para la serializacion y
-// deserializacion (parseo) automática
->>>>>>> Stashed changes
 
 //Función que nos muestra el puerto al que estamos conectados. Actualmente no lo necesitamos así que
 //hemos comentado el mensaje
 app.listen(PORT, function () {
 
-    //console.log("servidor ejecutandose en " + PORT);
+  //console.log("servidor ejecutandose en " + PORT);
 
 });
 
@@ -39,6 +33,20 @@ const rutasAPI = express.Router();
 
 //Va a ser nuestro intermediario en la URL.
 app.use("/api/lucky", rutasAPI);
+
+rutasAPI.route("/protectoras").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
+  Usuario.find(function (err, protectoras) { //le decimos al esquema de mongoose, "busca todo "
+      //y cuando hayas encontrado invocas a la function err, (va a pasar tanto el error como los datos)
+      if (err) {
+          console.log("err"); //si error contiene un error mostramos el error en consola
+          // y si todo ha ido bien `pedimos devolver la coleccion en formato JSON
+      } else {
+          resRespuestaHttp.json(protectoras);
+          //se invoca a la query db.protectoras.find(), es un método de mongoose
+      }
+  });
+});
+
 
 /*
 rutasAPI.route("/registro").post((req, res)=>{

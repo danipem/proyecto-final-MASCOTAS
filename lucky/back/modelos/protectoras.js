@@ -1,9 +1,15 @@
 const mongoose = require('mongoose'); //importamos mongoose
 const Schema = mongoose.Schema;
 
+
 //El objeto que nos insertara los usuarios en la base de datos.
 // TODO validaciones.
 let protectoras = new Schema({
+
+    id: {
+      type: String
+    },
+
     nombre: {
         type: String
     },
