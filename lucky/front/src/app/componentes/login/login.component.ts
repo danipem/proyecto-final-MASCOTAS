@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   usuario: UsuarioEnt
 
   constructor(private clientHttp: HttpService) {
+    this.usuario = new UsuarioEnt()
     this.usuario.email = "";
     this.usuario.password = "";
   }
