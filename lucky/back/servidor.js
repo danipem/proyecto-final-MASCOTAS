@@ -37,6 +37,34 @@ app.use("/api/lucky", rutasAPI);
 
 
 
+
+rutasAPI.route("/compraremail73hg4h4").patch((req, res) => {
+
+    Usuario.findOne({email: req.body.email},(error, usuario) => {
+
+        if (error){
+            res.json({
+                status: res.status(400),
+                mensaje: "error",
+                valido: false,
+                error: error
+            })
+        }else{
+            if(usuario===null){
+                res.json({
+                    mensaje: "Usuario no existe",
+                    valido: true
+                })
+            }else{
+                res.json({
+                    mensaje: "Usuario existe",
+                    valido: false
+                })
+            }
+        }
+    })
+})
+
 rutasAPI.route("/login").post((req, res) => {
 
     Usuario.findOne({email: req.body.email, password: req.body.password},(error, usuario) => {
@@ -72,19 +100,58 @@ rutasAPI.route("/login").post((req, res) => {
 
 rutasAPI.route("/registro").post((req, res)=>{
 
-  let nuevoUsuario = new Usuario(req.body);
-  let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
+    Usuario.findOne({email: req.body.email},(error, usuario)=>{
 
+        if (error){
+            res.json({
+                status: res.status(400),
+                mensaje: "error",
+                valido: false,
+                error: error
+            })
+        }
+        else{
+           if(usuario === null){
+               let nuevoUsuario = new Usuario(req.body);
+               let promesaDeGuardado = nuevoUsuario.save();
+               promesaDeGuardado.then(datos =>{
+                   res.json({
+                       mensaje: "Usuario insertado correctamente",
+                       valido: true,
+                       usuario: usuario
+                    })
+               })
+               
+           }else{
+               res.json({
+                   mensaje: "Usuario Ya existente, no te puedes registrar con este mail",
+                   valido: false,
+                   usuario: usuario
+               })
+           }
+        }
+
+    })
+   //metodo save, devuelve una promesa de guardar
+    /*
   promesaDeGuardado.then(usuario=>{
       //mostramos el status 200 si se ha insertado correctamente
-      res.status(200).json({
-          "Usuario": "Usuario Guardado"
-      })
-
+      if(usuario === null){
+        res.json({
+            mensaje: "Usuario Incorrecto",
+            valido: false
+        })
+      }else{
+        res.json({
+            mensaje: "Usuario Correcto",
+            valido: true
+        })
+      }
+      
   })
   promesaDeGuardado.catch(err=>{
       res.status(400).send("error usuario no se guardo ")
-  })
+  })*/
 
   console.log("Usuario registrado");
 
