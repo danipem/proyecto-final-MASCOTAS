@@ -48,5 +48,5 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }

@@ -37,6 +37,19 @@ export class HttpService {
 
   }
 
+  existeEmail(email : string){
+    let comprobacion = this.clientHttp.patch<Mensaje>("http://127.0.0.1:4000/api/lucky/compraremail73hg4h4", email);
+    comprobacion.subscribe(datosMsj =>{
+        
+        if(datosMsj.valido=== false){
+          return false;
+        }else{
+          return true;
+        }
+        
+    });
+}
+
   iniciarUsuarioBD(usuario: UsuarioEnt){
     
     let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
