@@ -24,7 +24,7 @@ export class HttpService {
 
   insertarUsuariosBD(usuario: UsuarioEnt){
 
-    let registro = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
+    let registro = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/registro", usuario);
     registro.subscribe(datos =>{
       if(datos.valido){
         alert(datos.mensaje);
@@ -37,17 +37,21 @@ export class HttpService {
 
   }
 
-  existeEmail(email : string){
+  existeEmail(email : String):Boolean{
+    
+    let valido;
     let comprobacion = this.clientHttp.patch<Mensaje>("http://127.0.0.1:4000/api/lucky/compraremail73hg4h4", email);
     comprobacion.subscribe(datosMsj =>{
         
-        if(datosMsj.valido=== false){
-          return false;
+        if(datosMsj.valido === false){
+          valido =  false;
         }else{
-          return true;
+          valido = true;
         }
         
     });
+
+    return valido;
 }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
