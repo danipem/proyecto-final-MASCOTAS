@@ -1180,6 +1180,7 @@ textarea {
   color: #01748e;
   margin-top: 10em;
   font-family: 'Barlow-Medium', sans-serif;
+  height: 100%;
 }
 
 .login__logo {
@@ -1220,7 +1221,21 @@ textarea {
 }
 
 .login__foto-ojo {
-  float: left;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.login__fotillo {
+  float: right;
+  margin-top: -2.7em;
+  position: absolute;
+  margin-left: 75%;
+  background-image: url("src/app/componentes/login/imagenes/ojo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 6vh;
+  width: 8vw;
 }
 
 .login__olvidado {
@@ -1228,6 +1243,7 @@ textarea {
   text-align: right;
   color: #0e363d;
   font-size: 12px;
+  padding-top: 1em;
 }
 
 .login__botones {
@@ -1264,23 +1280,6 @@ textarea {
   border-radius: 5px;
   height: 3em;
   width: 12em;
-}
-
-p {
-  font-size: 20pt;
-  font-family: 'Barlow-Medium', sans-serif;
-  color: #01748e;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
-
-h2 {
-  color: black;
-  font-size: 16pt;
-  text-align: center;
-  margin-bottom: 2em;
-  margin-top: 1.5em;
-  font-family: 'Barlow-Regular', sans-serif;
 }
 
 .registro {
@@ -1328,6 +1327,15 @@ h2 {
   margin-top: 1em;
 }
 
+.registro__h2 {
+  color: black;
+  font-size: 16pt;
+  text-align: center;
+  margin-bottom: 2em;
+  margin-top: 1.5em;
+  font-family: 'Barlow-Regular', sans-serif;
+}
+
 .perfil {
   -ms-flex-pack: distribute;
       justify-content: space-around;
@@ -1345,15 +1353,14 @@ h2 {
 .perfil button {
   width: 100%;
   background: transparent;
-  border-color: #bdd2d6;
+  border-style: none;
+  border: 2px solid #bdd2d6;
   border-radius: 0.5em;
   height: 3.5em;
-  font-family: 'Barlow-Medium', sans-serif;
+  font-family: 'Barlow-Regular', sans-serif;
   font-size: 16px;
   color: #01748e;
   justify-items: start;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 .perfil__boton div {
@@ -1366,11 +1373,65 @@ h2 {
 }
 
 .perfil__img1 img {
-  padding-right: 0.5em;
+  padding-right: 0.2em;
 }
 
 .perfil__img2 {
   float: right;
-  padding: 1em 0;
+  padding: 1em 0.3em;
+}
+
+.contenedora {
+  width: 90vw;
+  height: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.contenedora__titulo {
+  margin-top: 10%;
+  border-top: 1px solid grey;
+  padding-top: 5%;
+}
+
+.contenedora__texto {
+  color: #01748e;
+  font-size: 1em;
+  font-family: "Barlow-Medium", sans-serif;
+}
+
+.contenedora__adopcion {
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.contenedora__imagenes {
+  width: 100%;
+}
+
+.contenedora__figcaptions {
+  background-color: #fa9c93;
+  color: white;
+  font-size: 1em;
+  text-align: center;
+  width: 100%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-radius: 4pt;
+  font-family: "Barlow-Medium", sans-serif;
+}
+
+.pie {
+  width: 100%;
+  height: 4em;
+  -webkit-box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
+          box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
+  padding-top: 6%;
+}
+
+.pie__imagenes {
+  width: 24pt;
+  height: 24pt;
 }
 /*# sourceMappingURL=styles.css.map */

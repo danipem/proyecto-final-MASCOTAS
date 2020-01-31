@@ -11,6 +11,8 @@ import { LoginComponent } from './componentes/login/login.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { HomeAdoptionComponent } from './componentes/home-adoption/home-adoption.component';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 
 const rutasApp: Routes = [
@@ -32,6 +34,10 @@ const rutasApp: Routes = [
             component: PerfilComponent
           },
           {
+            path: "home",
+            component: HomeAdoptionComponent
+          },
+          {
             path:"",
             redirectTo:"inicio",
             pathMatch:"full"},
@@ -50,12 +56,14 @@ const rutasApp: Routes = [
     LoginComponent,
     InicioComponent,
     RegistroComponent,
-    PerfilComponent
+    PerfilComponent,
+    HomeAdoptionComponent,
+    FooterComponent
   ],
   //Importamos modulos internos
   imports: [
     BrowserModule,
-    FormsModule, 
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(rutasApp,{enableTracing: true})
   ],
