@@ -1,0 +1,15 @@
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: #01748e;
+  margin-top: 10em;
+  font-family: 'Barlow-Medium', sans-serif;
+}
+/*# sourceMappingURL=home-adoption.component.css.map */

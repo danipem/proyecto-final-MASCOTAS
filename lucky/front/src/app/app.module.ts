@@ -10,6 +10,8 @@ import { ErrorComponent } from './componentes/error/error.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { HomeAdoptionComponent } from './componentes/home-adoption/home-adoption.component';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 
 const rutasApp: Routes = [
@@ -25,6 +27,10 @@ const rutasApp: Routes = [
           {
             path: "inicio",
             component: InicioComponent
+          },
+          {
+            path: "home",
+            component: HomeAdoptionComponent
           },
           {
             path:"",
@@ -44,12 +50,14 @@ const rutasApp: Routes = [
     ErrorComponent,
     LoginComponent,
     InicioComponent,
-    RegistroComponent
+    RegistroComponent,
+    HomeAdoptionComponent,
+    FooterComponent
   ],
   //Importamos modulos internos
   imports: [
     BrowserModule,
-    FormsModule, 
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(rutasApp,{enableTracing: true})
   ],

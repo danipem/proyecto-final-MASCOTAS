@@ -31,7 +31,7 @@ export class HttpService {
       }else{
         alert(datos.mensaje);
       }
-      
+
     })
 
 
@@ -42,25 +42,24 @@ export class HttpService {
     let comprobacion = this.clientHttp.post<Mensaje>(`http://127.0.0.1:4000/api/lucky/compraremail73hg4h4`,usuario);
     comprobacion.subscribe(datosMsj =>{
         //alert(datosMsj.mensaje);
-        funCallbk(datosMsj.valido ) ;        
+        funCallbk(datosMsj.valido ) ;
     });
 }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
-    
+
     let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
     login.subscribe(datosMsj =>{
-        
         if(datosMsj.mensaje === "error" && datosMsj.valido=== false){
           alert("Error")
         }else if(datosMsj.mensaje === "incorrecto" && datosMsj.valido === false){
           alert("Usuario Incorrecto");
         }else{
-          alert(datosMsj.mensaje);
-          console.log(datosMsj.valido);
+          //TODO: MEJORAR
+          window.location.href= "http://localhost:4200/home";
           console.log(datosMsj.usuario);
         }
-        
+
     });
 
   }
@@ -69,7 +68,7 @@ export class HttpService {
   //si el usuario es insertado correctamente en el array retornamos true para mostrar
   //un mensaje de usuario insertado correctamente
   insertar(usuario: Usuario ){
-  
+
     let existeEmail = false;
 
     for( let usu of this.listaUsuarios){
@@ -91,7 +90,7 @@ export class HttpService {
   }
 
   //Vamos a guardar el objeto en la local storage del navegador. El navegador solo admite
-  //textos numeros y booleans, por eso el array de objeto hay que convertirlo en json y 
+  //textos numeros y booleans, por eso el array de objeto hay que convertirlo en json y
   // posteriormente en texto.
   guardarLocalStrg(){
 
@@ -104,11 +103,11 @@ export class HttpService {
   }
 
   eliminarDeLaLocalStrg(posicion: number){
-    
+
     this.listaUsuarios.splice(posicion,1);
     this.guardarLocalStrg()
     return true;
-    
+
   }
 
   addToArray(user: Usuario){
