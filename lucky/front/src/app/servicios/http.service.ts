@@ -14,7 +14,7 @@ export class HttpService {
 
   constructor(private clientHttp: HttpClient) {
     //this.nombreUsuario = [];
-
+    this.listaUsuarios = [];
     this.cargaLocalStrg();
 
     if(this.listaUsuarios == null || typeof this.listaUsuarios === "undefined"){
@@ -37,21 +37,13 @@ export class HttpService {
 
   }
 
-  existeEmail(email : String):Boolean{
-
-    let valido;
-    let comprobacion = this.clientHttp.patch<Mensaje>("http://127.0.0.1:4000/api/lucky/compraremail73hg4h4", email);
+  existeEmail(usuario : UsuarioEnt, funCallbk: any){
+    
+    let comprobacion = this.clientHttp.post<Mensaje>(`http://127.0.0.1:4000/api/lucky/compraremail73hg4h4`,usuario);
     comprobacion.subscribe(datosMsj =>{
-        
-        if(datosMsj.valido === false){
-          valido =  false;
-        }else{
-          valido = true;
-        }
-        
+        funCallbk(datosMsj.valido ) ;        
     });
 
-    return valido;
 }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
@@ -140,7 +132,7 @@ export class HttpService {
   }
 
   cargaLocalStrg(){
-    let obtenDatosLStr = window.localStorage.getItem("listaUsuarios");
+    let obtenDatosLStr = window.localStorage.getItem("usuarioRegistrado");
 
      this.listaUsuarios = JSON.parse(obtenDatosLStr);
   }

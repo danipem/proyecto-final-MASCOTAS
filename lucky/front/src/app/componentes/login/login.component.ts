@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   clickIniciarSesion() {
     //console.log('Click OK')
     this.clientHttp.iniciarUsuarioBD(this.usuario);
+    console.log("el usuario seleccionado es " + this.usuario.nombre)
 
   }
   

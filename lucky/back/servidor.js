@@ -38,8 +38,8 @@ app.use("/api/lucky", rutasAPI);
 
 
 
-rutasAPI.route("/compraremail73hg4h4").patch((req, res) => {
-
+rutasAPI.route("/compraremail73hg4h4").post((req, res) => {
+ 
     Usuario.findOne({email: req.body.email},(error, usuario) => {
 
         if (error){
@@ -53,12 +53,12 @@ rutasAPI.route("/compraremail73hg4h4").patch((req, res) => {
             if(usuario===null){
                 res.json({
                     mensaje: "Usuario no existe",
-                    valido: true
+                    valido: false
                 })
             }else{
                 res.json({
                     mensaje: "Usuario existe",
-                    valido: false
+                    valido: true
                 })
             }
         }
