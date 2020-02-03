@@ -10,6 +10,7 @@ import { ErrorComponent } from './componentes/error/error.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { HomeAdoptionComponent } from './componentes/home-adoption/home-adoption.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { AdopcionComponent } from './componentes/adopcion/adopcion.component';
@@ -28,6 +29,10 @@ const rutasApp: Routes = [
           {
             path: "inicio",
             component: InicioComponent
+          },
+          {
+            path: "perfil",
+            component: PerfilComponent
           },
           {
             path: "home",
@@ -57,6 +62,7 @@ const rutasApp: Routes = [
     LoginComponent,
     InicioComponent,
     RegistroComponent,
+    PerfilComponent,
     HomeAdoptionComponent,
     FooterComponent,
     AdopcionComponent
