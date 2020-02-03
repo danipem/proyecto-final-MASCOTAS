@@ -1167,6 +1167,13 @@ textarea {
   }
 }
 
+p {
+  font-size: 3em;
+  color: brown;
+  text-align: center;
+  margin-top: 3em;
+}
+
 .login {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1455,7 +1462,7 @@ h2 {
 }
 
 .pie {
-  widht: 100%;
+  width: 100%;
   height: 4em;
   -webkit-box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
           box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
@@ -1503,5 +1510,45 @@ h2 {
 .mas__img2 {
   float: right;
   padding: 1em 0.3em;
+.mapa {
+  width: 100%;
+  margin-top: 3em;
+}
+
+.mapa__buscar {
+  border-radius: 12px;
+  height: 2.34em;
+  width: 85%;
+  border: 0.8 solid gray;
+  font-family: 'Barlow-Medium', sans-serif;
+  font-size: 0.83em;
+}
+
+.mapa__foto1 {
+  background-image: url("../../../assets/iconos/filtros.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.mapa__map {
+  width: 100%;
+  height: 600px;
+}
+
+.mapa__fotoLupa {
+  margin-bottom: 1.5em;
+}
+
+.pie {
+  width: 100%;
+  height: 4em;
+  -webkit-box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
+          box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
+  padding-top: 6%;
+}
+
+.pie__imagenes {
+  width: 24pt;
+  height: 24pt;
 }
 /*# sourceMappingURL=styles.css.map */
