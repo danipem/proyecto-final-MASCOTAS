@@ -1,0 +1,115 @@
+@charset "UTF-8";
+.entero {
+  padding: 1em;
+}
+
+.filtros {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Barlow-Regular", sans-serif;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.filtros__contenedor {
+  font-size: 1em;
+}
+
+.filtros__botones {
+  width: 5em;
+  height: 5em;
+  border-radius: 10px;
+  background-color: white;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  font-size: 100%;
+  font-family: "Barlow-Regular", sans-serif;
+}
+
+.filtros__insecto {
+  line-height: 12px;
+}
+
+.filtros__especie {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.filtros__sexo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around;
+  padding: 1%;
+}
+
+.filtros__tamaño {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.filtros__boton {
+  background-color: pink;
+  width: 10em;
+}
+
+.filtros__select {
+  border: 0;
+  border-bottom: 1px solid black;
+  width: 15em;
+}
+
+.filtros__select2 {
+  border: 0;
+  border-bottom: 1px solid black;
+  width: 15em;
+}
+
+.filtros__fila {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+/*# sourceMappingURL=filtros.component.css.map */

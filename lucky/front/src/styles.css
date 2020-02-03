@@ -1048,7 +1048,7 @@ textarea {
     height: 100vh;
     width: 100vw;
     background-image: url("src/assets/imagenes/fondo.png");
-    background-size: 100% 100%;
+    background-size: 100%;
     background-repeat: no-repeat;
   }
   .inicio__contenedor {
@@ -1167,10 +1167,6 @@ textarea {
   }
 }
 
-button:hover {
-  cursor: pointer;
-}
-
 .login {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1270,14 +1266,6 @@ button:hover {
   width: 12em;
 }
 
-.login__boton-iniciar:hover {
-  cursor: pointer;
-}
-
-.login__boton-crear {
-  cursor: pointer;
-}
-
 p {
   font-size: 20pt;
   font-family: 'Barlow-Medium', sans-serif;
@@ -1330,5 +1318,29 @@ h2 {
 .registro__check {
   border-radius: 12px;
   padding: 1em;
+}
+
+.registro__p {
+  font-size: 20pt;
+  font-family: 'Barlow-Medium', sans-serif;
+  color: #01748e;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.filtros {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Barlow, Regular, 16pt;
+}
+
+.filtros .filtros__ciudad {
+  border: 0;
+  border-bottom: 1px solid;
 }
 /*# sourceMappingURL=styles.css.map */
