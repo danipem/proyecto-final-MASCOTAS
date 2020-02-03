@@ -12,6 +12,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { HomeAdoptionComponent } from './componentes/home-adoption/home-adoption.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { AdopcionComponent } from './componentes/adopcion/adopcion.component';
 
 
 const rutasApp: Routes = [
@@ -33,6 +34,10 @@ const rutasApp: Routes = [
             component: HomeAdoptionComponent
           },
           {
+            path: "adopcion",
+            component : AdopcionComponent
+          },
+          {
             path:"",
             redirectTo:"inicio",
             pathMatch:"full"},
@@ -40,6 +45,7 @@ const rutasApp: Routes = [
             path: "**",
             component: ErrorComponent
           }
+
 
 ]
 
@@ -52,7 +58,8 @@ const rutasApp: Routes = [
     InicioComponent,
     RegistroComponent,
     HomeAdoptionComponent,
-    FooterComponent
+    FooterComponent,
+    AdopcionComponent
   ],
   //Importamos modulos internos
   imports: [

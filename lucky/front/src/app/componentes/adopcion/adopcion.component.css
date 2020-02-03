@@ -29,7 +29,7 @@
 
 .contenedora__figcaptions {
   background-color: #fa9c93;
-  color: white;
+  color: ocean;
   font-size: 1em;
   text-align: center;
   width: 100%;
@@ -38,4 +38,4 @@
   border-radius: 4pt;
   font-family: "Barlow-Medium", sans-serif;
 }
-/*# sourceMappingURL=home-adoption.component.css.map */
+/*# sourceMappingURL=adopcion.component.css.map */
