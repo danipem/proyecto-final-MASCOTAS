@@ -31,7 +31,7 @@ export class HttpService {
       }else{
         alert(datos.mensaje);
       }
-      
+
     })
 
 
@@ -47,22 +47,22 @@ export class HttpService {
 }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
-    
+
     let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
+    let datos;
     login.subscribe(datosMsj =>{
-        
         if(datosMsj.mensaje === "error" && datosMsj.valido=== false){
           alert("Error")
         }else if(datosMsj.mensaje === "incorrecto" && datosMsj.valido === false){
           alert("Usuario Incorrecto");
         }else{
-          alert(datosMsj.mensaje);
-          console.log(datosMsj.valido);
-          console.log(datosMsj.usuario);
-          this.listaUsuarios.push(datosMsj.usuario);
-          this.guardarLocalStrg();
+          //TODO: MEJORAR LA RUTA
+          window.location.href= "http://localhost:4200/home";
+          datos = JSON.stringify(datosMsj.usuario);
+          this.listaUsuarios.push(datos);
+          //this.guardarLocalStrg();
         }
-        
+
     });
 
   }
@@ -71,7 +71,7 @@ export class HttpService {
   //si el usuario es insertado correctamente en el array retornamos true para mostrar
   //un mensaje de usuario insertado correctamente
   insertar(usuario: Usuario ){
-  
+
     let existeEmail = false;
 
     for( let usu of this.listaUsuarios){
@@ -93,7 +93,7 @@ export class HttpService {
   }
 
   //Vamos a guardar el objeto en la local storage del navegador. El navegador solo admite
-  //textos numeros y booleans, por eso el array de objeto hay que convertirlo en json y 
+  //textos numeros y booleans, por eso el array de objeto hay que convertirlo en json y
   // posteriormente en texto.
   guardarLocalStrg(){
 
@@ -106,11 +106,11 @@ export class HttpService {
   }
 
   eliminarDeLaLocalStrg(posicion: number){
-    
+
     this.listaUsuarios.splice(posicion,1);
     this.guardarLocalStrg()
     return true;
-    
+
   }
 
   addToArray(user: Usuario){
@@ -136,6 +136,7 @@ export class HttpService {
 
      this.listaUsuarios = JSON.parse(obtenDatosLStr);
   }
+
   listLocalStrg(){
 
     return this.listaUsuarios;

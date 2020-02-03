@@ -1,8 +1,8 @@
 <div class="registro">
-    <h2>Registro de Usuario</h2>
+    <h2 class="registro__h2">Registro de Usuario</h2>
     <form class="col-xs col-md">
         <div>
-            <p>Tus datos</p>
+            <p class="registro__p">Tus datos</p>
         </div>
         <div class="registro__grupo">
             <input name="nombre" class="registro__entrada" type="text" placeholder="Nombre" [(ngModel)]= "usuarioNuevo.nombre"  required>
@@ -24,7 +24,7 @@
                     (blur)= "alPerderFocoEmail()">         
         </div>
         <div>
-            <p>Tu dirección</p>
+            <p class="registro__p">Tu dirección</p>
         </div>
         <div class="registro__grupo">
             <input  name="ciudad" class="registro__entrada" type="text" placeholder="Ciudad" [(ngModel)]= "usuarioNuevo.ciudad" required>
