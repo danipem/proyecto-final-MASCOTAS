@@ -11,7 +11,6 @@ import { HttpService } from "../../servicios/http.service";
 export class RegistroComponent /*implements OnInit*/ {
   usuarioNuevo: UsuarioEnt;
   camposInvalid = false;
-  existe : Boolean;
   
   constructor(private infUsu: HttpService ) {
     this.usuarioNuevo = new UsuarioEnt();
@@ -24,7 +23,6 @@ export class RegistroComponent /*implements OnInit*/ {
     this.usuarioNuevo.ciudad = "";
     this.usuarioNuevo.codPostal;
     this.usuarioNuevo.password = "";
-    this.existe = true;
     
    }
 
@@ -39,6 +37,7 @@ export class RegistroComponent /*implements OnInit*/ {
   alPerderFocoEmail() {
      this.infUsu.existeEmail(this.usuarioNuevo, this.alSaberSiEmailExiste);
   }
+
   alSaberSiEmailExiste(valido: boolean) {
     if(valido){
       

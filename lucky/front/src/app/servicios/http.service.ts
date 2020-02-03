@@ -14,7 +14,7 @@ export class HttpService {
 
   constructor(private clientHttp: HttpClient) {
     //this.nombreUsuario = [];
-
+    this.listaUsuarios = [];
     this.cargaLocalStrg();
 
     if(this.listaUsuarios == null || typeof this.listaUsuarios === "undefined"){
@@ -38,26 +38,29 @@ export class HttpService {
   }
 
   existeEmail(usuario : UsuarioEnt, funCallbk: any){
-    const valido = false;
+    
     let comprobacion = this.clientHttp.post<Mensaje>(`http://127.0.0.1:4000/api/lucky/compraremail73hg4h4`,usuario);
     comprobacion.subscribe(datosMsj =>{
-        //alert(datosMsj.mensaje);
-        funCallbk(datosMsj.valido ) ;
+        funCallbk(datosMsj.valido ) ;        
     });
+
 }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
 
     let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
+    let datos;
     login.subscribe(datosMsj =>{
         if(datosMsj.mensaje === "error" && datosMsj.valido=== false){
           alert("Error")
         }else if(datosMsj.mensaje === "incorrecto" && datosMsj.valido === false){
           alert("Usuario Incorrecto");
         }else{
-          //TODO: MEJORAR
+          //TODO: MEJORAR LA RUTA
           window.location.href= "http://localhost:4200/home";
-          console.log(datosMsj.usuario);
+          datos = JSON.stringify(datosMsj.usuario);
+          this.listaUsuarios.push(datos);
+          //this.guardarLocalStrg();
         }
 
     });
@@ -116,13 +119,24 @@ export class HttpService {
     //this.listaUsuarios.push(clonado);
     this.listaUsuarios.push(user);
     this.guardarLocalStrg();
+
+    find({ciudad: "Madrdrid", especie: "perro", })
   }
 */
+  guardarLocalStrg(){
+
+    let usuarioLocalStorage= JSON.stringify(this.listaUsuarios);
+
+    window.localStorage.setItem("usuarioRegistrado", usuarioLocalStorage);
+
+  }
+
   cargaLocalStrg(){
-    let obtenDatosLStr = window.localStorage.getItem("listaUsuarios");
+    let obtenDatosLStr = window.localStorage.getItem("usuarioRegistrado");
 
      this.listaUsuarios = JSON.parse(obtenDatosLStr);
   }
+
   listLocalStrg(){
 
     return this.listaUsuarios;
