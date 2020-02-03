@@ -11,6 +11,10 @@ import { LoginComponent } from './componentes/login/login.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { FiltrosComponent } from './componentes/filtros/filtros.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { HomeAdoptionComponent } from './componentes/home-adoption/home-adoption.component';
+import { FooterComponent } from './componentes/footer/footer.component';
+import { PerfilMasComponent } from './componentes/perfil-mas/perfil-mas.component';
 
 
 const rutasApp: Routes = [
@@ -23,23 +27,34 @@ const rutasApp: Routes = [
     component: RegistroComponent
   },
 
-  {
-    path: "inicio",
-    component: InicioComponent
-  },
-  {
-    path: "filtros",
-    component: FiltrosComponent
-  },
-  {
-    path: "",
-    redirectTo: "inicio",
-    pathMatch: "full"
-  },
-  {
-    path: "**",
-    component: ErrorComponent
-  }
+          {
+            path: "inicio",
+            component: InicioComponent
+          },
+          {
+            path: "perfil",
+            component: PerfilComponent
+          },
+          {
+            path: "perfil-mas",
+            component: PerfilMasComponent
+          },
+          {
+            path: "filtros",
+            component: FiltrosComponent
+          },
+          {
+            path: "home",
+            component: HomeAdoptionComponent
+          },
+          {
+            path:"",
+            redirectTo:"inicio",
+            pathMatch:"full"},
+          {
+            path: "**",
+            component: ErrorComponent
+          }
 
 ]
 
@@ -51,7 +66,11 @@ const rutasApp: Routes = [
     LoginComponent,
     InicioComponent,
     RegistroComponent,
-    FiltrosComponent
+    FiltrosComponent,
+    PerfilComponent,
+    HomeAdoptionComponent,
+    FooterComponent,
+    PerfilMasComponent
   ],
   //Importamos modulos internos
   imports: [

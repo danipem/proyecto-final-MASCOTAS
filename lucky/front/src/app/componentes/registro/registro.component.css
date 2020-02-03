@@ -1,20 +1,3 @@
-p {
-  font-size: 20pt;
-  font-family: 'Barlow-Medium', sans-serif;
-  color: #01748e;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
-
-h2 {
-  color: black;
-  font-size: 16pt;
-  text-align: center;
-  margin-bottom: 2em;
-  margin-top: 1.5em;
-  font-family: 'Barlow-Regular', sans-serif;
-}
-
 .registro {
   padding: 1em;
 }
@@ -59,4 +42,16 @@ h2 {
   margin-bottom: 1em;
   margin-top: 1em;
 }
+<<<<<<< HEAD
+=======
+
+.registro__h2 {
+  color: black;
+  font-size: 16pt;
+  text-align: center;
+  margin-bottom: 2em;
+  margin-top: 1.5em;
+  font-family: 'Barlow-Regular', sans-serif;
+}
+>>>>>>> 37854a6be5a812eb67b6dcd4b599de328491d156
 /*# sourceMappingURL=registro.component.css.map */

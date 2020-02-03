@@ -1,8 +1,8 @@
 <div class="registro">
-    <h2>Registro de Usuario</h2>
+    <h2 class="registro__h2">Registro de Usuario</h2>
     <form class="col-xs col-md">
         <div>
-            <p>Tus datos</p>
+            <p class="registro__p">Tus datos</p>
         </div>
         <div class="registro__grupo">
             <input name="nombre" class="registro__entrada" type="text" placeholder="Nombre" [(ngModel)]= "usuarioNuevo.nombre"  required>
@@ -20,17 +20,11 @@
             <input name="tlf" class="registro__entrada" type="text" placeholder="Telefono" [(ngModel)]= "usuarioNuevo.tlf" required>
         </div>
         <div class="registro__grupo">
-<<<<<<< HEAD
-
-            <input name="email" class="registro__entrada" type="text" placeholder="Email" required
-                    (blur)= "alPerderFocoEmail()">
-                    <!-- focusout  -->
-=======
-            <input name="email" class="registro__entrada" type="text" placeholder="Email" [(ngModel)]= "usuarioNuevo.email" required>
->>>>>>> 94c5e82eee6b844db9eae105c698ca53921e1d04
+            <input name="email" class="registro__entrada" type="text" placeholder="Email" [(ngModel)]= "usuarioNuevo.email" required
+                    (blur)= "alPerderFocoEmail()">         
         </div>
         <div>
-            <p>Tu dirección</p>
+            <p class="registro__p">Tu dirección</p>
         </div>
         <div class="registro__grupo">
             <input  name="ciudad" class="registro__entrada" type="text" placeholder="Ciudad" [(ngModel)]= "usuarioNuevo.ciudad" required>

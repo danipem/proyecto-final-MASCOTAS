@@ -11,7 +11,6 @@ import { HttpService } from "../../servicios/http.service";
 export class RegistroComponent /*implements OnInit*/ {
   usuarioNuevo: UsuarioEnt;
   camposInvalid = false;
-
   
   constructor(private infUsu: HttpService ) {
     this.usuarioNuevo = new UsuarioEnt();
@@ -25,7 +24,6 @@ export class RegistroComponent /*implements OnInit*/ {
     this.usuarioNuevo.codPostal;
     this.usuarioNuevo.password = "";
     
-    
    }
 
   registroComponentClick(): void{
@@ -37,16 +35,28 @@ export class RegistroComponent /*implements OnInit*/ {
   }
 
   alPerderFocoEmail() {
-     let exite = this.infUsu.existeEmail(this.usuarioNuevo.email);
-     
-     if(exite === true){
-      alert("No existe")
-    }else{
-      alert("existe");
-    }
+     this.infUsu.existeEmail(this.usuarioNuevo, this.alSaberSiEmailExiste);
   }
 
+  alSaberSiEmailExiste(valido: boolean) {
+    if(valido){
+      
+      alert("Este email ya existe");
+
+    }else{
+
+      alert("no existe");
+    }
+  }
   ngOnInit() {
   }
- 
+ /*
+  getClass(opcion){
+    if(opcion){
+      return "pinta-rojo"
+    }else{
+      return "pinta-verde"
+    }
+  }*/
+
 }
