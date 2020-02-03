@@ -9,7 +9,7 @@ import { Mensaje } from '../entidades/mensaje';
 export class HttpService {
 
   private listaUsuarios: UsuarioEnt[];
-
+  private usuario: UsuarioEnt;
   //private nombreUsuario: Usuario[];
 
   constructor(private clientHttp: HttpClient) {
@@ -47,7 +47,7 @@ export class HttpService {
 }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
-
+    
     let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
     let datos;
     login.subscribe(datosMsj =>{
@@ -56,73 +56,22 @@ export class HttpService {
         }else if(datosMsj.mensaje === "incorrecto" && datosMsj.valido === false){
           alert("Usuario Incorrecto");
         }else{
+          this.guardarUsuario(datosMsj.usuario);
           //TODO: MEJORAR LA RUTA
-          window.location.href= "http://localhost:4200/home";
+          /*this.listaUsuarios.pop();
           datos = JSON.stringify(datosMsj.usuario);
-          this.listaUsuarios.push(datos);
+          this.listaUsuarios.push(datos);*/
+          
+          //alert(this.usuario);
+          //window.location.href= "http://localhost:4200/home";
           //this.guardarLocalStrg();
         }
+        
 
     });
 
   }
-/*
-  //Pasamos el objeto usuario con los datos que cogemos del formulario.
-  //si el usuario es insertado correctamente en el array retornamos true para mostrar
-  //un mensaje de usuario insertado correctamente
-  insertar(usuario: Usuario ){
 
-    let existeEmail = false;
-
-    for( let usu of this.listaUsuarios){
-
-      if(usu.email === usuario.email){
-        existeEmail = true;
-        break;
-      }
-    }
-
-    if(existeEmail){
-      //alert(`El email ${usuario.email} ya existe en la base de datos.`);
-      return false;
-    }else{
-      this.addToArray(usuario);
-      return true;
-    }
-
-  }
-
-  //Vamos a guardar el objeto en la local storage del navegador. El navegador solo admite
-  //textos numeros y booleans, por eso el array de objeto hay que convertirlo en json y
-  // posteriormente en texto.
-  guardarLocalStrg(){
-
-    let textoJsonUsuario = JSON.stringify(this.listaUsuarios);
-
-    //Con window.localStorage accedemos a la local storage
-    //Con set item guardamos en la cache el listado de objetos en tipo string añadiendole un nombre
-    window.localStorage.setItem("listaUsuarios", textoJsonUsuario);
-
-  }
-
-  eliminarDeLaLocalStrg(posicion: number){
-
-    this.listaUsuarios.splice(posicion,1);
-    this.guardarLocalStrg()
-    return true;
-
-  }
-
-  addToArray(user: Usuario){
-    //Ejemplo clonado
-    //let clonado = usuario.clonar();
-    //this.listaUsuarios.push(clonado);
-    this.listaUsuarios.push(user);
-    this.guardarLocalStrg();
-
-    find({ciudad: "Madrdrid", especie: "perro", })
-  }
-*/
   guardarLocalStrg(){
 
     let usuarioLocalStorage= JSON.stringify(this.listaUsuarios);
@@ -143,4 +92,12 @@ export class HttpService {
 
   }
 
+  guardarUsuario(usuario){
+    this.usuario = usuario;
+  }
+
+  obtenerUsuario(){
+    console.log("Usuario "+this.usuario)
+    return this.usuario;
+  }
 }
