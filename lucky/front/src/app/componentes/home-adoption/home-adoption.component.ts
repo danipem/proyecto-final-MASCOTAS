@@ -24,6 +24,7 @@ export class HomeAdoptionComponent implements OnInit {
 
     //guardo en una variable el nombre con la primera letra mayuscula para mostrarlo en la vista
     this.nombreUsuario = this.objUsuario.nombre.charAt(0).toUpperCase()+ this.objUsuario.nombre.slice(1);
+
   }
 
 }
