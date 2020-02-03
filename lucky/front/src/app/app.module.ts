@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Router, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 
 //Importamos las clases de los componentes creados por nosotros
 import { AplicacionComponent } from './componentes/raiz/aplicacion.component';
@@ -14,6 +14,8 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { HomeAdoptionComponent } from './componentes/home-adoption/home-adoption.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { PerfilMasComponent } from './componentes/perfil-mas/perfil-mas.component';
+import { MapaComponent } from '../app/componentes/mapa/mapa.component';
+
 
 
 const rutasApp: Routes = [
@@ -43,9 +45,14 @@ const rutasApp: Routes = [
             component: HomeAdoptionComponent
           },
           {
+            path: "mapa",
+            component: MapaComponent
+          },
+          {
             path:"",
             redirectTo:"inicio",
-            pathMatch:"full"},
+            pathMatch:"full"
+          },
           {
             path: "**",
             component: ErrorComponent
@@ -64,7 +71,8 @@ const rutasApp: Routes = [
     PerfilComponent,
     HomeAdoptionComponent,
     FooterComponent,
-    PerfilMasComponent
+    PerfilMasComponent,
+    MapaComponent
   ],
   //Importamos modulos internos
   imports: [
