@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Animal } from '../../entidades/animal'
 import { HttpService } from '../../servicios/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-animal',
@@ -9,23 +10,35 @@ import { HttpService } from '../../servicios/http.service';
 })
 export class PerfilAnimalComponent implements OnInit {
 
-  @Input() perfilAnimal: Animal;
+  perfilAnimal: Animal
+  urlTree ;
+  arrayRuta;
+  obtenRuta;
+  id : String;
 
-  constructor(private infAnimal: HttpService) {
-    this.perfilAnimal=new Animal()
+  constructor(private infAnimal: HttpService, private router: Router) {
   
+    this.urlTree = this.router.parseUrl(this.router.url);
+    this.arrayRuta = new Array();
+    this.obtenRuta = "";
    }
 
    
-   
+  
   ngOnInit() {
-    alert( this.perfilAnimal.id)
+    this.obtenRuta = ""+this.urlTree
+    this.arrayRuta = new Array();
+    this.arrayRuta = this.obtenRuta.split("/")
+    this.id = this.arrayRuta[2];
+    this.infAnimal.obtenerAnimal(this.id);
+    this.perfilAnimal = this.infAnimal.consigoAnimal()
+    //alert(this.cargaAnimal());
   }
 
-  cargaDatos(){
-    this.infAnimal.obtenerAnimal(this.perfilAnimal.id);
-    this.perfilAnimal = this.infAnimal.consigoAnimal();
-    return this.perfilAnimal
+  cargaAnimal(){
+    this.infAnimal.obtenerAnimal(this.id);
+    this.perfilAnimal = this.infAnimal.consigoAnimal()
+    return this.perfilAnimal;
   }
 
   oculta1(){

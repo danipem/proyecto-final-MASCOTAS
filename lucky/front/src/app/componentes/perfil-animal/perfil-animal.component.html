@@ -1,13 +1,13 @@
 <div class="perfil-animales" >
   
     <div class="perfil-animales__cabeza"></div>
-    <!-- <p>Cantidad de animales: {{infAnimal.nombre}}</p> -->
+    
     <div class="perfil-animales__puntitos bottom-xs"></div>
     <div class="perfil-animales__nombre col-xs-7">
-        <p class="perfil-animales__sexo">Sexo</p>
+        <p class="perfil-animales__sexo">{{perfilAnimal.datos.sexo}}</p>
         <div class="perfil-animales__nc">
-            <p>{{cargaDatos().nombre}}</p>
-            <p class="perfil-animales__city">Madrid</p>
+            <p>{{perfilAnimal.nombre}}</p>
+            <p class="perfil-animales__city">{{perfilAnimal.ciudad}}</p>
         </div>
         <div class="perfil-animales__iconitos">
             <img src="../../../assets/iconos/compartir.png" alt="like">
@@ -26,46 +26,46 @@
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Especie</p>
             </div>
-            <p ></p>
+            <p >{{perfilAnimal.datos.tipo}}</p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Fecha de nacimiento</p>
             </div>
-            <p>caca</p>
+            <p>{{perfilAnimal.datos.nacimiento}}</p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Sexo</p>
             </div>
-            <p>caca</p>
+            <p>{{perfilAnimal.datos.sexo}}</p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Tamaño</p>
             </div>
-            <p>caca</p>
+            <p>{{perfilAnimal.datos.tamano}}</p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Peso</p>
             </div>
-            <p>caca</p>
+            <p>{{perfilAnimal.datos.peso}}</p>
         </div>
         <div class="perfil-animales__personalidad">
             <h2>Personalidad</h2>
             <div class="perfil-animales__personalidades">
-                <p>Bueno</p>
-                <p>Malo</p>
+                <p ></p>
+                
             </div>
         </div>
         <div class="perfil-animales__historia">
             <h2>Historia</h2>
-            <p>Es un bicho apestoso pero si lo quieres adoptar es tu decisión</p>
+            <p>{{perfilAnimal.datos.historia}}</p>
         </div>
 
     </div>
@@ -75,42 +75,42 @@
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Vacunado</p>
             </div>
-            <p>Sí</p>
+            <p>{{perfilAnimal.salud.vacunado}}</p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Desparasitado</p>
             </div>
-            <p>Sí</p>
+            <p>{{perfilAnimal.salud.desparasitado}}</p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Sano</p>
             </div>
-            <p>No</p>
+            <p>{{perfilAnimal.salud.sano}}</p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Esterilizado</p>
             </div>
-            <p>No</p>
+            <p>{{perfilAnimal.salud.esterilizado}}</p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Identificado</p>
             </div>
-            <p>No</p>
+            <p>{{perfilAnimal.salud.identificado}}</p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Microchip</p>
             </div>
-            <p>No</p>
+            <p>{{perfilAnimal.salud.microchip}}</p>
         </div>
         <div class="perfil-animales__historia">
             <h2>Tienes que saber que</h2>
@@ -120,15 +120,15 @@
     <div id="animal-adopcion" class="perfil-animales__adopcion">
         <div class="perfil-animales__historia">
             <h2>Requisitos adopción</h2>
-            <p>No hay requisitos</p>
+            <p>{{perfilAnimal.requisitos.requisitos}}</p>
         </div>
         <div class="perfil-animales__historia">
             <h2>Tasa adopción</h2>
-            <p>Mucha plata</p>
+            <p>{{perfilAnimal.requisitos.tasa}}</p>
         </div>
         <div class="perfil-animales__historia">
             <h2>¿Se envía a otra ciudad?</h2>
-            <p>Es posible</p>
+            <p>{{perfilAnimal.requisitos.envio}}</p>
         </div>
 
     </div>

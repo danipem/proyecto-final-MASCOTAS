@@ -11,7 +11,8 @@ export class HttpService {
 
   private listaUsuarios: UsuarioEnt[];
   private usuario: UsuarioEnt;
-  private animal: Animal
+  private animal: Animal;
+  private animales: Animal[];
 
   //private nombreUsuario: Usuario[];
 
@@ -42,10 +43,10 @@ export class HttpService {
   }
 
   existeEmail(usuario : UsuarioEnt, funCallbk: any){
-    
+
     let comprobacion = this.clientHttp.post<Mensaje>(`http://127.0.0.1:4000/api/lucky/compraremail73hg4h4`,usuario);
     comprobacion.subscribe(datosMsj =>{
-        funCallbk(datosMsj.valido ) ;        
+        funCallbk(datosMsj.valido ) ;
     });
 
 }
@@ -60,7 +61,7 @@ export class HttpService {
         }else if(datosMsj.mensaje === "incorrecto" && datosMsj.valido === false){
           alert("Usuario Incorrecto");
         }else{
-          
+
           this.guardarUsuario(datosMsj.usuario);
           //this.guardarLocalStrg();
         }
@@ -69,7 +70,34 @@ export class HttpService {
 
   }
 
-  
+  obtenerTodosAnimales(){
+
+    let todosAnimales = this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/animales");
+
+    todosAnimales.subscribe(datos => {
+
+      if(datos.valido === true){
+        this.guardarAnimales(datos.animales);
+      }else{
+        alert(datos.mensaje);
+      }
+
+    });
+
+  }
+
+  obtenerAnimal(idAnimal: String){
+    let id=this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+    id.subscribe(datos=>{
+      alert(datos.valido);
+      if(datos.valido === true){
+        this.guardarAnimal(datos.animal);
+      }else{
+        alert(datos.mensaje)
+      }
+        
+    });
+  }
 /*
   guardarLocalStrg(){
 
@@ -91,6 +119,8 @@ export class HttpService {
 
   }*/
 
+  
+
   guardarUsuario(usuario){
     this.usuario = usuario;
   }
@@ -102,17 +132,29 @@ export class HttpService {
   
   guardarAnimal(animal: Animal){
     this.animal = animal;
+    sessionStorage.setItem("animal", JSON.stringify(this.animal))
   }
 
   consigoAnimal(){
+    if(typeof this.animal === "undefined" || this.animal === null){
+      this.animal = JSON.parse(sessionStorage.getItem("animal"))
+    }
     return this.animal;
   }
-  obtenerAnimal(idAnimal: String){
-    let id=this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
-    id.subscribe(datos=>{
-        console.log(datos.animal);
-        this.guardarAnimal(datos.animal);
-    });
+
+  guardarAnimales(animal : Animal[]){
+
+    this.animales = animal;
+    sessionStorage.setItem("animales", JSON.stringify(this.animales))
   }
+
+  consigoAnimales(){
+    if(typeof this.animales === "undefined" || this.animales === null){
+      this.animales = JSON.parse(sessionStorage.getItem("animales"))
+    }
+    return this.animales;
+  }
+
+  
  }
 

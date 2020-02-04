@@ -4,13 +4,15 @@ const mongoose = require('mongoose');
 const Usuario = require('./modelos/usuarios');
 const cors = require('cors'); // es una libreria
 const app = express();
-const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
+const PORT = 4000;
 const Protectoras = require('./modelos/protectoras');
 const Animal = require('./modelos/animales');
 const Adopcions = require('./modelos/adopcions');
 
 app.use(bodyParser.json());
 app.use(cors());
+
+
 
 //Conexión a la base de datos luckyDB. Si la base de datos no existe será creada.
 mongoose.connect('mongodb://127.0.0.1:27017/luckyDB'); // es la direccion ip local (es lo mismo que localhost).
@@ -31,6 +33,7 @@ app.listen(PORT, function () {
 
 });
 
+
 const rutasAPI = express.Router();
 
 //Va a ser nuestro intermediario en la URL.
@@ -39,8 +42,9 @@ app.use("/api/lucky", rutasAPI);
 
 
 
+
 rutasAPI.route("/compraremail73hg4h4").post((req, res) => {
- 
+
     Usuario.findOne({email: req.body.email},(error, usuario) => {
 
         if (error){
@@ -122,7 +126,7 @@ rutasAPI.route("/registro").post((req, res)=>{
                        usuario: usuario
                     })
                })
-               
+
            }else{
                res.json({
                    mensaje: "Usuario Ya existente, no te puedes registrar con este mail",
@@ -148,7 +152,7 @@ rutasAPI.route("/registro").post((req, res)=>{
             valido: true
         })
       }
-      
+
   })
   promesaDeGuardado.catch(err=>{
       res.status(400).send("error usuario no se guardo ")
@@ -174,13 +178,27 @@ rutasAPI.route("/protectoras").get(function (reqPeticionHttp, resRespuestaHttp) 
 
 
 // POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/animales
-rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
-    Animal.find(function (err, coleccionAnimales) {
-        if (err) {
-            console.log("err");
-        } else {
-            resRespuestaHttp.json(coleccionAnimales);
+rutasAPI.route("/animales").get((req, res) => {
+    Animal.find((err, animal)=>{
+      if (err) {
+        res.json({
+          mensaje: "Error",
+          valido: false
+        })
+      }else{
+        if(animal === null){
+          res.json({
+            valido: false,
+            mensaje: "No hay animales"
+          })
+        }else{
+          res.json({
+            valido: true,
+            mensaje: "Correcto",
+            animales: animal
+          });
         }
+      }
     });
 });
 
@@ -190,7 +208,7 @@ rutasAPI.route("/filtros").get(function (req, res) {
     console.log(req.params.tamano)
     // OBLIGATORIO MARCAR UNA OPCIÓN DE CADA FILTRO
     Animal.find(
-        {$and:[ { ciudad: req.body.ciudad}, 
+        {$and:[ { ciudad: req.body.ciudad},
                { "datos.especie": req.body.datos.especie },
                { "datos.tipo": req.body.datos.tipo },
                { "datos.tamano": req.body.datos.tamano},
@@ -226,7 +244,6 @@ rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
                 res.json({
                     mensaje: "incorrecto",
                     valido: false,
-                    animal: animal
                 })
             }else{
                 res.json({
@@ -239,7 +256,7 @@ rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
         }
 
     })
-    
+
 
 });
 // POSTMAN: método:POST, ruta: http://127.0.0.1:4000/api/lucky/adopcion

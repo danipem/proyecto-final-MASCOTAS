@@ -16,26 +16,70 @@
   border-radius: 5px;
 }
 
+.filtros__ciudades {
+  text-align: left;
+  font-size: 1em;
+  padding-top: 1em;
+}
+
+.filtros__ciudad, .filtros__edad {
+  font-family: "Barlow-Regular", sans-serif;
+  font-size: 16pt;
+  color: #01748e;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.filtros__especie, .filtros__sexo, .filtros__tamaño {
+  text-align: left;
+  font-family: "Barlow-Regular", sans-serif;
+  font-size: 16pt;
+  color: #01748e;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.filtros__edades {
+  text-align: left;
+  font-size: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.filtros__tipos {
+  text-align: left;
+  font-size: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
 .filtros__contenedor {
   font-size: 1em;
 }
 
 .filtros__botones {
-  width: 5em;
-  height: 5em;
+  width: 7em;
+  height: 8em;
   border-radius: 10px;
   background-color: white;
+  margin-bottom: 1em;
   -ms-flex-line-pack: center;
       align-content: center;
-  font-size: 100%;
+  font-size: 10px;
   font-family: "Barlow-Regular", sans-serif;
+  border: 2px solid #bdd2d6;
+  color: #01748e;
+}
+
+.filtros__botones img {
+  padding: 1em;
 }
 
 .filtros__insecto {
   line-height: 12px;
 }
 
-.filtros__especie {
+.filtros__especies {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,12 +87,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.filtros__sexo {
+.filtros__sexos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,7 +109,7 @@
   padding: 1%;
 }
 
-.filtros__tamaño {
+.filtros__tamaños {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,20 +127,37 @@
 }
 
 .filtros__boton {
-  background-color: pink;
-  width: 10em;
+  background-color: #fa9c93;
+  width: 100%;
+  margin-top: 5%;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  font-family: "Barlow-Regular", sans-serif;
+  padding: 1em;
+  border: solid;
 }
 
 .filtros__select {
+  background-color: white;
   border: 0;
   border-bottom: 1px solid black;
   width: 15em;
+  -ms-flex-line-pack: left;
+      align-content: left;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .filtros__select2 {
+  background-color: white;
   border: 0;
   border-bottom: 1px solid black;
   width: 15em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .filtros__fila {
@@ -111,5 +171,10 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.img {
+  position: absolute;
+  left: 60%;
 }
 /*# sourceMappingURL=filtros.component.css.map */
