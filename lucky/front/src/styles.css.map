@@ -14,7 +14,11 @@
         "app/componentes/error/error.component.sass",
         "app/componentes/login/login.component.sass",
         "app/componentes/registro/registro.component.sass",
+<<<<<<< HEAD
+        "app/componentes/filtros/filtros.component.sass",
+=======
 <<<<<<< Updated upstream
+>>>>>>> master
         "app/componentes/perfil/perfil.component.sass",
         "app/componentes/home-adoption/home-adoption.component.sass",
         "app/componentes/footer/footer.component.sass",

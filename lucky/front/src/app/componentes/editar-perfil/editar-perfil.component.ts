@@ -10,22 +10,21 @@ import { UsuarioEnt } from 'src/app/entidades/usuarioEnt';
 export class EditarPerfilComponent implements OnInit {
   
   usuarioEditado: UsuarioEnt
-  usuario: UsuarioEnt[]
+  usuario: UsuarioEnt
   constructor(private infUsu: HttpService ){ }
 
   ngOnInit() {
     this.prueba();
-    
+    console.log(this.infUsu.obtenerUsuario);
 
   }
 
   prueba(){
     
-    this.usuario= this.infUsu.listLocalStrg();
-    this.usuarioEditado.nombre = this.usuario[0].nombre;
-    this.usuarioEditado.password = this.usuario[0].password;
-    this.usuarioEditado.email = this.usuario[0].email;
-    console.log(this.usuario[0].nombre);
+    this.usuarioEditado= this.infUsu.obtenerUsuario();
+    this.usuarioEditado.nombre = this.infUsu.obtenerUsuario().nombre;
+    
+
   }
 
 }

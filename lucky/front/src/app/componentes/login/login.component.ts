@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   usuario: UsuarioEnt;
 
-  constructor(private clientHttp: HttpService, private router: Router) {
+  constructor(private clientHttp: HttpService, private route : Router) {
     this.usuario = new UsuarioEnt();
     this.usuario.email = "";
     this.usuario.password = "";
@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   clickIniciarSesion() {
     this.clientHttp.iniciarUsuarioBD(this.usuario);
-    this.router.navigate(['/home']);
+    this.usuario = this.clientHttp.obtenerUsuario();
+    this.route.navigate(["/home"]);
 
   }
 

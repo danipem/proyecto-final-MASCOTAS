@@ -10,8 +10,7 @@ export class HttpService {
 
   private listaUsuarios: UsuarioEnt[];
   private usuario: UsuarioEnt;
-  //private nombreUsuario: Usuario[];
-
+  
   constructor(private clientHttp: HttpClient) {
     //this.nombreUsuario = [];
     this.listaUsuarios = [];
@@ -56,15 +55,15 @@ export class HttpService {
         }else if(datosMsj.mensaje === "incorrecto" && datosMsj.valido === false){
           alert("Usuario Incorrecto");
         }else{
-          this.guardarUsuario(datosMsj.usuario);
-          //TODO: MEJORAR LA RUTA
-          /*this.listaUsuarios.pop();
-          datos = JSON.stringify(datosMsj.usuario);
-          this.listaUsuarios.push(datos);*/
           
-          //alert(this.usuario);
+          this.guardarUsuario(datosMsj.usuario);
+          //console.log("El usuario "+ this.obtenerUsuario().nombre)
+          /*TODO: MEJORAR LA RUTA
+          window.location.href= "http://localhost:4200/home";
+          datos = JSON.stringify(datosMsj.usuario);
+          this.listaUsuarios.push(datos);
+          //this.guardarLocalStrg();*/
           //window.location.href= "http://localhost:4200/home";
-          //this.guardarLocalStrg();
         }
         
 
@@ -97,7 +96,7 @@ export class HttpService {
   }
 
   obtenerUsuario(){
-    console.log("Usuario "+this.usuario)
+    console.log("Hola" + this.usuario.nombre)
     return this.usuario;
   }
 }
