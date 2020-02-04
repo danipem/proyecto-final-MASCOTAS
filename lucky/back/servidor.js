@@ -183,6 +183,47 @@ rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
     });
 });
 
+// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/filtros
+rutasAPI.route("/filtros").get(function (req, res) {
+    // let especie = null || req.body.datos.especie
+    console.log(req.params.tamano)
+    // OBLIGATORIO MARCAR UNA OPCIÓN DE CADA FILTRO
+    Animal.find(
+        {$and:[ { ciudad: req.body.ciudad}, 
+               { "datos.especie": req.body.datos.especie },
+               { "datos.tipo": req.body.datos.tipo },
+               { "datos.tamano": req.body.datos.tamano},
+               { "datos.sexo": req.body.datos.sexo },
+               { "datos.edad": req.body.datos.edad }
+             ]},
+        // {$or:[{"datos.tamano": req.params.tamano},{sexo: req.body.sexo},{edad: req.body.edad},
+        // {ciudad: req.body.ciudad},{"datos.especie": req.params.especie}]},
+        function (err, coleccionAnimales) {
+        if (err) {
+            console.log("err");
+        } else {
+            console.log(coleccionAnimales)
+            res.json(coleccionAnimales);
+        }
+    });
+});
+
+rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
+
+    let id = req.params.id;
+    Animal.findById(id,(err, animal)=>{
+        if(err){
+            console.log('ERROR');
+            res.json({"mensaje": "error"})
+        }else{
+            console.log(animal)
+            res.json(animal)
+        }
+
+    })
+    
+
+});
 /*
 rutasAPI.route("/registro").post((req, res)=>{
     //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js
