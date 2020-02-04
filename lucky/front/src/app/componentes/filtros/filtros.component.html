@@ -5,7 +5,10 @@
         <div class="filtros__titulo">
           <div class="row">
             <div class="col-10 col-xs-10">
-              <p>Filtros</p>
+              <div class="filtros__texto">
+                <p>Filtros</p>
+              </div>
+              
             </div>
             <div class="col-2 col-xs-2">
               <span class="equix">
@@ -29,19 +32,19 @@
             <div class="">
               <div class="row">
                 <div class="col-3 col-xs-3">
-                  <button class="filtros__botones"><img src="../../../assets/iconos/perrop.png" alt="Perro" /> Perro
+                  <button class="filtros__botones" data-tipo="perro" (click)="muestraAlgo()"><img id="perro" src="../../../assets/iconos/perrop.png" alt="Perro" /> Perro
                   </button>
                 </div>
                 <div class="col-3 col-xs-3">
-                  <button class="filtros__botones"><img src="../../../assets/iconos/cat.png" alt="Gato" /> Gato
+                  <button class="filtros__botones" data-tipo="gato" (click)="muestraAlgo()"><img id="gato" src="../../../assets/iconos/cat.png" alt="Gato" /> Gato
                   </button>
                 </div>
                 <div class="col-3 col-xs-3">
-                  <button class="filtros__botones"><img src="../../../assets/iconos/group12.png" alt="Conejo" /> Conejo
+                  <button class="filtros__botones" data-tipo="conejo" (click)="muestraAlgo()"><img src="../../../assets/iconos/group12.png" alt="Conejo" /> Conejo
                   </button>
                 </div>
                 <div class="col-3 col-xs-3">
-                  <button class="filtros__botones"><img src="../../../assets/iconos/067Hamster.png" alt="Cobaya" />
+                  <button class="filtros__botones" data-tipo="cobaya" (click)="muestraAlgo()"><img src="../../../assets/iconos/067Hamster.png" alt="Cobaya" />
                     Cobaya
                   </button>
                 </div>
@@ -49,36 +52,36 @@
               <div class="">
                 <div class="row">
                   <div class="col-3 col-xs-3">
-                    <button class="filtros__botones"><img src="../../../assets/iconos/035CoatiCopy.png"
+                    <button class="filtros__botones" data-tipo="mamifero" (click)="muestraAlgo()"><img id="mamifero" src="../../../assets/iconos/035CoatiCopy.png"
                         alt="Mamifero Pequeño" /> Mamifero Pequeño</button>
                   </div>
                   <div class="col-3 col-xs-3">
-                    <button class="filtros__botones"><img src="../../../assets/iconos/group6.png" alt="Hurón" /> Hurón
+                    <button class="filtros__botones" data-tipo="huron" (click)="muestraAlgo()"><img src="../../../assets/iconos/group6.png" alt="Hurón" /> Hurón
                     </button>
                   </div>
                   <div class="col-3 col-xs-3">
-                    <button class="filtros__botones"><img src="../../../assets/iconos/057Fish2.png" alt="Péz" /> Péz
+                    <button class="filtros__botones" data-tipo="pez" (click)="muestraAlgo()"><img src="../../../assets/iconos/057Fish2.png" alt="Péz" /> Pez
                     </button>
                   </div>
                   <div class="col-3 col-xs-3">
-                    <button class="filtros__botones"><img src="../../../assets/iconos/group8.png" alt="Reptil" /> Reptil
+                    <button class="filtros__botones" data-tipo="reptil" (click)="muestraAlgo()"><img src="../../../assets/iconos/group8.png" alt="Reptil" /> Reptil
                     </button>
                   </div>
                 </div>
                 <div class="">
                   <div class="row">
                     <div class="col-3 col-xs-3">
-                      <button class="filtros__botones"><img src="../../../assets/iconos/anfibio.png" alt="Anfibio" />
+                      <button class="filtros__botones" data-tipo="anfibio" (click)="muestraAlgo()"><img id="anfibio" src="../../../assets/iconos/anfibio.png" alt="Anfibio" />
                         Anfibio
                       </button>
                     </div>
                     <div class="col-3 col-xs-3">
                       <button class="filtros__botones filtros__insecto"><img src="../../../assets/iconos/group5.png"
-                          alt="Arácnido o Insecto" />
+                          alt="Arácnido o Insecto"  data-tipo="aracnido" (click)="muestraAlgo()"/>
                         Arácnido o Insecto </button>
                     </div>
                     <div class="col-3 col-xs-3">
-                      <button class="filtros__botones"><img src="../../../assets/iconos/ave.png" alt="Ave" /> Ave
+                      <button class="filtros__botones" data-tipo="ave" (click)="muestraAlgo()"><img id="ave" src="../../../assets/iconos/ave.png" alt="Ave" /> Ave
                       </button>
                     </div>
                     <div class="col-3 col-xs-3">
@@ -86,6 +89,14 @@
                   </div>
                   <div class="col-3 col-xs-3">
                   </div>
+                </div>
+                <div class="filtros__tipos" id="tipo">
+                  <p class="filtros__edad" id="tipoTitulo"></p>
+                  <select class="filtros__select2">
+                    <option>Joven</option>
+                    <option>Mediana Edad</option>
+                  </select>
+                  <img class="img" src="../../../assets/imagenes/arrow.png">
                 </div>
                 <div class="filtros__edades">
                   <p class="filtros__edad">Edad</p>

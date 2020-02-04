@@ -14,7 +14,7 @@ export class HttpService {
   constructor(private clientHttp: HttpClient) {
     //this.nombreUsuario = [];
     this.listaUsuarios = [];
-    this.cargaLocalStrg();
+    //this.cargaLocalStrg();
 
     if(this.listaUsuarios == null || typeof this.listaUsuarios === "undefined"){
       this.listaUsuarios =[];
@@ -57,39 +57,33 @@ export class HttpService {
         }else{
           
           this.guardarUsuario(datosMsj.usuario);
-          //console.log("El usuario "+ this.obtenerUsuario().nombre)
-          /*TODO: MEJORAR LA RUTA
-          window.location.href= "http://localhost:4200/home";
-          datos = JSON.stringify(datosMsj.usuario);
-          this.listaUsuarios.push(datos);
-          //this.guardarLocalStrg();*/
-          //window.location.href= "http://localhost:4200/home";
+          //this.guardarLocalStrg();
         }
         
 
     });
 
   }
-
+/*
   guardarLocalStrg(){
 
-    let usuarioLocalStorage= JSON.stringify(this.listaUsuarios);
+    let usuarioLocalStorage= JSON.stringify(this.obtenerUsuario());
 
-    window.localStorage.setItem("usuarioRegistrado", usuarioLocalStorage);
+    window.localStorage.setItem("usuario", usuarioLocalStorage);
 
   }
 
   cargaLocalStrg(){
     let obtenDatosLStr = window.localStorage.getItem("usuarioRegistrado");
-
-     this.listaUsuarios = JSON.parse(obtenDatosLStr);
+    console.log("HEY" +JSON.stringify(obtenDatosLStr));
+    return this.usuario = JSON.parse(obtenDatosLStr);
   }
 
   listLocalStrg(){
 
     return this.listaUsuarios;
 
-  }
+  }*/
 
   guardarUsuario(usuario){
     this.usuario = usuario;
