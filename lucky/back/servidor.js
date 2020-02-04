@@ -7,6 +7,7 @@ const app = express();
 const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
 const Protectoras = require('./modelos/protectoras');
 const Animal = require('./modelos/animales');
+const Adopcions = require('./modelos/adopcions');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -224,6 +225,48 @@ rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
     
 
 });
+// POSTMAN: método:POST, ruta: http://127.0.0.1:4000/api/lucky/adopcion
+// Ya inserta parece estar bien. Pendientre de otra revisión.
+rutasAPI.route("/adopcion").post((req, res) => {
+
+    Adopcions.findOne({usuarioId: req.body.ObjectId},(error, adopcions) => {
+
+     if (error){
+         res.json({
+             status: res.status(400),
+             mensaje: "error",
+             valido: false,
+             error: error
+         })
+     }
+     else{
+        if(adopcions === null){
+            let nuevaAdopcion = new Adopcions(req.body);
+            let promesaDeGuardado = nuevaAdopcion.save(); //metodo save, devuelve una promesa de guardar
+            promesaDeGuardado.then(adopcions => {
+                console.log(JSON.stringify(adopcions));
+                console.log('Datos introducidos con exito en BBDD')
+            res.json({
+                mensaje: "Petición de adopcion enviada con exito!!",
+                valido: True,
+                adopcions: adopcions
+            })
+        })
+        }else{
+            res.json({
+                mensaje: "Ya tienes una peticion en curso....",
+                valido: false,
+                adopcions: adopcions
+            })
+            console.log(res.mensaje);
+        }
+     }
+
+    })
+
+})
+
+
 /*
 rutasAPI.route("/registro").post((req, res)=>{
     //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js

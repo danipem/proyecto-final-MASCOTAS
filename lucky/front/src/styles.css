@@ -1048,7 +1048,7 @@ textarea {
     height: 100vh;
     width: 100vw;
     background-image: url("src/assets/imagenes/fondo.png");
-    background-size: 100% 100%;
+    background-size: 100%;
     background-repeat: no-repeat;
   }
   .inicio__contenedor {
@@ -1167,8 +1167,11 @@ textarea {
   }
 }
 
-button:hover {
-  cursor: pointer;
+p {
+  font-size: 3em;
+  color: brown;
+  text-align: center;
+  margin-top: 3em;
 }
 
 .login {
@@ -1184,6 +1187,7 @@ button:hover {
   color: #01748e;
   margin-top: 10em;
   font-family: 'Barlow-Medium', sans-serif;
+  height: 100%;
 }
 
 .login__logo {
@@ -1224,7 +1228,21 @@ button:hover {
 }
 
 .login__foto-ojo {
-  float: left;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.login__fotillo {
+  float: right;
+  margin-top: -2.7em;
+  position: absolute;
+  margin-left: 75%;
+  background-image: url("src/app/componentes/login/imagenes/ojo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 6vh;
+  width: 8vw;
 }
 
 .login__olvidado {
@@ -1232,6 +1250,7 @@ button:hover {
   text-align: right;
   color: #0e363d;
   font-size: 12px;
+  padding-top: 1em;
 }
 
 .login__botones {
@@ -1270,14 +1289,7 @@ button:hover {
   width: 12em;
 }
 
-.login__boton-iniciar:hover {
-  cursor: pointer;
-}
-
-.login__boton-crear {
-  cursor: pointer;
-}
-
+<<<<<<< HEAD
 p {
   font-size: 20pt;
   font-family: 'Barlow-Medium', sans-serif;
@@ -1295,6 +1307,8 @@ h2 {
   font-family: 'Barlow-Regular', sans-serif;
 }
 
+=======
+>>>>>>> 37854a6be5a812eb67b6dcd4b599de328491d156
 .registro {
   padding: 1em;
 }
@@ -1330,5 +1344,211 @@ h2 {
 .registro__check {
   border-radius: 12px;
   padding: 1em;
+}
+
+.registro__p {
+  font-size: 20pt;
+  font-family: 'Barlow-Medium', sans-serif;
+  color: #01748e;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.filtros {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Barlow, Regular, 16pt;
+}
+
+.filtros .filtros__ciudad {
+  border: 0;
+  border-bottom: 1px solid;
+}
+.registro__h2 {
+  color: black;
+  font-size: 16pt;
+  text-align: center;
+  margin-bottom: 2em;
+  margin-top: 1.5em;
+  font-family: 'Barlow-Regular', sans-serif;
+}
+
+.perfil {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  float: right;
+  padding: 1em 0.3em;
+}
+
+.perfil__foto {
+  margin: 3em;
+}
+
+.perfil__inicio {
+  text-align: center;
+  margin-left: 25%;
+}
+
+.perfil__img1 {
+  float: left;
+  padding: 0.75em;
+}
+
+.perfil button {
+  width: 100%;
+  background: transparent;
+  border-style: none;
+  border: 2px solid #bdd2d6;
+  border-radius: 0.5em;
+  height: 3.5em;
+  font-family: 'Barlow-Regular', sans-serif;
+  font-size: 16px;
+  color: #01748e;
+  justify-items: start;
+}
+
+.perfil__boton div {
+  margin-bottom: 2em;
+}
+
+.perfil__img1 img {
+  padding-right: 0.2em;
+}
+
+.contenedora {
+  width: 90vw;
+  height: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.contenedora__titulo {
+  margin-top: 10%;
+  border-top: 1px solid grey;
+  padding-top: 5%;
+}
+
+.contenedora__texto {
+  color: #01748e;
+  font-size: 1em;
+  font-family: "Barlow-Medium", sans-serif;
+}
+
+.contenedora__adopcion {
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.contenedora__imagenes {
+  width: 100%;
+}
+
+.contenedora__figcaptions {
+  background-color: #fa9c93;
+  color: white;
+  font-size: 1em;
+  text-align: center;
+  width: 100%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-radius: 4pt;
+  font-family: "Barlow-Medium", sans-serif;
+}
+
+.pie {
+  width: 100%;
+  height: 4em;
+  -webkit-box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
+          box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
+  padding-top: 6%;
+}
+
+.pie__imagenes {
+  width: 24pt;
+  height: 24pt;
+}
+
+.mas {
+  margin: auto;
+  height: auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.mas button {
+  width: 100%;
+  background: transparent;
+  border-style: none;
+  border: 2px solid #bdd2d6;
+  border-radius: 0.5em;
+  height: 3.5em;
+  font-family: 'Barlow-Regular', sans-serif;
+  font-size: 16px;
+  color: #01748e;
+  justify-items: start;
+}
+
+.mas__boton div {
+  margin-bottom: 2em;
+}
+
+.mas__img1 {
+  float: left;
+  padding: 0.75em;
+}
+
+.mas__img1 img {
+  padding-right: 0.2em;
+}
+
+.mas__img2 {
+  float: right;
+  padding: 1em 0.3em;
+.mapa {
+  width: 100%;
+  margin-top: 3em;
+}
+
+.mapa__buscar {
+  border-radius: 12px;
+  height: 2.34em;
+  width: 85%;
+  border: 0.8 solid gray;
+  font-family: 'Barlow-Medium', sans-serif;
+  font-size: 0.83em;
+}
+
+.mapa__foto1 {
+  background-image: url("../../../assets/iconos/filtros.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.mapa__map {
+  width: 100%;
+  height: 600px;
+}
+
+.mapa__fotoLupa {
+  margin-bottom: 1.5em;
+}
+
+.pie {
+  width: 100%;
+  height: 4em;
+  -webkit-box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
+          box-shadow: 0px 0px 8pt 0px rgba(14, 54, 61, 0.12);
+  padding-top: 6%;
+}
+
+.pie__imagenes {
+  width: 24pt;
+  height: 24pt;
 }
 /*# sourceMappingURL=styles.css.map */
