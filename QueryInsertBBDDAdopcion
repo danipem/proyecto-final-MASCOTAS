@@ -1,0 +1,26 @@
+
+
+
+db.adopcion.insert({nombre: ObjectId("5e330964e4fb70097d3e7108"),
+		    masAnimal: {cual: "Perro",
+				comportamiento: "Es un perro bueno"				
+				},
+		    eleccionAdop: "Poque mi perro esta triste ya que hace poco se murio mi otro perro y para el era su compañero",
+		    necesidadesAnim: "Si",
+		    gastosAnim: "Si",
+		    alimentacionAnim: "Si",
+		    dondeVives: "Chalet",
+		    alquiler: "No",
+		    caseroPermite: "Si",
+		    mudarse: "No",
+		    jardin: "Si",
+		    vivesSolo: "Si",
+		    acuerdoAdop: "Si",
+		    visitarCasa: "Si"})
+
+
+
+
+
+
+				

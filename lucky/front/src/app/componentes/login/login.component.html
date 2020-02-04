@@ -11,7 +11,7 @@
                 <input type="text" placeholder="ejemplo@gmail.com" name="email" [(ngModel)]="usuario.email"/>
             </div>
             <div class="login__password">
-                <input type="{{showPassword?'text':'password'}}" placeholder="password" [(ngModel)]="usuario.password"/>
+                <input type="{{showPassword?'text':'password'}}" placeholder="password"[(ngModel)]="usuario.password"/>
                 <div class="login__fotillo">
                 <input type="checkbox" class="login__foto-ojo" title="Show Password" [(ngModel)]="showPassword" ng-checked="showPassword">
             </div>

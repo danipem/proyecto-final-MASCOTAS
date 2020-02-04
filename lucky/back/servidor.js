@@ -7,6 +7,7 @@ const app = express();
 const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
 const Protectoras = require('./modelos/protectoras');
 const Animal = require('./modelos/animales');
+const Adopcions = require('./modelos/adopcions');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -182,6 +183,89 @@ rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
         }
     });
 });
+
+// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/filtros
+rutasAPI.route("/filtros").get(function (req, res) {
+    // let especie = null || req.body.datos.especie
+    console.log(req.params.tamano)
+    // OBLIGATORIO MARCAR UNA OPCIÓN DE CADA FILTRO
+    Animal.find(
+        {$and:[ { ciudad: req.body.ciudad}, 
+               { "datos.especie": req.body.datos.especie },
+               { "datos.tipo": req.body.datos.tipo },
+               { "datos.tamano": req.body.datos.tamano},
+               { "datos.sexo": req.body.datos.sexo },
+               { "datos.edad": req.body.datos.edad }
+             ]},
+        // {$or:[{"datos.tamano": req.params.tamano},{sexo: req.body.sexo},{edad: req.body.edad},
+        // {ciudad: req.body.ciudad},{"datos.especie": req.params.especie}]},
+        function (err, coleccionAnimales) {
+        if (err) {
+            console.log("err");
+        } else {
+            console.log(coleccionAnimales)
+            res.json(coleccionAnimales);
+        }
+    });
+});
+
+rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
+
+    let id = req.params.id;
+    Animal.findById(id,(err, animal)=>{
+        if(err){
+            console.log('ERROR');
+            res.json({"mensaje": "error"})
+        }else{
+            console.log(animal)
+            res.json(animal)
+        }
+
+    })
+    
+
+});
+// POSTMAN: método:POST, ruta: http://127.0.0.1:4000/api/lucky/adopcion
+// Ya inserta parece estar bien. Pendientre de otra revisión.
+rutasAPI.route("/adopcion").post((req, res) => {
+
+    Adopcions.findOne({usuarioId: req.body.ObjectId},(error, adopcions) => {
+
+     if (error){
+         res.json({
+             status: res.status(400),
+             mensaje: "error",
+             valido: false,
+             error: error
+         })
+     }
+     else{
+        if(adopcions === null){
+            let nuevaAdopcion = new Adopcions(req.body);
+            let promesaDeGuardado = nuevaAdopcion.save(); //metodo save, devuelve una promesa de guardar
+            promesaDeGuardado.then(adopcions => {
+                console.log(JSON.stringify(adopcions));
+                console.log('Datos introducidos con exito en BBDD')
+            res.json({
+                mensaje: "Petición de adopcion enviada con exito!!",
+                valido: True,
+                adopcions: adopcions
+            })
+        })
+        }else{
+            res.json({
+                mensaje: "Ya tienes una peticion en curso....",
+                valido: false,
+                adopcions: adopcions
+            })
+            console.log(res.mensaje);
+        }
+     }
+
+    })
+
+})
+
 
 /*
 rutasAPI.route("/registro").post((req, res)=>{

@@ -1,0 +1,139 @@
+<div class="perfil-animales">
+  
+    <div class="perfil-animales__cabeza"></div>
+    <!-- <p>Cantidad de animales: {{infAnimal.nombre}}</p> -->
+    <div class="perfil-animales__puntitos bottom-xs"></div>
+    <div class="perfil-animales__nombre col-xs-7">
+        <p class="perfil-animales__sexo">Sexo</p>
+        <div class="perfil-animales__nc">
+            <p>Blue</p>
+            <p class="perfil-animales__city">Madrid</p>
+        </div>
+        <div class="perfil-animales__iconitos">
+            <img src="../../../assets/iconos/compartir.png" alt="like">
+            <img src="../../../assets/iconos/compartir.png" alt="descargar">
+        </div>
+    </div>
+
+    <div class="perfil-animales__menu">
+        <p (click)="oculta1()" id="pestana-datos" class="perfil-animales__pestana">Datos</p>
+        <p (click)="oculta2()" id="pestana-salud" class="perfil-animales__pestana">Salud</p>
+        <p (click)="oculta3()" id="pestana-adopcion" class="perfil-animales__pestana">Adopción</p>
+    </div>
+    <div id="animal-datos" class="perfil-animales__datos">
+        <div class="perfil-animales__filas perfil-animales__datos">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Especie</p>
+            </div>
+            <p>Pato</p>
+        </div>
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Fecha de nacimiento</p>
+            </div>
+            <p>caca</p>
+        </div>
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Sexo</p>
+            </div>
+            <p>caca</p>
+        </div>
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Tamaño</p>
+            </div>
+            <p>caca</p>
+        </div>
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Peso</p>
+            </div>
+            <p>caca</p>
+        </div>
+        <div class="perfil-animales__personalidad">
+            <h2>Personalidad</h2>
+            <div class="perfil-animales__personalidades">
+                <p>Bueno</p>
+                <p>Malo</p>
+            </div>
+        </div>
+        <div class="perfil-animales__historia">
+            <h2>Historia</h2>
+            <p>Es un bicho apestoso pero si lo quieres adoptar es tu decisión</p>
+        </div>
+
+    </div>
+    <div id="animal-salud" class="perfil-animales__salud">
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Vacunado</p>
+            </div>
+            <p>Sí</p>
+        </div>
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Desparasitado</p>
+            </div>
+            <p>Sí</p>
+        </div>
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Sano</p>
+            </div>
+            <p>No</p>
+        </div>
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Esterilizado</p>
+            </div>
+            <p>No</p>
+        </div>
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Identificado</p>
+            </div>
+            <p>No</p>
+        </div>
+        <div class="perfil-animales__filas ">
+            <div class="perfil-animales__huellatexto">
+                <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
+                <p>Microchip</p>
+            </div>
+            <p>No</p>
+        </div>
+        <div class="perfil-animales__historia">
+            <h2>Tienes que saber que</h2>
+            <p></p>
+        </div>
+    </div>
+    <div id="animal-adopcion" class="perfil-animales__adopcion">
+        <div class="perfil-animales__historia">
+            <h2>Requisitos adopción</h2>
+            <p>No hay requisitos</p>
+        </div>
+        <div class="perfil-animales__historia">
+            <h2>Tasa adopción</h2>
+            <p>Mucha plata</p>
+        </div>
+        <div class="perfil-animales__historia">
+            <h2>¿Se envía a otra ciudad?</h2>
+            <p>Es posible</p>
+        </div>
+
+    </div>
+    <div class="perfil-animales__pie col-xs-8 col-xs-offset-2">
+        <button class="perfil-animales__botonapadrinar">Apadrinar</button>
+        <button class="perfil-animales__botonadoptar">Adoptar</button>
+    </div>
+</div>
