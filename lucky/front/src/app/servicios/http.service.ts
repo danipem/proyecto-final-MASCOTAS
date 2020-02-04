@@ -87,9 +87,14 @@ export class HttpService {
 
   guardarUsuario(usuario){
     this.usuario = usuario;
+    sessionStorage.setItem("usuario", JSON.stringify(this.usuario));
   }
 
   obtenerUsuario(){
+
+    if(typeof this.usuario === "undefined" || this.usuario === null){
+      this.usuario = JSON.parse(sessionStorage.getItem("usuario"));
+    }
     console.log("Hola" + this.usuario.nombre)
     return this.usuario;
   }

@@ -22,7 +22,6 @@ export class EditarPerfilComponent implements OnInit {
   prueba(){
     
     this.usuarioEditado= this.infUsu.obtenerUsuario();
-    this.usuarioEditado.nombre = this.infUsu.obtenerUsuario().nombre;
     
 
   }

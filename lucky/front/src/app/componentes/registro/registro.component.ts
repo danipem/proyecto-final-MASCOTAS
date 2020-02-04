@@ -18,10 +18,10 @@ export class RegistroComponent /*implements OnInit*/ {
     this.usuarioNuevo.apellidos = "";
     this.usuarioNuevo.edad;
     this.usuarioNuevo.email = "";
-    this.usuarioNuevo.tlf = "";
+    this.usuarioNuevo.telefono = "";
     this.usuarioNuevo.dni = "";
     this.usuarioNuevo.ciudad = "";
-    this.usuarioNuevo.codPostal;
+    this.usuarioNuevo.cp;
     this.usuarioNuevo.password = "";
     
    }

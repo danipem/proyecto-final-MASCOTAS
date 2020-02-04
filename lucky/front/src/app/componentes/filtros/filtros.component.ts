@@ -13,7 +13,7 @@ export class FiltrosComponent implements OnInit {
     document.getElementById("tipo").setAttribute("style", "display: none");
   }
 
-  muestraAlgo(){
+  muestraAlgo(event){
     
     const animal = event.currentTarget.dataset.tipo;
     
