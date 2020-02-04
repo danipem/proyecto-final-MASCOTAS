@@ -1,4 +1,6 @@
 export class Animal {
+    public id: String
+    public _id: String
     public foto: String
     public nombre:String 
     public ciudad: String 

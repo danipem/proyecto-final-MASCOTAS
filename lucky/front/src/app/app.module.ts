@@ -55,7 +55,7 @@ const rutasApp: Routes = [
             component: MapaComponent
           },
           {
-            path: "perfil-animal",
+            path: "perfil-animal/:id",
             component: PerfilAnimalComponent
           },
           {

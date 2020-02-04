@@ -1,4 +1,4 @@
-<div class="perfil-animales">
+<div class="perfil-animales" >
   
     <div class="perfil-animales__cabeza"></div>
     <!-- <p>Cantidad de animales: {{infAnimal.nombre}}</p> -->
@@ -6,7 +6,7 @@
     <div class="perfil-animales__nombre col-xs-7">
         <p class="perfil-animales__sexo">Sexo</p>
         <div class="perfil-animales__nc">
-            <p>Blue</p>
+            <p>{{cargaDatos().nombre}}</p>
             <p class="perfil-animales__city">Madrid</p>
         </div>
         <div class="perfil-animales__iconitos">
@@ -26,7 +26,7 @@
                 <img src="../../../assets/iconos/pawprint@2x.png" alt="huella">
                 <p>Especie</p>
             </div>
-            <p>Pato</p>
+            <p ></p>
         </div>
         <div class="perfil-animales__filas ">
             <div class="perfil-animales__huellatexto">
@@ -135,5 +135,18 @@
     <div class="perfil-animales__pie col-xs-8 col-xs-offset-2">
         <button class="perfil-animales__botonapadrinar">Apadrinar</button>
         <button class="perfil-animales__botonadoptar">Adoptar</button>
+    </div>
+    <div class="perfil-animales__solicitud">
+        <h2>Solicitud de adopción</h2>
+        <p>Adoptar es un acto de amor, pero sobre todo una responsabilidad de por vida</p>
+        <p>Por este motivo es importante que veas el siguiente vídeo donde te explicamos
+            cómo va a ser todo el proceso de adopción
+        </p>
+        <img src="../../../assets/imagenes/group5.png" alt="">
+        <p class="perfil-animales__continuar">¿Quieres continuar el proceso de adopción?</p>
+        <div class="perfil-animales__solicitudbotones">
+            <button class="perfil-animales__cancelar">Cancelar</button>
+            <button class="perfil-animales__aceptar">Continuar</button>
+        </div>
     </div>
 </div>

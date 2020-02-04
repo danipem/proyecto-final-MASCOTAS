@@ -1,7 +1,11 @@
 import { UsuarioEnt } from "./usuarioEnt";
+import { Animal } from './animal';
+
 
 export class Mensaje {
     mensaje: String;
     valido: boolean;
-    usuario: UsuarioEnt
+    usuario: UsuarioEnt;
+    animal: Animal;
+
 }

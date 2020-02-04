@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
 import {UsuarioEnt} from "../entidades/usuarioEnt"
 import { Mensaje } from '../entidades/mensaje';
+import { Animal } from '../entidades/animal';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +11,7 @@ export class HttpService {
 
   private listaUsuarios: UsuarioEnt[];
   private usuario: UsuarioEnt;
+  private animal: Animal
 
   //private nombreUsuario: Usuario[];
 
@@ -21,6 +23,7 @@ export class HttpService {
     if(this.listaUsuarios == null || typeof this.listaUsuarios === "undefined"){
       this.listaUsuarios =[];
     }
+    
   }
 
   insertarUsuariosBD(usuario: UsuarioEnt){
@@ -65,6 +68,8 @@ export class HttpService {
     });
 
   }
+
+  
 /*
   guardarLocalStrg(){
 
@@ -94,4 +99,20 @@ export class HttpService {
     console.log("Hola" + this.usuario.nombre)
     return this.usuario;
   }
-}
+  
+  guardarAnimal(animal: Animal){
+    this.animal = animal;
+  }
+
+  consigoAnimal(){
+    return this.animal;
+  }
+  obtenerAnimal(idAnimal: String){
+    let id=this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+    id.subscribe(datos=>{
+        console.log(datos.animal);
+        this.guardarAnimal(datos.animal);
+    });
+  }
+ }
+

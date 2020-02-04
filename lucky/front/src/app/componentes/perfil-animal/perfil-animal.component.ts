@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Animal } from '../../entidades/animal'
 import { HttpService } from '../../servicios/http.service';
 
@@ -8,35 +8,24 @@ import { HttpService } from '../../servicios/http.service';
   styleUrls: ['./perfil-animal.component.sass']
 })
 export class PerfilAnimalComponent implements OnInit {
-  perfilAnimal: Animal
+
+  @Input() perfilAnimal: Animal;
 
   constructor(private infAnimal: HttpService) {
-    // this.perfilAnimal = new Animal()
-    // this.perfilAnimal.nombre = ""
-    // this.perfilAnimal.ciudad = ""
-    // this.perfilAnimal.datos.especie=""
-    // this.perfilAnimal.datos.tipo=""
-    // this.perfilAnimal.datos.nacimiento=""
-    // this.perfilAnimal.datos.tamano=""
-    // this.perfilAnimal.datos.peso=""
-    // this.perfilAnimal.datos.personalidad=""
-    // this.perfilAnimal.datos.historia=""
-    // this.perfilAnimal.salud.vacunado=""
-    // this.perfilAnimal.salud.desparasitado=""
-    // this.perfilAnimal.salud.sano=""
-    // this.perfilAnimal.salud.esterilizado=""
-    // this.perfilAnimal.salud.identificado=""
-    // this.perfilAnimal.salud.microchip=""
-    // this.perfilAnimal.requisitos.requisitos=""
-    // this.perfilAnimal.requisitos.tasa=""
-    // this.perfilAnimal.requisitos.envio=""
+    this.perfilAnimal=new Animal()
+  
    }
 
+   
+   
   ngOnInit() {
+    alert( this.perfilAnimal.id)
+  }
 
-
-
-
+  cargaDatos(){
+    this.infAnimal.obtenerAnimal(this.perfilAnimal.id);
+    this.perfilAnimal = this.infAnimal.consigoAnimal();
+    return this.perfilAnimal
   }
 
   oculta1(){

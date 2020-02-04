@@ -215,10 +215,27 @@ rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
     Animal.findById(id,(err, animal)=>{
         if(err){
             console.log('ERROR');
-            res.json({"mensaje": "error"})
+            res.json({
+                mensaje: "error",
+                status: res.status(400),
+                valido: false,
+                error: error
+                })
         }else{
-            console.log(animal)
-            res.json(animal)
+            if(animal === null){
+                res.json({
+                    mensaje: "incorrecto",
+                    valido: false,
+                    animal: animal
+                })
+            }else{
+                res.json({
+                    mensaje: "Animal correcto",
+                    valido: true,
+                    animal: animal
+                })
+                console.log(animal);
+            }
         }
 
     })
