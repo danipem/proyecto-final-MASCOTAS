@@ -227,6 +227,34 @@ rutasAPI.route("/filtros").get(function (req, res) {
     });
 });
 
+rutasAPI.route("/tiposAnimales").post((req,res)=>{
+
+    let especie = req.body.especie;
+
+    Animal.find({"datos.especie" : especie}, (err, animales) =>{
+        if(err){
+            res.json({
+                valido: false,
+                mensaje: "Error",
+            })
+        }else{
+            if(animales === null){
+                res.json({
+                    valido: false,
+                    mensaje: "No existen",
+                })
+            }else{
+                res.json({
+                    valido: true,
+                    mensaje: "Existe",
+                    animales: animales
+                })
+            }
+        }
+    })
+
+})
+
 rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
 
     let id = req.params.id;

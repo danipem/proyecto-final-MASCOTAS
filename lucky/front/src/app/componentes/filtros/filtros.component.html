@@ -93,8 +93,8 @@
                 <div class="filtros__tipos" id="tipo">
                   <p class="filtros__edad" id="tipoTitulo"></p>
                   <select class="filtros__select2">
-                    <option>Joven</option>
-                    <option>Mediana Edad</option>
+                    <option>Loro</option>
+                    <option>Guacamaya</option>
                   </select>
                   <img class="img" src="../../../assets/imagenes/arrow.png">
                 </div>
@@ -110,13 +110,13 @@
                 <div class="filtros__sexos">
                   <div class="row">
                     <div class="col-6 col-xs-6">
-                      <button class="filtros__botones">
-                        <img src="../../../assets/iconos/female.png" alt="Hembra" /> Hembra
+                      <button  data-genero="hembra" (click)="seleccionaGenero()" class="filtros__botones">
+                        <img id="hembra" src="../../../assets/iconos/female.png" alt="Hembra" /> Hembra
                       </button>
                     </div>
                     <div class="col-6 col-xs-6">
-                      <button class="filtros__botones">
-                        <img src="../../../assets/iconos/male.png" alt="Macho" /> Macho
+                      <button  data-genero="macho" (click)="seleccionaGenero()" class="filtros__botones">
+                        <img id="macho" src="../../../assets/iconos/male.png" alt="Macho" /> Macho
                       </button>
                     </div>
                   </div>
@@ -125,21 +125,33 @@
                 <div class="filtros__tamaños">
                   <div class="row">
                     <div class="col-4 col-xs-4">
-                      <button class="filtros__botones"><img src="../../../assets/iconos/group_6.png" alt="Pequeño" />
+                      <button data-width ="small" (click)="seleccionaMedida()" class="filtros__botones"><img id="small" src="../../../assets/iconos/group_6.png" alt="Pequeño" />
                         Pequeño </button>
                     </div>
                     <div class="col-4 col-xs-4">
-                      <button class="filtros__botones"><img src="../../../assets/iconos/group_6@2x.png" alt="Mediano" />
+                      <button data-width ="mediana" (click)="seleccionaMedida()" class="filtros__botones"><img id ="mediano" src="../../../assets/iconos/group_6@2x.png" alt="Mediano" />
                         Mediano </button>
                     </div>
                     <div class="col-4 col-xs-4">
-                      <button class="filtros__botones"><img src="../../../assets/iconos/group_6@3x.png" alt="Grande" />
+                      <button data-width ="grande" (click)="seleccionaMedida()" class="filtros__botones"><img id="grande" src="../../../assets/iconos/group_6@3x.png" alt="Grande" />
                         Grande </button>
                     </div>
                   </div>
                 </div>
-                <div>
-                  <button type="submit" class="filtros__boton"> Aplicar </button>
+                <div *ngIf="filtros === false">
+                  <div>
+                    <button type="submit" class="filtros__boton"> Aplicar </button>
+                  </div>
+                </div>
+                <div class="botones" *ngIf="filtros === true">
+                  <div class="row">
+                    <div class="col-6 col-xs-6">
+                      <button type="button" class="filtros__borrar">Borrar Filtros</button>
+                    </div>
+                    <div class="col-6 col-xs-6">
+                      <button type="submit" class="filtros__boton"> Aplicar </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

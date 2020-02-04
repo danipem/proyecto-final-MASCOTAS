@@ -5,5 +5,5 @@ export class Mensaje {
     mensaje: String;
     valido: boolean;
     usuario: UsuarioEnt;
-    animal: Animal[];
+    animales: Animal[];
 }
