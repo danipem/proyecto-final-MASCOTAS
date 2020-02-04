@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/servicios/http.service';
+import { Animal } from 'src/app/entidades/animal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adopcion',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdopcionComponent implements OnInit {
 
-  constructor() { }
+  animal : Animal[];
+
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
+    this.httpService.obtenerTodosAnimales();
+
+    this.animal = this.httpService.consigoAnimal();
+    console.log("Holaa" + this.animal)
   }
+
+
 
 }

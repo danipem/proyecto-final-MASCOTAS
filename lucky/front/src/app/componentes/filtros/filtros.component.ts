@@ -13,10 +13,10 @@ export class FiltrosComponent implements OnInit {
     document.getElementById("tipo").setAttribute("style", "display: none");
   }
 
-  muestraAlgo(){
-    
-    const animal = event.currentTarget.dataset.tipo;
-    
+  muestraAlgo(evt){
+
+    const animal = evt.currentTarget.dataset.tipo;
+
 
     switch(animal){
       case "perro":
@@ -70,8 +70,8 @@ export class FiltrosComponent implements OnInit {
         break;
     }
     //console.log(animal.dataset.tipo);
-    
-    
+
+
   }
 
   escribeTitulo(animal){

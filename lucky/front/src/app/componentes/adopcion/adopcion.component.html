@@ -90,17 +90,19 @@
         </div>
 
       </div>
-
-      <figure class="adopcion__adopcion">
-          <img class="adopcion__imagenes" src="../../../assets/home/uli1Copy_2@3x.jpg" alt="logo">
+      <div *ngFor="let animales of animal; let i = index">
+        <figure class="adopcion__adopcion" [routerLink]="['/perfil-animal/']" [queryParams]="{id: animales._id}">
+          <img class="adopcion__imagenes" src="{{animales.foto}}" alt="logo">
           <figcaption class="adopcion__figcaptions">
-            <p class="adopcion__nombreAnimal">Simba</p>
+            <p class="adopcion__nombreAnimal">{{animales.nombre}}</p>
             <div class="adopcion__lugarAnimal">
-              <p>Madrid</p>
-              <p class="adopcion__distancia">1.5km</p>
+              <p>{{animales.ciudad}}</p>
+              <p class="adopcion__distancia">{{animales.datos.peso}}</p>
             </div>
           </figcaption>
       </figure>
+      </div>
+
 
     </div>
 
