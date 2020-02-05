@@ -1,7 +1,10 @@
+// LA SOLICITUD DE ADOPCIÓN ESTÁ ABAJO
+//LO SIENTO POR EL DESORDEN
 #pestana-datos
     font-weight: bold 
     color: rgb(1,116,142) 
     border-bottom: 2px solid rgb(250,156,147)
+
 
 .perfil-animales h2
     color: rgb(1, 116, 142)
@@ -10,31 +13,38 @@
     font-family: 'Barlow-Medium', sans-serif
     height: 100%
   
-    &__cabeza
-        height: 25vh
-        width: 100%
+    &__cabeza img
         background-size: cover
+        position: absolute
+
+
+    &__puntitos
     &__iconitos
-        margin-top: 1em
-        margin-left: 2em
+
     &__sexo
-        padding-top: 1em
+        font-size: 0.7em
+        margin-top: 1em
     &__nombre
         display: flex
         flex-direction: row
-        justify-content: left
+        justify-content: space-around
         background-color: white
         border-radius: 3px
         height: 4em
         margin-top: -2em
         margin-left: 21%
+        position: relative
+        padding-top: 1em
+    &__nn
+        font-weight: 700
     &__nc
         display: flex
         flex-direction: column
-        justify-content: center
+        justify-content: left
         padding-left: 1em
+        padding-right: 1em
     &__city
-        font-size: 12px
+        font-size: 0.7em
     &__pestana
         width: 30vw
         text-align: center
@@ -43,24 +53,24 @@
     &__personalidades
         display: flex
         flex-direction: row
-        justify-content: left
+        block-size: auto
         margin-top: 1em
         color: white
+        align-content: stretch
 
     &__personalidades p
         background-color: rgb(1, 116, 142)
         border-radius: 20px
         height: 2em
         width: auto
-        padding-right: 2em
-        padding-left: 2em
-        text-align: center
+        padding-right: 1.5em
+        padding-left: 1.5em
+
         display: flex
         flex-direction: column
         justify-content: space-around
         margin-right: 1em
-        font-weight: bold
-
+        font-weight: 550
     &__historia
         padding-left: 0.5em
         border: 1px solid rgb(189, 210, 214)
@@ -68,6 +78,7 @@
         width: 93%
         margin-left: 0.5em
         margin-bottom: 1em
+    
     &__historia h2 
         margin-bottom: 0.5em
         margin-top: 0.5em
@@ -140,13 +151,79 @@
 .perfil-animales__adopcion
     display: none
     margin-top: 2em
-.perfil-animales
-    &__solicitud
-        text-align:  center
-        background-color: white
-        height: 80vh
-        width: 95vw
-        border-radius: 8px
+
+// AQUÍ ESTÁ EL CSS DE LA VENTANA EMERGENTE (SOLICITUD DE ADOPCIÓN)
+.perfil-animales-solicitud
+    display: none
+    text-align:  center
+    background-color: #fff
+    height: 35em
+    width: 95vw
+    border-radius: 8px
+    position: fixed
+    margin-left: 1em
+    font-family: 'Barlow-Medium', sans-serif
+
+    margin-top: 2em
+    padding-left:1.5em
+    padding-right: 1.5em
     &__continuar
         font-weight: bold
         color: rgb(1, 116, 142)
+<<<<<<< HEAD
+=======
+        padding-top: 2em
+    &__titulosolicitud
+        font-weight: lighter
+        font-size: 25px
+        color: rgb(1, 116, 142)
+        padding-bottom: 1em
+        padding-top: 2em
+        margin-left: -0.5em
+        margin-right: -0.5em
+    &__solicitudbotones
+        position: absolute
+        bottom: 0.5em
+        width: 100%
+        margin-left: -1.5em
+        border-top: 2px solid #c0bdbd
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+
+
+    &__cancelar
+        appearance: none
+        color: rgb(250,156,147)
+        font-weight: bold
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+        background-color: white
+        padding-top: 0.7em
+        width: 50%
+        height: 2em
+        text-align: center
+        border-style: none
+        border-right: 0.5px solid #c0bdbd
+    &__aceptar
+        appearance: none
+        color: rgb(190, 190, 190)
+        font-weight: bold
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+        background-color: white
+        padding-top: 0.7em
+        width: 50%
+        height: 2em
+        text-align: center
+        border-style: none
+        border-left: 0.5px solid #c0bdbd
+.perfil-animales-solicitud h2 
+        font-weight: bold
+        color: rgb(1, 116, 142)
+
+.perfil-animales-solicitud p 
+        padding-bottom: 2em
+>>>>>>> 37f89db498b45b0b4294dea1df6d19b08bd958be

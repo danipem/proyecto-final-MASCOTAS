@@ -31,15 +31,39 @@ export class PerfilAnimalComponent implements OnInit {
     this.arrayRuta = this.obtenRuta.split("/")
     this.id = this.arrayRuta[2];
     this.infAnimal.obtenerAnimal(this.id);
-    this.perfilAnimal = this.infAnimal.consigoAnimal()
-    //alert(this.cargaAnimal());
+<<<<<<< Updated upstream
+
+    var that = this;
+    /*fetch('http://127.0.0.1:4000/api/lucky/perfil-animal/'+this.id)
+         .then(function(response) {
+          return response.json();
+     })
+     .then(function(myJson) {
+         that.perfilAnimal = myJson.animal;
+        //console.log("XXXXXXXXXXXXXXXXXX",that.perfilAnimal);
+      });*/
+    
+    this.perfilAnimal = this.infAnimal.consigoAnimal();
+    //console.log(this.id,"***********",this.perfilAnimal);
+    
+=======
+    this.perfilAnimal = this.cargaAnimal()
+>>>>>>> Stashed changes
   }
 
   cargaAnimal(){
-    this.infAnimal.obtenerAnimal(this.id);
+    /*this.infAnimal.obtenerAnimal(this.id);
     this.perfilAnimal = this.infAnimal.consigoAnimal()
+<<<<<<< Updated upstream
+     
     return this.perfilAnimal;
+=======
+    return this.perfilAnimal;*/
+    return this.infAnimal.consigoAnimal();
+>>>>>>> Stashed changes
   }
+
+  
 
   oculta1(){
     const pagina1 = document.getElementById("animal-datos")
@@ -99,6 +123,23 @@ export class PerfilAnimalComponent implements OnInit {
     
     const pestana3 = document.getElementById("pestana-datos")
     pestana3.setAttribute("style", "font-weight: 400; color: black; border: none")
+  }
+
+  adopta(){
+    const adopta = document.getElementById("perfil-animal-adopcion")
+    adopta.setAttribute("style", "display: block")
+    const azul = document.getElementById("perfil-animal")
+    azul.setAttribute("style", "background-color: rgb(189, 210, 214)")
+    const cosa = document.getElementById("perfil-animal-nombre")
+    cosa.setAttribute("style", "display: none")
+  }
+  cancelar(){
+    const adopta = document.getElementById("perfil-animal-adopcion")
+    adopta.setAttribute("style", "display: none")
+    const cosa = document.getElementById("perfil-animal-nombre")
+    cosa.setAttribute("style", "display: block; display: flex; flex-direction: row;justify-content: space-around; background-color: white; border-radius: 3px; height: 4em; margin-top: -2em; margin-left: 21%; position: relative; padding-top: 1em")
+    const color = document.getElementById("perfil-animal")
+    color.setAttribute("style", "background-color: white")
   }
 
 }

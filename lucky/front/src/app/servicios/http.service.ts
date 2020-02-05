@@ -102,12 +102,21 @@ export class HttpService {
 
   }
 
-  obtenerAnimal(idAnimal: String){
-    let id=this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+<<<<<<< Updated upstream
+   async obtenerAnimal(idAnimal: String){
+     //console.log(idAnimal);
+     
+    let id= await this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+    
+    await id.subscribe(datos=>{
+=======
+   obtenerAnimal(idAnimal: String){
+    let id= this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
     id.subscribe(datos=>{
-      alert(datos.valido);
+>>>>>>> Stashed changes
       if(datos.valido === true){
-        this.guardarAnimal(datos.animal);
+        //this.guardarAnimal(datos.animal);
+        sessionStorage.setItem("animal", JSON.stringify(datos.animal))
       }else{
         alert(datos.mensaje)
       }
@@ -115,18 +124,32 @@ export class HttpService {
     });
   }
 
-  guardarUsuario(usuario){
-    this.usuario = usuario;
-    sessionStorage.setItem("usuario", JSON.stringify(this.usuario));
+  async obtenerTipoAnimal(especie : String){
+
+    let tipos = await  this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/tiposAnimales/"+especie);
+    tipos.subscribe(datos =>{
+      if(datos.valido === true){
+        
+        this.guardarAnimales(datos.animales)
+      
+      }else{
+        alert(datos.mensaje);
+      }
+    })
   }
 
-  obtenerUsuario(){
 
-    if(typeof this.usuario === "undefined" || this.usuario === null){
-      this.usuario = JSON.parse(sessionStorage.getItem("usuario"));
-    }
-    console.log("Hola" + this.usuario.nombre)
-    return this.usuario;
+    obtenerFiltrosAnimal(filtros){
+    let id= this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/filtros/",filtros)
+    id.subscribe(datos=>{
+      alert(datos.valido);
+      if(datos.valido === true){
+        this.guardarAnimales(datos.animales);
+      }else{
+        alert(datos.mensaje)
+      }
+        
+    });
   }
   
   guardarAnimal(animal: Animal){
@@ -135,12 +158,25 @@ export class HttpService {
   }
 
   consigoAnimal(){
-    if(typeof this.animal === "undefined" || this.animal === null){
+    //if(typeof this.animal === "undefined" || this.animal === null){
       this.animal = JSON.parse(sessionStorage.getItem("animal"))
-    }
+    //}
     return this.animal;
   }
 
+  guardarUsuario(usuario){
+    this.usuario = usuario;
+    sessionStorage.setItem("usuario", JSON.stringify(usuario));
+  }
+
+  obtenerUsuario(){
+    if (typeof this.usuario === "undefined"  || this.usuario == null) {
+      this.usuario = JSON.parse(sessionStorage.getItem("usuario"));
+    }
+    console.log("Hola" + JSON.stringify(this.usuario));
+    return this.usuario;
+  }
+  
   guardarAnimales(animal : Animal[]){
 
     this.animales = animal;
@@ -153,7 +189,6 @@ export class HttpService {
     }
     return this.animales;
   }
-
   
  }
 
