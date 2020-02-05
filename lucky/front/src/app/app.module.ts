@@ -18,6 +18,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { AdopcionComponent } from './componentes/adopcion/adopcion.component';
 import { PerfilMasComponent } from './componentes/perfil-mas/perfil-mas.component';
 import { MapaComponent } from '../app/componentes/mapa/mapa.component';
+import { EstadoAdopcionComponent } from './componentes/estado-adopcion/estado-adopcion.component';
 
 
 
@@ -63,10 +64,16 @@ const rutasApp: Routes = [
             component: PerfilAnimalComponent
           },
           {
+            path:"estado-adopcion",
+            component: EstadoAdopcionComponent
+          },
+
+          {
             path:"",
             redirectTo:"inicio",
             pathMatch:"full"
           },
+
           {
             path: "**",
             component: ErrorComponent
@@ -90,7 +97,8 @@ const rutasApp: Routes = [
     FooterComponent,
     AdopcionComponent,
     PerfilMasComponent,
-    MapaComponent
+    MapaComponent,
+    EstadoAdopcionComponent
   ],
   //Importamos modulos internos
   imports: [
