@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Animal } from '../../entidades/animal'
+import { Animal } from '../../entidades/animal';
 import { HttpService } from '../../servicios/http.service';
 import { Router } from '@angular/router';
 
@@ -17,14 +17,14 @@ export class PerfilAnimalComponent implements OnInit {
   id : String;
 
   constructor(private infAnimal: HttpService, private router: Router) {
-  
+
     this.urlTree = this.router.parseUrl(this.router.url);
     this.arrayRuta = new Array();
     this.obtenRuta = "";
    }
 
-   
-  
+
+
   ngOnInit() {
     this.obtenRuta = ""+this.urlTree
     this.arrayRuta = new Array();
@@ -56,7 +56,7 @@ export class PerfilAnimalComponent implements OnInit {
 
     const pestana2 = document.getElementById("pestana-salud")
     pestana2.setAttribute("style", "font-weight: medium; color: black")
-    
+
     const pestana3 = document.getElementById("pestana-adopcion")
     pestana3.setAttribute("style", "font-weight: medium; color: black")
   }
@@ -76,7 +76,7 @@ export class PerfilAnimalComponent implements OnInit {
 
     const pestana2 = document.getElementById("pestana-datos")
     pestana2.setAttribute("style", "font-weight: 400; color: black; border: none")
-    
+
     const pestana3 = document.getElementById("pestana-adopcion")
     pestana3.setAttribute("style", "font-weight: medium; color: black")
 
@@ -96,7 +96,7 @@ export class PerfilAnimalComponent implements OnInit {
 
     const pestana2 = document.getElementById("pestana-salud")
     pestana2.setAttribute("style", "font-weight: medium; color: black")
-    
+
     const pestana3 = document.getElementById("pestana-datos")
     pestana3.setAttribute("style", "font-weight: 400; color: black; border: none")
   }

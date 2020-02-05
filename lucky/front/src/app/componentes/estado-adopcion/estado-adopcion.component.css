@@ -36,9 +36,14 @@
   height: 20.05pt;
 }
 
+.estado__foto {
+  margin-left: 300px;
+  margin-top: -50px;
+}
+
 .estado__img-rayas {
   margin-left: 300px;
-  margin-top: -30px;
+  margin-top: -50px;
 }
 
 .estado__containers {
@@ -80,7 +85,7 @@
 
 .estado__lugar-adoptar {
   text-align: -webkit-right;
-  margin-top: -70px;
+  margin-top: -47px;
   margin-right: 81px;
   font-family: 'Barlow-Regular', sans-serif;
   font-size: 12pt;

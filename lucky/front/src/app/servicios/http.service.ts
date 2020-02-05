@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http"
 import {UsuarioEnt} from "../entidades/usuarioEnt"
 import { Mensaje } from '../entidades/mensaje';
 import { Animal } from '../entidades/animal';
+import { Adopcion } from '../entidades/adopcion';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class HttpService {
   private usuario: UsuarioEnt;
   private animal: Animal;
   private animales: Animal[];
+  private adopciones: Adopcion[];
 
   //private nombreUsuario: Usuario[];
 
@@ -24,7 +26,7 @@ export class HttpService {
     if(this.listaUsuarios == null || typeof this.listaUsuarios === "undefined"){
       this.listaUsuarios =[];
     }
-    
+
   }
 
   insertarUsuariosBD(usuario: UsuarioEnt){
@@ -95,31 +97,23 @@ export class HttpService {
       }else{
         alert(datos.mensaje)
       }
-        
+
     });
   }
-/*
-  guardarLocalStrg(){
 
-    let usuarioLocalStorage= JSON.stringify(this.obtenerUsuario());
+  obtenerSolicitudesAdopciones(idUsuario: String){
 
-    window.localStorage.setItem("usuario", usuarioLocalStorage);
-
+    let misAdopciones = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/misAdopciones/", idUsuario);
+    misAdopciones.subscribe(datos =>{
+        if(datos.valido === true){
+          this.guardaMisAdopciones(datos.adopciones);
+        }else{
+          alert(datos.mensaje);
+        }
+    });
   }
 
-  cargaLocalStrg(){
-    let obtenDatosLStr = window.localStorage.getItem("usuarioRegistrado");
-    console.log("HEY" +JSON.stringify(obtenDatosLStr));
-    return this.usuario = JSON.parse(obtenDatosLStr);
-  }
 
-  listLocalStrg(){
-
-    return this.listaUsuarios;
-
-  }*/
-
-  
 
   guardarUsuario(usuario){
     this.usuario = usuario;
@@ -129,7 +123,7 @@ export class HttpService {
     console.log("Hola" + this.usuario.nombre)
     return this.usuario;
   }
-  
+
   guardarAnimal(animal: Animal){
     this.animal = animal;
     sessionStorage.setItem("animal", JSON.stringify(this.animal))
@@ -155,6 +149,19 @@ export class HttpService {
     return this.animales;
   }
 
-  
+  guardaMisAdopciones(adopciones : Adopcion[]){
+
+    this.adopciones = adopciones;
+    sessionStorage.setItem("adopciones", JSON.stringify(this.adopciones))
+  }
+
+  consigoSolicitudes(){
+    if(typeof this.adopciones === "undefined" || this.adopciones === null){
+      this.adopciones = JSON.parse(sessionStorage.getItem("adopciones"))
+    }
+    return this.adopciones;
+  }
+
+
  }
 

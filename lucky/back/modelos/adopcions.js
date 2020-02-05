@@ -11,7 +11,7 @@ let Adopcions = new Schema({
                 type:
                     {
                     cual: { type:String },
-                    comportamiento: { type:String }			
+                    comportamiento: { type:String }
                     }
                 },
     eleccionAdop: { type:String },

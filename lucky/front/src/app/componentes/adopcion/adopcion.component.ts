@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./adopcion.component.sass']
 })
 export class AdopcionComponent implements OnInit {
- 
-  animal : Animal[]
+
+  animal: Animal[]
 
   constructor(private httpService: HttpService, private router: Router) { }
 
