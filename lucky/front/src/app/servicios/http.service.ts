@@ -52,7 +52,7 @@ export class HttpService {
 }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
-
+    
     let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
     let datos;
     login.subscribe(datosMsj =>{
@@ -65,9 +65,25 @@ export class HttpService {
           this.guardarUsuario(datosMsj.usuario);
           //this.guardarLocalStrg();
         }
+        
 
     });
 
+  }
+
+  modificarUsuario(usuario: UsuarioEnt){
+
+    let id = usuario._id;
+
+    let modificado = this.clientHttp.put<Mensaje>("http://127.0.0.1:4000/api/lucky/modificar/"+id,usuario);
+
+    modificado.subscribe(datos => {
+      if(datos.valido === true){
+        this.guardarUsuario(datos.usuario);
+      }else{
+        alert(datos.mensaje);
+      }
+    })
   }
 
   obtenerTodosAnimales(){
@@ -98,34 +114,17 @@ export class HttpService {
         
     });
   }
-/*
-  guardarLocalStrg(){
-
-    let usuarioLocalStorage= JSON.stringify(this.obtenerUsuario());
-
-    window.localStorage.setItem("usuario", usuarioLocalStorage);
-
-  }
-
-  cargaLocalStrg(){
-    let obtenDatosLStr = window.localStorage.getItem("usuarioRegistrado");
-    console.log("HEY" +JSON.stringify(obtenDatosLStr));
-    return this.usuario = JSON.parse(obtenDatosLStr);
-  }
-
-  listLocalStrg(){
-
-    return this.listaUsuarios;
-
-  }*/
-
-  
 
   guardarUsuario(usuario){
     this.usuario = usuario;
+    sessionStorage.setItem("usuario", JSON.stringify(this.usuario));
   }
 
   obtenerUsuario(){
+
+    if(typeof this.usuario === "undefined" || this.usuario === null){
+      this.usuario = JSON.parse(sessionStorage.getItem("usuario"));
+    }
     console.log("Hola" + this.usuario.nombre)
     return this.usuario;
   }
