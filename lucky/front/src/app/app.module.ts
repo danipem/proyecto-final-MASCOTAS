@@ -17,6 +17,7 @@ import { HomeAdoptionComponent } from './componentes/home-adoption/home-adoption
 import { FooterComponent } from './componentes/footer/footer.component';
 import { PerfilMasComponent } from './componentes/perfil-mas/perfil-mas.component';
 import { MapaComponent } from '../app/componentes/mapa/mapa.component';
+import { FormularioMasComponent } from './componentes/formulario-mas/formulario-mas.component';
 
 
 
@@ -59,6 +60,10 @@ const rutasApp: Routes = [
             component: PerfilAnimalComponent
           },
           {
+            path: "formulario-mas",
+            component: FormularioMasComponent
+          },
+          {
             path:"",
             redirectTo:"inicio",
             pathMatch:"full"
@@ -84,7 +89,8 @@ const rutasApp: Routes = [
     HomeAdoptionComponent,
     FooterComponent,
     PerfilMasComponent,
-    MapaComponent
+    MapaComponent,
+    FormularioMasComponent
   ],
   //Importamos modulos internos
   imports: [

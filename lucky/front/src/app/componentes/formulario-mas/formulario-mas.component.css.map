@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAC;EACH,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CAYY;;AAXvB,AAAD,cAAS,CAAC;EACN,WAAW,EAAE,4BAA4B;EACzC,SAAS,EAAE,IAAI;EACf,UAAU,EAAE,MAAM;CAAG;;AACxB,AAAD,eAAU,CAAC;EACP,WAAW,EAAE,2BAA2B;EACxC,SAAS,EAAE,IAAI;EACf,UAAU,EAAE,IAAI;EAChB,KAAK,EAAE,OAAc;CAAG;;AAC3B,AAAD,cAAS,CAAC;EACN,WAAW,EAAE,4BAA4B;EACzC,SAAS,EAAE,IAAI;CAAG",
+    "sources": [
+        "formulario-mas.component.sass"
+    ],
+    "names": [],
+    "file": "formulario-mas.component.css"
+}

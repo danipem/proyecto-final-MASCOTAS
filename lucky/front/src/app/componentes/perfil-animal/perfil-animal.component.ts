@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Animal } from '../../entidades/animal'
 import { HttpService } from '../../servicios/http.service';
 
@@ -8,7 +8,8 @@ import { HttpService } from '../../servicios/http.service';
   styleUrls: ['./perfil-animal.component.sass']
 })
 export class PerfilAnimalComponent implements OnInit {
-  perfilAnimal: Animal
+
+  @Input() perfilAnimal: Animal;
 
   constructor(private infAnimal: HttpService) {
     // this.perfilAnimal = new Animal()

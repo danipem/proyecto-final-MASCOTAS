@@ -133,6 +133,7 @@ rutasAPI.route("/registro").post((req, res)=>{
         }
 
     })
+
    //metodo save, devuelve una promesa de guardar
     /*
   promesaDeGuardado.then(usuario=>{
@@ -225,6 +226,42 @@ rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
     
 
 });
+
+rutasAPI.route("/modificar/:id").put((req,res)=>{
+    let user = new Usuario(req.body);
+    //user._id = req.params.id;
+    
+    console.log(user);
+    
+    Usuario.findById({"_id": req.params.id}, (err, usuario)=>{
+    
+    if(err){
+        res.json({
+        valido: false,
+        mensaje: "Error en la consulta a la base de datos"})
+    }else{
+        if(usuario === null){
+            res.json({
+            valido: false,
+            mensaje: "Este usuario no existe"})
+        }else{
+            for (const prop in req.body) {
+                usuario[prop] = req.body[prop]
+                }
+                usuario.save()
+                console.log("Obj construido " + usuario);
+
+            res.json({
+            valido: true,
+            mensaje: "Correcto",
+            usuario: usuario})
+        }
+    }
+    })
+    
+   });
+
+
 // POSTMAN: método:POST, ruta: http://127.0.0.1:4000/api/lucky/adopcion
 // Ya inserta parece estar bien. Pendientre de otra revisión.
 rutasAPI.route("/adopcion").post((req, res) => {
@@ -267,34 +304,4 @@ rutasAPI.route("/adopcion").post((req, res) => {
 })
 
 
-/*
-rutasAPI.route("/registro").post((req, res)=>{
-    //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js
-    let nuevoUsuario = new Usuario(req.body);
-    let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
 
-    promesaDeGuardado.then(usuario=>{
-        //mostramos el status 200 si se ha insertado correctamente
-        res.status(200).json({
-            "Usuario": "Usuario Guardado"
-        })
-    })
-    //Muestro el status 400 si ha ocurrio un error
-    promesaDeGuardado.catch(err=>{
-        res.status(400).send("Se fue a la verga")
-    })
-
-});
-
-
-// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/animales
-rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
-    Animal.find(function (err, coleccionAnimales) {
-        if (err) {
-            console.log("err");
-        } else {
-            resRespuestaHttp.json(coleccionAnimales);
-        }
-    });
-});
-*/

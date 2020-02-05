@@ -1,0 +1,23 @@
+.formu {
+  width: 100%;
+  height: 100%;
+}
+
+.formu__titulo {
+  font-family: 'Barlow-Regular', sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+.formu__titulo2 {
+  font-family: 'Barlow-Medium', sans-serif;
+  font-size: 20px;
+  text-align: left;
+  color: #01748e;
+}
+
+.formu__inputs {
+  font-family: 'Barlow-Regular', sans-serif;
+  font-size: 16px;
+}
+/*# sourceMappingURL=formulario-mas.component.css.map */

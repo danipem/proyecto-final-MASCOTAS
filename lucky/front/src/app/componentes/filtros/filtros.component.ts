@@ -13,9 +13,9 @@ export class FiltrosComponent implements OnInit {
     document.getElementById("tipo").setAttribute("style", "display: none");
   }
 
-  muestraAlgo(){
-    
-    const animal = event.currentTarget.dataset.tipo;
+  
+  muestraAlgo(){}
+   /* const animal = event.currentTarget.dataset.tipo;
     
 
     switch(animal){
@@ -78,4 +78,4 @@ export class FiltrosComponent implements OnInit {
     document.getElementById("tipo").setAttribute("style", "display: block");
     document.getElementById("tipoTitulo").innerText = "Tipo de "+animal;
   }
-}
+*/}
