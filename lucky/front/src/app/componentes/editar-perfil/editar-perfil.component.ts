@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/servicios/http.service';
 import { UsuarioEnt } from 'src/app/entidades/usuarioEnt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -11,19 +12,22 @@ export class EditarPerfilComponent implements OnInit {
   
   usuarioEditado: UsuarioEnt
   usuario: UsuarioEnt
-  constructor(private infUsu: HttpService ){ }
+  constructor(private infUsu: HttpService, private route: Router){ }
 
   ngOnInit() {
-    this.prueba();
-    console.log(this.infUsu.obtenerUsuario);
+    
+    this.usuarioEditado= this.infUsu.obtenerUsuario();
 
   }
 
-  prueba(){
-    
-    this.usuarioEditado= this.infUsu.obtenerUsuario();
-    
+  editComponent(){
 
+    this.infUsu.modificarUsuario(this.usuarioEditado);
+
+    this.usuarioEditado = this.infUsu.obtenerUsuario();
+    
+    this.route.navigate(["/home"]);
+    
   }
 
 }

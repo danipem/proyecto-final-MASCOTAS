@@ -10,12 +10,14 @@ import { ErrorComponent } from './componentes/error/error.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { PerfilAnimalComponent } from './componentes/perfil-animal/perfil-animal.component';
 import { FiltrosComponent } from './componentes/filtros/filtros.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { HomeAdoptionComponent } from './componentes/home-adoption/home-adoption.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { FormularioComponent } from './componentes/formulario/formulario.component';
 import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil.component';
+import { AdopcionComponent } from './componentes/adopcion/adopcion.component';
 import { PerfilMasComponent } from './componentes/perfil-mas/perfil-mas.component';
 import { MapaComponent } from '../app/componentes/mapa/mapa.component';
 
@@ -56,8 +58,15 @@ const rutasApp: Routes = [
             component: HomeAdoptionComponent
           },
           {
+            path: "adopcion",
+            component : AdopcionComponent},
+          {
             path: "mapa",
             component: MapaComponent
+          },
+          {
+            path: "perfil-animal/:id",
+            component: PerfilAnimalComponent
           },
           {
             path:"",
@@ -69,6 +78,7 @@ const rutasApp: Routes = [
             component: ErrorComponent
           }
 
+
 ]
 
 @NgModule({
@@ -79,12 +89,14 @@ const rutasApp: Routes = [
     LoginComponent,
     InicioComponent,
     RegistroComponent,
+    PerfilAnimalComponent,
     FiltrosComponent,
     PerfilComponent,
     HomeAdoptionComponent,
     FooterComponent,
     FormularioComponent,
     EditarPerfilComponent,
+    AdopcionComponent,
     PerfilMasComponent,
     MapaComponent
   ],

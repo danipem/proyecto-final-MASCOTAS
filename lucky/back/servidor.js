@@ -4,13 +4,15 @@ const mongoose = require('mongoose');
 const Usuario = require('./modelos/usuarios');
 const cors = require('cors'); // es una libreria
 const app = express();
-const PORT = 4000; //las constantes que no van a variar nunca se ponen en mayusc
+const PORT = 4000;
 const Protectoras = require('./modelos/protectoras');
 const Animal = require('./modelos/animales');
 const Adopcions = require('./modelos/adopcions');
 
 app.use(bodyParser.json());
 app.use(cors());
+
+
 
 //Conexión a la base de datos luckyDB. Si la base de datos no existe será creada.
 mongoose.connect('mongodb://127.0.0.1:27017/luckyDB'); // es la direccion ip local (es lo mismo que localhost).
@@ -31,6 +33,7 @@ app.listen(PORT, function () {
 
 });
 
+
 const rutasAPI = express.Router();
 
 //Va a ser nuestro intermediario en la URL.
@@ -39,8 +42,9 @@ app.use("/api/lucky", rutasAPI);
 
 
 
+
 rutasAPI.route("/compraremail73hg4h4").post((req, res) => {
- 
+
     Usuario.findOne({email: req.body.email},(error, usuario) => {
 
         if (error){
@@ -122,7 +126,7 @@ rutasAPI.route("/registro").post((req, res)=>{
                        usuario: usuario
                     })
                })
-               
+
            }else{
                res.json({
                    mensaje: "Usuario Ya existente, no te puedes registrar con este mail",
@@ -133,30 +137,46 @@ rutasAPI.route("/registro").post((req, res)=>{
         }
 
     })
-   //metodo save, devuelve una promesa de guardar
-    /*
-  promesaDeGuardado.then(usuario=>{
-      //mostramos el status 200 si se ha insertado correctamente
-      if(usuario === null){
-        res.json({
-            mensaje: "Usuario Incorrecto",
-            valido: false
-        })
-      }else{
-        res.json({
-            mensaje: "Usuario Correcto",
-            valido: true
-        })
-      }
-      
-  })
-  promesaDeGuardado.catch(err=>{
-      res.status(400).send("error usuario no se guardo ")
-  })*/
-
-  console.log("Usuario registrado");
 
 });
+
+rutasAPI.route("/modificar/:id").put((req,res)=>{
+    let user = new Usuario(req.body);
+    //user._id =  req.params.id;
+
+    console.log(user);
+
+    Usuario.findById({"_id": req.params.id}, (err, usuario)=>{
+        
+        if(err){
+            res.json({
+                valido: false,
+                mensaje: "Error en la consulta a la base de datos"
+            })
+        }else{
+            if(usuario === null){
+                res.json({
+                    valido: false,
+                    mensaje: "Este usuario no existe"
+                })
+            }else{
+                for (const prop in req.body) {
+                    usuario[prop] = req.body[prop]
+                }
+        
+                usuario.save()
+                console.log("Obj construido " + usuario);
+                
+                res.json({
+                    valido: true,
+                    mensaje: "Correcto",
+                    usuario: usuario
+                })
+            }
+        }
+    })
+
+})
 
 // POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/protectoras
 rutasAPI.route("/protectoras").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
@@ -174,16 +194,87 @@ rutasAPI.route("/protectoras").get(function (reqPeticionHttp, resRespuestaHttp) 
 
 
 // POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/animales
-rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
-    Animal.find(function (err, coleccionAnimales) {
+rutasAPI.route("/animales").get((req, res) => {
+    Animal.find((err, animal)=>{
+      if (err) {
+        res.json({
+          mensaje: "Error",
+          valido: false
+        })
+      }else{
+        if(animal === null){
+          res.json({
+            valido: false,
+            mensaje: "No hay animales"
+          })
+        }else{
+          res.json({
+            valido: true,
+            mensaje: "Correcto",
+            animales: animal
+          });
+        }
+      }
+    });
+});
+
+// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/filtros
+rutasAPI.route("/filtros").get(function (req, res) {
+    // let especie = null || req.body.datos.especie
+    console.log(req.params.tamano)
+    // OBLIGATORIO MARCAR UNA OPCIÓN DE CADA FILTRO
+    Animal.find(
+        {$and:[ { ciudad: req.body.ciudad},
+               { "datos.especie": req.body.datos.especie },
+               { "datos.tipo": req.body.datos.tipo },
+               { "datos.tamano": req.body.datos.tamano},
+               { "datos.sexo": req.body.datos.sexo },
+               { "datos.edad": req.body.datos.edad }
+             ]},
+        // {$or:[{"datos.tamano": req.params.tamano},{sexo: req.body.sexo},{edad: req.body.edad},
+        // {ciudad: req.body.ciudad},{"datos.especie": req.params.especie}]},
+        function (err, coleccionAnimales) {
         if (err) {
             console.log("err");
         } else {
-            resRespuestaHttp.json(coleccionAnimales);
+            console.log(coleccionAnimales)
+            res.json(coleccionAnimales);
         }
     });
 });
 
+rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
+
+    let id = req.params.id;
+    Animal.findById(id,(err, animal)=>{
+        if(err){
+            console.log('ERROR');
+            res.json({
+                mensaje: "error",
+                status: res.status(400),
+                valido: false,
+                error: error
+                })
+        }else{
+            if(animal === null){
+                res.json({
+                    mensaje: "incorrecto",
+                    valido: false,
+                })
+            }else{
+                res.json({
+                    mensaje: "Animal correcto",
+                    valido: true,
+                    animal: animal
+                })
+                console.log(animal);
+            }
+        }
+
+    })
+
+
+});
 // POSTMAN: método:POST, ruta: http://127.0.0.1:4000/api/lucky/adopcion
 // Ya inserta parece estar bien. Pendientre de otra revisión.
 rutasAPI.route("/adopcion").post((req, res) => {
