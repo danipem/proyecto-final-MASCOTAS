@@ -31,6 +31,7 @@ export class PerfilAnimalComponent implements OnInit {
     this.arrayRuta = this.obtenRuta.split("/")
     this.id = this.arrayRuta[2];
     this.infAnimal.obtenerAnimal(this.id);
+<<<<<<< Updated upstream
 
     var that = this;
     /*fetch('http://127.0.0.1:4000/api/lucky/perfil-animal/'+this.id)
@@ -45,13 +46,21 @@ export class PerfilAnimalComponent implements OnInit {
     this.perfilAnimal = this.infAnimal.consigoAnimal();
     //console.log(this.id,"***********",this.perfilAnimal);
     
+=======
+    this.perfilAnimal = this.cargaAnimal()
+>>>>>>> Stashed changes
   }
 
   cargaAnimal(){
-    this.infAnimal.obtenerAnimal(this.id);
+    /*this.infAnimal.obtenerAnimal(this.id);
     this.perfilAnimal = this.infAnimal.consigoAnimal()
+<<<<<<< Updated upstream
      
     return this.perfilAnimal;
+=======
+    return this.perfilAnimal;*/
+    return this.infAnimal.consigoAnimal();
+>>>>>>> Stashed changes
   }
 
   

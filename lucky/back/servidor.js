@@ -291,7 +291,7 @@ rutasAPI.route("/tiposAnimales/:especie").get(async (req,res)=>{
     })
 
 })
-
+    
 rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
 
     let id = req.params.id;

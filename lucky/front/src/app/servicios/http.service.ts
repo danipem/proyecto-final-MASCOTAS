@@ -102,12 +102,18 @@ export class HttpService {
 
   }
 
+<<<<<<< Updated upstream
    async obtenerAnimal(idAnimal: String){
      //console.log(idAnimal);
      
     let id= await this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
     
     await id.subscribe(datos=>{
+=======
+   obtenerAnimal(idAnimal: String){
+    let id= this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+    id.subscribe(datos=>{
+>>>>>>> Stashed changes
       if(datos.valido === true){
         //this.guardarAnimal(datos.animal);
         sessionStorage.setItem("animal", JSON.stringify(datos.animal))
