@@ -1,17 +1,19 @@
 export class Animal {
+    public id: String
+    public _id: String
     public foto: String
-    public nombre:String 
-    public ciudad: String 
+    public nombre:String
+    public ciudad: String
     public datos:{
-            especie: String 
+            especie: String
             tipo: String
-            nacimiento: String 
-            edad: Number 
-            sexo: String 
-            tamano: String 
+            nacimiento: String
+            edad: Number
+            sexo: String
+            tamano: String
             peso: String
             personalidad: String
-            historia:String 
+            historia:String
         }
     public salud: {
             vacunado:String
@@ -26,4 +28,4 @@ export class Animal {
             tasa: String
             envio: String
         }
-} 
+}

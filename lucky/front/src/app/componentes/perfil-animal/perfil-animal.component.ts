@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Animal } from '../../entidades/animal'
 import { HttpService } from '../../servicios/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-animal',
@@ -9,35 +10,35 @@ import { HttpService } from '../../servicios/http.service';
 })
 export class PerfilAnimalComponent implements OnInit {
 
-  @Input() perfilAnimal: Animal;
+  perfilAnimal: Animal
+  urlTree ;
+  arrayRuta;
+  obtenRuta;
+  id : String;
 
-  constructor(private infAnimal: HttpService) {
-    // this.perfilAnimal = new Animal()
-    // this.perfilAnimal.nombre = ""
-    // this.perfilAnimal.ciudad = ""
-    // this.perfilAnimal.datos.especie=""
-    // this.perfilAnimal.datos.tipo=""
-    // this.perfilAnimal.datos.nacimiento=""
-    // this.perfilAnimal.datos.tamano=""
-    // this.perfilAnimal.datos.peso=""
-    // this.perfilAnimal.datos.personalidad=""
-    // this.perfilAnimal.datos.historia=""
-    // this.perfilAnimal.salud.vacunado=""
-    // this.perfilAnimal.salud.desparasitado=""
-    // this.perfilAnimal.salud.sano=""
-    // this.perfilAnimal.salud.esterilizado=""
-    // this.perfilAnimal.salud.identificado=""
-    // this.perfilAnimal.salud.microchip=""
-    // this.perfilAnimal.requisitos.requisitos=""
-    // this.perfilAnimal.requisitos.tasa=""
-    // this.perfilAnimal.requisitos.envio=""
+  constructor(private infAnimal: HttpService, private router: Router) {
+  
+    this.urlTree = this.router.parseUrl(this.router.url);
+    this.arrayRuta = new Array();
+    this.obtenRuta = "";
    }
 
+   
+  
   ngOnInit() {
+    this.obtenRuta = ""+this.urlTree
+    this.arrayRuta = new Array();
+    this.arrayRuta = this.obtenRuta.split("/")
+    this.id = this.arrayRuta[2];
+    this.infAnimal.obtenerAnimal(this.id);
+    this.perfilAnimal = this.infAnimal.consigoAnimal()
+    //alert(this.cargaAnimal());
+  }
 
-
-
-
+  cargaAnimal(){
+    this.infAnimal.obtenerAnimal(this.id);
+    this.perfilAnimal = this.infAnimal.consigoAnimal()
+    return this.perfilAnimal;
   }
 
   oculta1(){

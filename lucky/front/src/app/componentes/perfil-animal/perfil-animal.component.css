@@ -17,7 +17,6 @@
 .perfil-animales__cabeza {
   height: 25vh;
   width: 100%;
-  background-image: url("https://www.caracteristicas.co/wp-content/uploads/2017/02/pato-2-e1560917879703.jpg");
   background-size: cover;
 }
 
@@ -127,6 +126,10 @@
 
 .perfil-animales__historia p {
   margin-bottom: 0.5em;
+}
+
+.perfil-animales__datos {
+  margin-top: 2em;
 }
 
 .perfil-animales__pie {
@@ -241,7 +244,16 @@
   margin-top: 2em;
 }
 
-.perfil-animales__datos {
-  margin-top: 2em;
+.perfil-animales__solicitud {
+  text-align: center;
+  background-color: white;
+  height: 80vh;
+  width: 95vw;
+  border-radius: 8px;
+}
+
+.perfil-animales__continuar {
+  font-weight: bold;
+  color: #01748e;
 }
 /*# sourceMappingURL=perfil-animal.component.css.map */
