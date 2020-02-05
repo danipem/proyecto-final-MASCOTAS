@@ -220,10 +220,10 @@ TODO: Mejorar el codigo, html con event y removeChild. Eliminar filtros
   }
 
   aplicarFiltros(){
-    let ciudad = document.getElementById("ciudad").value;
+    let ciudad = (<HTMLInputElement>document.getElementById("ciudad")).value;
     this.ciudad = ciudad;
 
-    let edad = document.getElementById("edad").value;
+    let edad = (<HTMLInputElement>document.getElementById("edad")).value;
     this.edad = edad;
 
     let filtros = {

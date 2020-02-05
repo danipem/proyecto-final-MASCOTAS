@@ -31,14 +31,30 @@ export class PerfilAnimalComponent implements OnInit {
     this.arrayRuta = this.obtenRuta.split("/")
     this.id = this.arrayRuta[2];
     this.infAnimal.obtenerAnimal(this.id);
-    this.perfilAnimal = this.infAnimal.consigoAnimal()
+
+    var that = this;
+    /*fetch('http://127.0.0.1:4000/api/lucky/perfil-animal/'+this.id)
+         .then(function(response) {
+          return response.json();
+     })
+     .then(function(myJson) {
+         that.perfilAnimal = myJson.animal;
+        //console.log("XXXXXXXXXXXXXXXXXX",that.perfilAnimal);
+      });*/
+    
+    this.perfilAnimal = this.infAnimal.consigoAnimal();
+    //console.log(this.id,"***********",this.perfilAnimal);
+    
   }
 
   cargaAnimal(){
     this.infAnimal.obtenerAnimal(this.id);
     this.perfilAnimal = this.infAnimal.consigoAnimal()
+     
     return this.perfilAnimal;
   }
+
+  
 
   oculta1(){
     const pagina1 = document.getElementById("animal-datos")

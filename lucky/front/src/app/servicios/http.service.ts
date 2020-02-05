@@ -102,11 +102,15 @@ export class HttpService {
 
   }
 
-   obtenerAnimal(idAnimal: String){
-    let id= this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal"+idAnimal)
-    id.subscribe(datos=>{
+   async obtenerAnimal(idAnimal: String){
+     //console.log(idAnimal);
+     
+    let id= await this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+    
+    await id.subscribe(datos=>{
       if(datos.valido === true){
-        this.guardarAnimal(datos.animal);
+        //this.guardarAnimal(datos.animal);
+        sessionStorage.setItem("animal", JSON.stringify(datos.animal))
       }else{
         alert(datos.mensaje)
       }
@@ -121,6 +125,7 @@ export class HttpService {
       if(datos.valido === true){
         
         this.guardarAnimales(datos.animales)
+      
       }else{
         alert(datos.mensaje);
       }
@@ -147,9 +152,9 @@ export class HttpService {
   }
 
   consigoAnimal(){
-    if(typeof this.animal === "undefined" || this.animal === null){
+    //if(typeof this.animal === "undefined" || this.animal === null){
       this.animal = JSON.parse(sessionStorage.getItem("animal"))
-    }
+    //}
     return this.animal;
   }
 
