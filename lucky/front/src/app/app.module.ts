@@ -20,6 +20,7 @@ import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil
 import { AdopcionComponent } from './componentes/adopcion/adopcion.component';
 import { PerfilMasComponent } from './componentes/perfil-mas/perfil-mas.component';
 import { MapaComponent } from '../app/componentes/mapa/mapa.component';
+import { AdopcionFiltroComponent } from './componentes/adopcion-filtro/adopcion-filtro.component';
 
 
 
@@ -32,51 +33,55 @@ const rutasApp: Routes = [
     path: "registro",
     component: RegistroComponent
   },
-
-          {
-            path: "inicio",
-            component: InicioComponent
-          },
-          {
-            path: "perfil",
-            component: PerfilComponent
-          },
-          {
-            path: "editar-perfil",
-            component: EditarPerfilComponent
-          },
-          {
-            path: "perfil-mas",
-            component: PerfilMasComponent
-          },
-          {
-            path: "filtros",
-            component: FiltrosComponent
-          },
-          {
-            path: "home",
-            component: HomeAdoptionComponent
-          },
-          {
-            path: "adopcion",
-            component : AdopcionComponent},
-          {
-            path: "mapa",
-            component: MapaComponent
-          },
-          {
-            path: "perfil-animal/:id",
-            component: PerfilAnimalComponent
-          },
-          {
-            path:"",
-            redirectTo:"inicio",
-            pathMatch:"full"
-          },
-          {
-            path: "**",
-            component: ErrorComponent
-          }
+  {
+    path: "inicio",
+    component: InicioComponent
+  },
+  {
+    path: "perfil",
+    component: PerfilComponent
+  },
+  {
+    path: "editar-perfil",
+    component: EditarPerfilComponent
+  },
+  {
+    path: "perfil-mas",
+    component: PerfilMasComponent
+  },
+  {
+    path: "filtros",
+    component: FiltrosComponent
+  },
+  {
+    path: "home",
+    component: HomeAdoptionComponent
+  },
+  {
+    path: "adopcion",
+    component : AdopcionComponent
+  },
+  {
+    path: "adopcion/:especie",
+    component: AdopcionFiltroComponent
+  },
+  {
+    path: "mapa",
+    component: MapaComponent
+  },
+  {
+    path: "perfil-animal/:id",
+    component: PerfilAnimalComponent
+  },
+  {
+    path:"",
+    redirectTo:"inicio",
+    pathMatch:"full"
+  },
+  {
+    path: "**",
+    component: ErrorComponent
+  }
 
 
 ]
@@ -98,7 +103,8 @@ const rutasApp: Routes = [
     EditarPerfilComponent,
     AdopcionComponent,
     PerfilMasComponent,
-    MapaComponent
+    MapaComponent,
+    AdopcionFiltroComponent
   ],
   //Importamos modulos internos
   imports: [

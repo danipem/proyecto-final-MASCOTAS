@@ -223,10 +223,11 @@ rutasAPI.route("/filtros").post(function (req, res) {
     // let especie = null || req.body.datos.especie
     //console.log(req.params.tamano)
     // OBLIGATORIO MARCAR UNA OPCIÓN DE CADA FILTRO
-    //Ponerlo{ "datos.tipo": req.body.datos.tipo },
+    console.log(req.body)
     Animal.find(
         {$and:[ { ciudad: req.body.ciudad},
                { "datos.especie": req.body.especie },
+               { "datos.tipo": req.body.tipo },
                { "datos.tamano": req.body.size},
                { "datos.sexo": req.body.genero },
                { "datos.edad": req.body.edad }

@@ -111,3 +111,7 @@
 </div>
 
 <app-footer></app-footer>
+
+<div *ngIf="existeError === true">
+  <p>{{mensajeError}}</p>
+</div>

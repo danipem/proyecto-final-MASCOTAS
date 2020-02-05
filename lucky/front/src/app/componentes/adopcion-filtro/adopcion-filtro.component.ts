@@ -4,12 +4,11 @@ import { Animal } from 'src/app/entidades/animal';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-adopcion',
-  templateUrl: './adopcion.component.html',
-  styleUrls: ['./adopcion.component.sass']
+  selector: 'app-adopcion-filtro',
+  templateUrl: './adopcion-filtro.component.html',
+  styleUrls: ['./adopcion-filtro.component.sass']
 })
-export class AdopcionComponent implements OnInit {
- 
+export class AdopcionFiltroComponent implements OnInit {
   animal : Animal[]
   obtenerObservable;
   mensajeError: String;
@@ -21,15 +20,9 @@ export class AdopcionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.obtenerObservable = this.httpService.obtenerTodosAnimales();
-    this.obtenerObservable.subscribe(datos =>{
-      if(datos.valido === true){
-        this.animal = datos.animales;
-      }else{
-        this.existeError = true;
-        this.mensajeError = datos.mensaje;
-      }
-    })
+
+    this.animal = this.httpService.consigoAnimales(); 
+    console.log(this.animal);
     
   }
 

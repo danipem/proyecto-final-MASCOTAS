@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class PerfilAnimalComponent implements OnInit {
 
-  perfilAnimal: Animal
+  perfilAnimal: Animal;
+  objetable
   urlTree ;
   arrayRuta;
   obtenRuta;
@@ -26,35 +27,23 @@ export class PerfilAnimalComponent implements OnInit {
    
   
   ngOnInit() {
+    
+    this.datosAnimal();
+    //this.perfilAnimal = this.infAnimal.consigoAnimal();
+    
+  }
+  
+  datosAnimal(){
     this.obtenRuta = ""+this.urlTree
     this.arrayRuta = new Array();
     this.arrayRuta = this.obtenRuta.split("/")
     this.id = this.arrayRuta[2];
-    this.infAnimal.obtenerAnimal(this.id);
-
-    var that = this;
-    /*fetch('http://127.0.0.1:4000/api/lucky/perfil-animal/'+this.id)
-         .then(function(response) {
-          return response.json();
-     })
-     .then(function(myJson) {
-         that.perfilAnimal = myJson.animal;
-        //console.log("XXXXXXXXXXXXXXXXXX",that.perfilAnimal);
-      });*/
-    
-    this.perfilAnimal = this.infAnimal.consigoAnimal();
-    //console.log(this.id,"***********",this.perfilAnimal);
-    
+    this.objetable = this.infAnimal.obtenerAnimal(this.id);
+    this.objetable.subscribe(datos => {
+      console.log(datos.animal)
+      this.perfilAnimal = datos.animal;
+    })
   }
-
-  cargaAnimal(){
-    this.infAnimal.obtenerAnimal(this.id);
-    this.perfilAnimal = this.infAnimal.consigoAnimal()
-     
-    return this.perfilAnimal;
-  }
-
-  
 
   oculta1(){
     const pagina1 = document.getElementById("animal-datos")

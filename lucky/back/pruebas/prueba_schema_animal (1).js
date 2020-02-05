@@ -99,6 +99,39 @@ let animalPrueba3={
     }
 }
 
+let animalPrueba4={
+    id: 4,
+    foto: 'https://cdn.shopify.com/s/files/1/1335/7959/articles/cat-3040345_960_720_600x600.jpg?v=1518514176',
+    nombre: 'Catmandú 2',
+    ciudad: 'Valencia',
+    datos: {
+        especie: 'Gato',
+        tipo: 'Gato Persa',
+        nacimiento: '01-12-2018',
+        edad: 'Viejo',
+        sexo: 'Hembra',
+        tamano: 'Pequeño',
+        peso: '4Kg',
+        personalidad: 
+            ['Cariñoso', 'Independiente', 'Limpio', 'Saltarín', 'Dormilón' ],
+        historia: 'Me llamo Catmandú. Cuando la protectora de animales iba a esterilizar a mi mamá, se dieron cuenta de que mis hermanos y yo estábamos dentro. Así que aquí estoy esperando que me adoptes, porque mis abuelos humanos no me pueden cuidar.'},
+    salud: { 
+        vacunado: 'Si', 
+        desparasitado: 'Si',
+        sano: 'Si',
+        esterilizado: 'Si',
+        identificado: 'Si',
+        microchip: 'Si',
+        saber: 'Me encanta el atún.'
+    },
+    requisitos: { 
+        requisitos: 'No tiene requisitos especiales.',
+        tasa: '150€',
+        envio: 'No se envía a otra ciudad'
+    }
+}
+
+
 const conexion = mongoose.connection;
 
 //Realizamos la conexion a la base de datos y si se conecta exitosamente se muestra un mensaje.

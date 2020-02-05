@@ -10,6 +10,7 @@ import { HttpService } from 'src/app/servicios/http.service';
 export class HomeAdoptionComponent implements OnInit {
 
   nombreUsuario: String;
+  objetable;
   objUsuario: UsuarioEnt;
 
   constructor(private httpClient : HttpService) { }

@@ -18,12 +18,12 @@ export class HttpService {
 
   constructor(private clientHttp: HttpClient) {
     //this.nombreUsuario = [];
-    this.listaUsuarios = [];
+    /*this.listaUsuarios = [];
     //this.cargaLocalStrg();
 
     if(this.listaUsuarios == null || typeof this.listaUsuarios === "undefined"){
       this.listaUsuarios =[];
-    }
+    }*/
     
   }
 
@@ -54,8 +54,8 @@ export class HttpService {
   iniciarUsuarioBD(usuario: UsuarioEnt){
     
     let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
-    let datos;
-    login.subscribe(datosMsj =>{
+
+    return login; /*login.subscribe(datosMsj =>{
         if(datosMsj.mensaje === "error" && datosMsj.valido=== false){
           alert("Error")
         }else if(datosMsj.mensaje === "incorrecto" && datosMsj.valido === false){
@@ -67,7 +67,7 @@ export class HttpService {
         }
         
 
-    });
+    });*/
 
   }
 
@@ -90,7 +90,7 @@ export class HttpService {
 
     let todosAnimales = this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/animales");
 
-    todosAnimales.subscribe(datos => {
+    return todosAnimales;/*.subscribe(datos => {
 
       if(datos.valido === true){
         this.guardarAnimales(datos.animales);
@@ -98,30 +98,30 @@ export class HttpService {
         alert(datos.mensaje);
       }
 
-    });
+    });*/
 
   }
 
-   async obtenerAnimal(idAnimal: String){
+    obtenerAnimal(idAnimal: String){
      //console.log(idAnimal);
      
-    let id= await this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
-    
-    await id.subscribe(datos=>{
+    let id = this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+     return id/*.subscribe(datos=>{
       if(datos.valido === true){
+        return datos.animal;
         //this.guardarAnimal(datos.animal);
-        sessionStorage.setItem("animal", JSON.stringify(datos.animal))
+        //sessionStorage.setItem("animal", JSON.stringify(datos.animal))
       }else{
         alert(datos.mensaje)
       }
         
-    });
+    })*/
   }
 
-  async obtenerTipoAnimal(especie : String){
+  obtenerTipoAnimal(especie : String){
 
-    let tipos = await  this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/tiposAnimales/"+especie);
-    tipos.subscribe(datos =>{
+    let tipos = this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/tiposAnimales/"+especie);
+    return tipos/*.subscribe(datos =>{
       if(datos.valido === true){
         
         this.guardarAnimales(datos.animales)
@@ -129,13 +129,13 @@ export class HttpService {
       }else{
         alert(datos.mensaje);
       }
-    })
+    })*/
   }
 
 
-    obtenerFiltrosAnimal(filtros){
+  obtenerFiltrosAnimal(filtros){
     let id= this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/filtros/",filtros)
-    id.subscribe(datos=>{
+    return id/*.subscribe(datos=>{
       alert(datos.valido);
       if(datos.valido === true){
         this.guardarAnimales(datos.animales);
@@ -143,7 +143,7 @@ export class HttpService {
         alert(datos.mensaje)
       }
         
-    });
+    });*/
   }
   
   guardarAnimal(animal: Animal){
