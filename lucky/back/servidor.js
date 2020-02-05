@@ -292,7 +292,7 @@ rutasAPI.route("/tiposAnimales/:especie").get(async (req,res)=>{
     })
 
 })
-
+    
 rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
 
     let id = req.params.id;
@@ -326,6 +326,42 @@ rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
 
 
 });
+
+rutasAPI.route("/modificar/:id").put((req,res)=>{
+    let user = new Usuario(req.body);
+    //user._id = req.params.id;
+    
+    console.log(user);
+    
+    Usuario.findById({"_id": req.params.id}, (err, usuario)=>{
+    
+    if(err){
+        res.json({
+        valido: false,
+        mensaje: "Error en la consulta a la base de datos"})
+    }else{
+        if(usuario === null){
+            res.json({
+            valido: false,
+            mensaje: "Este usuario no existe"})
+        }else{
+            for (const prop in req.body) {
+                usuario[prop] = req.body[prop]
+                }
+                usuario.save()
+                console.log("Obj construido " + usuario);
+
+            res.json({
+            valido: true,
+            mensaje: "Correcto",
+            usuario: usuario})
+        }
+    }
+    })
+    
+   });
+
+
 // POSTMAN: método:POST, ruta: http://127.0.0.1:4000/api/lucky/adopcion
 // Ya inserta parece estar bien. Pendientre de otra revisión.
 rutasAPI.route("/adopcion").post((req, res) => {

@@ -45,6 +45,14 @@ export class PerfilAnimalComponent implements OnInit {
     })
   }
 
+  cargaAnimal(){
+    /*this.infAnimal.obtenerAnimal(this.id);
+    this.perfilAnimal = this.infAnimal.consigoAnimal()
+    return this.perfilAnimal;*/
+    return this.infAnimal.consigoAnimal();
+
+  }
+
   oculta1(){
     const pagina1 = document.getElementById("animal-datos")
     pagina1.setAttribute("style", "display: block");

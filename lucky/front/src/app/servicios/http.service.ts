@@ -102,11 +102,18 @@ export class HttpService {
 
   }
 
+
     obtenerAnimal(idAnimal: String){
      //console.log(idAnimal);
      
     let id = this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
      return id/*.subscribe(datos=>{
+   async obtenerAnimal(idAnimal: String){
+     //console.log(idAnimal);
+     
+    let id= await this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+    
+    await id.subscribe(datos=>{
       if(datos.valido === true){
         return datos.animal;
         //this.guardarAnimal(datos.animal);

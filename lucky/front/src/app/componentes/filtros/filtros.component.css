@@ -16,6 +16,10 @@
   border-radius: 5px;
 }
 
+.filtros__texto {
+  color: #01748e;
+}
+
 .filtros__ciudades {
   text-align: left;
   font-size: 1em;

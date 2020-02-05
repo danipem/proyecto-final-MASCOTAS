@@ -1,0 +1,79 @@
+<div *ngIf="primero === true">
+  <app-formulario [usuarioNuevo]="usuarioRegistrado"></app-formulario>
+  <div>
+    <input type="submit" (click)="segundaVista()" value="Continuar" class="formu__btn">
+  </div>
+</div>
+
+<div *ngIf="segundo === true">
+      <div class="formu">
+        <div class="formu__titulo">
+          <img src="../../../assets/fotos/flecha-atras.png">
+          <p>Formulario de adopción</p>
+        </div>
+        <div class="formu__titulo2">
+          <h3>Sobre las mascotas</h3>
+        </div>
+        <div class="formu__inputs">
+          <div class="formu__inp">
+            <div class="formu__inp1">
+              <div class="row">  
+                <div class="col-9 col-xs-9">
+                  <p name="" class="formu__p">¿Tienes otros animales?</p>
+                </div>
+                <div class="col-3 col-xs-3">
+                  <div class="formu__prueba">
+                    <div>
+                      <label class="l1">si </label>
+                      <label>no</label>
+                    </div>
+                    <div>
+                      <input class="i1" type="radio" name="sec" value="Si" />
+                      <input type="radio" name="sec" value="No" />
+                    </div>
+                  </div>
+                  
+                </div>
+              
+              </div>
+           
+              
+            </div>
+            <div>
+              <input class="formu__letra1" type="text" placeholder="¿Cuáles?" />
+            </div>
+            <div>
+              <input class="formu__letra1" type="text" placeholder="¿Se lleva bien con otros animales?" />
+            </div>
+          </div>
+          <div class="formu__inp">
+            <label name="" class="formu__p">¿Por qué has elegido adoptar?</label>
+            <div>
+              <input class="formu__letra" type="text" />
+            </div>
+          </div>
+          <div class="formu__inp">
+            <label name="" class="formu__p">¿Conoces las necesidades del animal?</label>
+            <div>
+              <input class="formu__letra" type="text" />
+            </div>
+          </div>
+          <div class="formu__inp">
+            <label name=""class="formu__p">¿Conoces sus gastos?</label>
+            <div>
+              <input class="formu__letra" type="text" />
+            </div>
+        </div>
+        <div class="formu__inp">
+          <label name=""class="formu__p">¿Conoces su alimentación?</label>
+          <div>
+            <input class="formu__letra" type="text" />
+          </div>
+        </div>
+          <div>
+            <input type="submit" value="Continuar" class="formu__btn">
+          </div>
+        </div>
+      </div>
+    </div>
+
