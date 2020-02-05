@@ -9,16 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./adopcion.component.sass']
 })
 export class AdopcionComponent implements OnInit {
-
-  animal : Animal[];
+ 
+  animal : Animal[]
 
   constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
     this.httpService.obtenerTodosAnimales();
+    this.animal = this.httpService.consigoAnimales();
+  }
 
-    this.animal = this.httpService.consigoAnimal();
-    console.log("Holaa" + this.animal)
+  redirige(id){
+    this.router.navigate(["/perfil-animal/"+id]);
   }
 
 

@@ -195,7 +195,7 @@ rutasAPI.route("/animales").get((req, res) => {
           res.json({
             valido: true,
             mensaje: "Correcto",
-            animal: animal
+            animales: animal
           });
         }
       }
@@ -203,35 +203,56 @@ rutasAPI.route("/animales").get((req, res) => {
 });
 
 // POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/filtros
-rutasAPI.route("/filtros").get(function (req, res) {
+rutasAPI.route("/filtros").post(function (req, res) {
     // let especie = null || req.body.datos.especie
-    console.log(req.params.tamano)
+    //console.log(req.params.tamano)
     // OBLIGATORIO MARCAR UNA OPCIÓN DE CADA FILTRO
+    //Ponerlo{ "datos.tipo": req.body.datos.tipo },
     Animal.find(
         {$and:[ { ciudad: req.body.ciudad},
-               { "datos.especie": req.body.datos.especie },
-               { "datos.tipo": req.body.datos.tipo },
-               { "datos.tamano": req.body.datos.tamano},
-               { "datos.sexo": req.body.datos.sexo },
-               { "datos.edad": req.body.datos.edad }
+               { "datos.especie": req.body.especie },
+               { "datos.tamano": req.body.size},
+               { "datos.sexo": req.body.genero },
+               { "datos.edad": req.body.edad }
              ]},
         // {$or:[{"datos.tamano": req.params.tamano},{sexo: req.body.sexo},{edad: req.body.edad},
         // {ciudad: req.body.ciudad},{"datos.especie": req.params.especie}]},
         function (err, coleccionAnimales) {
         if (err) {
             console.log("err");
+            res.json({
+                valido: false,
+                mensaje: err
+            })
         } else {
-            console.log(coleccionAnimales)
-            res.json(coleccionAnimales);
+            if(coleccionAnimales === null){
+                res.json({
+                    valido: false,
+                    mensaje: "Error"
+                })
+            }else{
+                console.log(coleccionAnimales)
+                res.json({
+                    valido: true,
+                    mensaje: "Correcto",
+                    animales: coleccionAnimales
+                });
+            }
+            
         }
     });
 });
 
-rutasAPI.route("/tiposAnimales").post((req,res)=>{
+rutasAPI.route("/tiposAnimales/:especie").get(async (req,res)=>{
 
-    let especie = req.body.especie;
+    let especie = req.params.especie;
 
-    Animal.find({"datos.especie" : especie}, (err, animales) =>{
+    console.log(especie)
+    
+    //let especie2 = req.body.datos.especie;
+    //console.log(especie2);
+
+    await Animal.find({"datos.especie" : especie}, (err, animales) =>{
         if(err){
             res.json({
                 valido: false,
@@ -261,10 +282,26 @@ rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
     Animal.findById(id,(err, animal)=>{
         if(err){
             console.log('ERROR');
-            res.json({"mensaje": "error"})
+            res.json({
+                mensaje: "error",
+                status: res.status(400),
+                valido: false,
+                error: error
+                })
         }else{
-            console.log(animal)
-            res.json(animal)
+            if(animal === null){
+                res.json({
+                    mensaje: "incorrecto",
+                    valido: false,
+                })
+            }else{
+                res.json({
+                    mensaje: "Animal correcto",
+                    valido: true,
+                    animal: animal
+                })
+                console.log(animal);
+            }
         }
 
     })

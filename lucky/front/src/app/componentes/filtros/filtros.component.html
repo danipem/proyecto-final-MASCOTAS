@@ -20,10 +20,11 @@
         <div class="filtros__contenedor">
           <div class="filtros__ciudades">
             <p class="filtros__ciudad">Ciudad</p>
-            <select class="filtros__select">
-              <option>Madrid</option>
+            <select id="ciudad" class="filtros__select">
+              <option value="Madrid" >Madrid</option>
               <option>Bilbao</option>
               <option>Valencia</option>
+              <option>Cáceres</option>
             </select>
             <img class="img" src="../../../assets/imagenes/arrow.png">
           </div>
@@ -92,17 +93,16 @@
                 </div>
                 <div class="filtros__tipos" id="tipo">
                   <p class="filtros__edad" id="tipoTitulo"></p>
-                  <select class="filtros__select2">
-                    <option>Loro</option>
-                    <option>Guacamaya</option>
+                  <select id="tipos" class="filtros__select2">
                   </select>
                   <img class="img" src="../../../assets/imagenes/arrow.png">
                 </div>
                 <div class="filtros__edades">
                   <p class="filtros__edad">Edad</p>
-                  <select class="filtros__select2">
+                  <select id="edad" class="filtros__select2">
                     <option>Joven</option>
                     <option>Mediana Edad</option>
+                    <option>Viejo</option>
                   </select>
                   <img class="img" src="../../../assets/imagenes/arrow.png">
                 </div>
@@ -149,7 +149,7 @@
                       <button type="button" class="filtros__borrar">Borrar Filtros</button>
                     </div>
                     <div class="col-6 col-xs-6">
-                      <button type="submit" class="filtros__boton"> Aplicar </button>
+                      <button type="submit" class="filtros__boton" (click)="aplicarFiltros()"> Aplicar </button>
                     </div>
                   </div>
                 </div>

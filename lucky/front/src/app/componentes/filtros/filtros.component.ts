@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/servicios/http.service';
+import { Animal } from 'src/app/entidades/animal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filtros',
@@ -14,9 +17,13 @@ export class FiltrosComponent implements OnInit {
   tipo : String;
   edad : String;
   filtros: Boolean;
+  opciones;
 
-  constructor() { 
+  arrayAnimales: Animal[];
+
+  constructor(private httpService: HttpService, private route: Router) { 
     this.filtros = false;
+    this.opciones = new Array();
   }
 
   ngOnInit() {
@@ -24,17 +31,28 @@ export class FiltrosComponent implements OnInit {
   }
 
 
-
-  muestraAlgo(event){
+/*
+TODO: Mejorar el codigo, html con event y removeChild. Eliminar filtros
+*/
+  muestraAlgo(){
     
     const animal = event.currentTarget.dataset.tipo;
     //alert(event.currentTarget.dataset.tipo);
-    this.especie = animal;
+    this.especie = animal.charAt(0).toUpperCase() + animal.slice(1);
     this.filtros = true;
     console.log(this.especie);
 
+    
+    this.eliminaHijos();
+
     switch(animal){
       case "perro":
+        this.httpService.obtenerTipoAnimal(this.especie);        
+        this.arrayAnimales = this.httpService.consigoAnimales();
+        
+    
+        this.obtenTipos(this.arrayAnimales);
+
         document.getElementById(animal).setAttribute("src", "../../../assets/iconos/perrop_2.png");
         document.getElementById("gato").setAttribute("src", "../../../assets/iconos/cat.png");
         document.getElementById("mamifero").setAttribute("src", "../../../assets/iconos/035CoatiCopy.png");
@@ -42,6 +60,14 @@ export class FiltrosComponent implements OnInit {
         this.escribeTitulo(animal);
         break;
       case "gato":
+        
+        this.httpService.obtenerTipoAnimal(this.especie);        
+        this.arrayAnimales = this.httpService.consigoAnimales();
+        
+        
+        this.obtenTipos(this.arrayAnimales);
+        
+
         document.getElementById("perro").setAttribute("src", "../../../assets/iconos/perrop.png");
         document.getElementById("mamifero").setAttribute("src", "../../../assets/iconos/035CoatiCopy.png");
         document.getElementById("ave").setAttribute("src", "../../../assets/iconos/ave.png");
@@ -77,16 +103,75 @@ export class FiltrosComponent implements OnInit {
         this.escribeTitulo(animal);
         break;
       case "ave":
+        
+        this.httpService.obtenerTipoAnimal(this.especie);        
+        this.arrayAnimales = this.httpService.consigoAnimales();
+        
+    
+        this.obtenTipos(this.arrayAnimales);
+       
+
         document.getElementById("perro").setAttribute("src", "../../../assets/iconos/perrop.png");
         document.getElementById("gato").setAttribute("src", "../../../assets/iconos/cat.png");
         document.getElementById("mamifero").setAttribute("src", "../../../assets/iconos/035CoatiCopy.png");
         document.getElementById(animal).setAttribute("src", "../../../assets/iconos/aveRoja.png");
         this.escribeTitulo(animal);
+
         break;
+    }
+
+    
+  }
+
+  eliminaHijos(){
+    
+    var tipo = document.getElementById("tipos");
+
+    var algo = document.getElementsByName("animal");
+
+    if(algo.length == 0){
+
+    }else{
+    console.log(algo.length);
+
+    for(let i = 0; i< algo.length; i++){
+      tipo.removeChild(algo[i]);
+      this.opciones = new Array();
+      }
     }
   }
 
-  seleccionaGenero(event){
+  obtenTipos(arrayAnimales){
+    for(let i= 0; i < arrayAnimales.length; i++){
+      if(this.opciones.includes(arrayAnimales[i].datos.tipo)){
+        console.log("Existe");
+      }else{
+        this.opciones.push(arrayAnimales[i].datos.tipo);
+        this.addToSelect(arrayAnimales[i].datos.tipo);
+      }
+    }
+  }
+
+  /*
+  */
+  addToSelect(especie : String){
+
+    document.getElementById("tipos").appendChild(this.generateComponent(especie));
+
+  }
+
+  generateComponent(texto){
+    var option = document.createElement("option")
+    option.id = texto;
+    option.setAttribute("name", "animal")
+    option.setAttribute("value", texto);
+    option.innerHTML = texto;
+    return option;
+  }
+
+  
+  seleccionaGenero(){
+    
     const tipo = event.currentTarget.dataset.genero;
     
     if(tipo === "macho"){
@@ -99,11 +184,12 @@ export class FiltrosComponent implements OnInit {
 
     }
     this.filtros = true;
-    this.genero = tipo;
+    this.genero = tipo.charAt(0).toUpperCase() + tipo.slice(1);
     console.log(this.genero);
   }
 
-  seleccionaMedida(event){
+
+  seleccionaMedida(){
     const tipo = event.currentTarget.dataset.width;
 
     if(tipo === "small"){
@@ -123,7 +209,7 @@ export class FiltrosComponent implements OnInit {
       document.getElementById("grande").setAttribute("src","../../../assets/iconos/groupCopy_3.png")
     }
     this.filtros = true;
-    this.width = tipo;
+    this.width = tipo.charAt(0).toUpperCase() + tipo.slice(1);
     console.log(this.width);
 
     }
@@ -132,5 +218,27 @@ export class FiltrosComponent implements OnInit {
     document.getElementById("tipo").setAttribute("style", "display: block");
     document.getElementById("tipoTitulo").innerText = "Tipo de " + animal;
   }
+
+  aplicarFiltros(){
+    let ciudad = document.getElementById("ciudad").value;
+    this.ciudad = ciudad;
+
+    let edad = document.getElementById("edad").value;
+    this.edad = edad;
+
+    let filtros = {
+      ciudad: this.ciudad,
+      edad: this.edad,
+      especie: this.especie,
+      size: this.width,
+      genero: this.genero
+    }
+    
+    this.httpService.obtenerFiltrosAnimal(filtros);
+    this.route.navigate(["/adopcion"]);
+    
+  }
+
+  
 }
 
