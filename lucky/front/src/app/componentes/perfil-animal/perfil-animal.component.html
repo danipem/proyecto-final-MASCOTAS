@@ -1,16 +1,29 @@
-<div class="perfil-animales" >
+<div class="perfil-animales-solicitud col-xs-10" id="perfil-animal-adopcion">
+    <h2 class="perfil-animales-solicitud__titulosolicitud">Solicitud de adopción</h2>
+    <p>Adoptar es un acto de amor, pero sobre todo una responsabilidad de por vida</p>
+    <p>Por este motivo es importante que veas el siguiente vídeo donde te explicamos
+        cómo va a ser todo el proceso de adopción
+    </p>
+    <img src="../../../assets/imagenes/group5.png" alt="">
+    <p class="perfil-animales-solicitud__continuar">¿Quieres continuar el proceso de adopción?</p>
+    <div class="perfil-animales-solicitud__solicitudbotones">
+        <button (click)="cancelar()" class="perfil-animales-solicitud__cancelar">Cancelar</button>
+        <button class="perfil-animales-solicitud__aceptar" [routerLink]="['/formulario-mas']">Continuar</button>
+    </div>
+</div>
+<div class="perfil-animales" id="perfil-animal">
   
     <div class="perfil-animales__cabeza"></div>
-    
+    <img src="{{perfilAnimal.foto}}" style="width: 100vw; height: 30vh; margin-left: -1em;" alt="">
     <div class="perfil-animales__puntitos bottom-xs"></div>
-    <div class="perfil-animales__nombre col-xs-7">
+    <div class="perfil-animales__nombre col-xs-7" id="perfil-animal-nombre">
         <p class="perfil-animales__sexo">{{perfilAnimal.datos.sexo}}</p>
         <div class="perfil-animales__nc">
-            <p>{{perfilAnimal.nombre}}</p>
+            <p class="perfil-animales__nn">{{perfilAnimal.nombre}}</p>
             <p class="perfil-animales__city">{{perfilAnimal.ciudad}}</p>
         </div>
         <div class="perfil-animales__iconitos">
-            <img src="../../../assets/iconos/compartir.png" alt="like">
+            <!-- <img src="../../../assets/iconos/compartir.png" alt="like"> -->
             <img src="../../../assets/iconos/compartir.png" alt="descargar">
         </div>
     </div>
@@ -56,11 +69,12 @@
             </div>
             <p>{{perfilAnimal.datos.peso}}</p>
         </div>
-        <div class="perfil-animales__personalidad">
+        <div class="perfil-animales__personalidad" >
             <h2>Personalidad</h2>
-            <div class="perfil-animales__personalidades">
-                <p ></p>
-                
+            <div class="perfil-animales__personalidades"  *ngFor="let ani of perfilAnimal.datos.personalidad; let i = index">
+                <div>
+                    <p >{{perfilAnimal.datos.personalidad[i]}}</p>
+                </div>
             </div>
         </div>
         <div class="perfil-animales__historia">
@@ -134,19 +148,7 @@
     </div>
     <div class="perfil-animales__pie col-xs-8 col-xs-offset-2">
         <button class="perfil-animales__botonapadrinar">Apadrinar</button>
-        <button class="perfil-animales__botonadoptar">Adoptar</button>
+        <button (click)="adopta()" class="perfil-animales__botonadoptar">Adoptar</button>
     </div>
-    <div class="perfil-animales__solicitud">
-        <h2>Solicitud de adopción</h2>
-        <p>Adoptar es un acto de amor, pero sobre todo una responsabilidad de por vida</p>
-        <p>Por este motivo es importante que veas el siguiente vídeo donde te explicamos
-            cómo va a ser todo el proceso de adopción
-        </p>
-        <img src="../../../assets/imagenes/group5.png" alt="">
-        <p class="perfil-animales__continuar">¿Quieres continuar el proceso de adopción?</p>
-        <div class="perfil-animales__solicitudbotones">
-            <button class="perfil-animales__cancelar">Cancelar</button>
-            <button class="perfil-animales__aceptar">Continuar</button>
-        </div>
-    </div>
+
 </div>

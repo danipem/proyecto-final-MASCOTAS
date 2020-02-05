@@ -89,7 +89,7 @@ export class HttpService {
   obtenerAnimal(idAnimal: String){
     let id=this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
     id.subscribe(datos=>{
-      alert(datos.valido);
+      // alert(datos.valido);
       if(datos.valido === true){
         this.guardarAnimal(datos.animal);
       }else{

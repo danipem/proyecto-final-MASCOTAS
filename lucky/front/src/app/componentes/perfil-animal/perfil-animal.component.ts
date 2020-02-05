@@ -101,4 +101,21 @@ export class PerfilAnimalComponent implements OnInit {
     pestana3.setAttribute("style", "font-weight: 400; color: black; border: none")
   }
 
+  adopta(){
+    const adopta = document.getElementById("perfil-animal-adopcion")
+    adopta.setAttribute("style", "display: block")
+    const azul = document.getElementById("perfil-animal")
+    azul.setAttribute("style", "background-color: rgb(189, 210, 214)")
+    const cosa = document.getElementById("perfil-animal-nombre")
+    cosa.setAttribute("style", "display: none")
+  }
+  cancelar(){
+    const adopta = document.getElementById("perfil-animal-adopcion")
+    adopta.setAttribute("style", "display: none")
+    const cosa = document.getElementById("perfil-animal-nombre")
+    cosa.setAttribute("style", "display: block; display: flex; flex-direction: row;justify-content: space-around; background-color: white; border-radius: 3px; height: 4em; margin-top: -2em; margin-left: 21%; position: relative; padding-top: 1em")
+    const color = document.getElementById("perfil-animal")
+    color.setAttribute("style", "background-color: white")
+  }
+
 }
