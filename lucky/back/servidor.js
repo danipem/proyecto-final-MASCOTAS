@@ -137,30 +137,46 @@ rutasAPI.route("/registro").post((req, res)=>{
         }
 
     })
-   //metodo save, devuelve una promesa de guardar
-    /*
-  promesaDeGuardado.then(usuario=>{
-      //mostramos el status 200 si se ha insertado correctamente
-      if(usuario === null){
-        res.json({
-            mensaje: "Usuario Incorrecto",
-            valido: false
-        })
-      }else{
-        res.json({
-            mensaje: "Usuario Correcto",
-            valido: true
-        })
-      }
-
-  })
-  promesaDeGuardado.catch(err=>{
-      res.status(400).send("error usuario no se guardo ")
-  })*/
-
-  console.log("Usuario registrado");
 
 });
+
+rutasAPI.route("/modificar/:id").put((req,res)=>{
+    let user = new Usuario(req.body);
+    //user._id =  req.params.id;
+
+    console.log(user);
+
+    Usuario.findById({"_id": req.params.id}, (err, usuario)=>{
+        
+        if(err){
+            res.json({
+                valido: false,
+                mensaje: "Error en la consulta a la base de datos"
+            })
+        }else{
+            if(usuario === null){
+                res.json({
+                    valido: false,
+                    mensaje: "Este usuario no existe"
+                })
+            }else{
+                for (const prop in req.body) {
+                    usuario[prop] = req.body[prop]
+                }
+        
+                usuario.save()
+                console.log("Obj construido " + usuario);
+                
+                res.json({
+                    valido: true,
+                    mensaje: "Correcto",
+                    usuario: usuario
+                })
+            }
+        }
+    })
+
+})
 
 // POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/protectoras
 rutasAPI.route("/protectoras").get(function (reqPeticionHttp, resRespuestaHttp) { //enrutamos la raiz de la ruta, metodo GET
@@ -279,6 +295,7 @@ rutasAPI.route("/tiposAnimales/:especie").get(async (req,res)=>{
 rutasAPI.route("/perfil-animal/:id").get((req,res)=>{
 
     let id = req.params.id;
+    
     Animal.findById(id,(err, animal)=>{
         if(err){
             console.log('ERROR');
@@ -348,36 +365,3 @@ rutasAPI.route("/adopcion").post((req, res) => {
     })
 
 })
-
-
-/*
-rutasAPI.route("/registro").post((req, res)=>{
-    //Cojo todo el cuerpo entero que me viene de la respuesta. Estoy invocando al schema del modelo.js
-    let nuevoUsuario = new Usuario(req.body);
-    let promesaDeGuardado = nuevoUsuario.save(); //metodo save, devuelve una promesa de guardar
-
-    promesaDeGuardado.then(usuario=>{
-        //mostramos el status 200 si se ha insertado correctamente
-        res.status(200).json({
-            "Usuario": "Usuario Guardado"
-        })
-    })
-    //Muestro el status 400 si ha ocurrio un error
-    promesaDeGuardado.catch(err=>{
-        res.status(400).send("Se fue a la verga")
-    })
-
-});
-
-
-// POSTMAN: método:GET, ruta: http://127.0.0.1:4000/api/lucky/animales
-rutasAPI.route("/animales").get(function (reqPeticionHttp, resRespuestaHttp) {
-    Animal.find(function (err, coleccionAnimales) {
-        if (err) {
-            console.log("err");
-        } else {
-            resRespuestaHttp.json(coleccionAnimales);
-        }
-    });
-});
-*/
