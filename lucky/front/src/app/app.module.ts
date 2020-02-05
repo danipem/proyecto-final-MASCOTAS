@@ -15,6 +15,8 @@ import { FiltrosComponent } from './componentes/filtros/filtros.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { HomeAdoptionComponent } from './componentes/home-adoption/home-adoption.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { FormularioComponent } from './componentes/formulario/formulario.component';
+import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil.component';
 import { AdopcionComponent } from './componentes/adopcion/adopcion.component';
 import { PerfilMasComponent } from './componentes/perfil-mas/perfil-mas.component';
 import { MapaComponent } from '../app/componentes/mapa/mapa.component';
@@ -39,6 +41,10 @@ const rutasApp: Routes = [
           {
             path: "perfil",
             component: PerfilComponent
+          },
+          {
+            path: "editar-perfil",
+            component: EditarPerfilComponent
           },
           {
             path: "perfil-mas",
@@ -95,6 +101,8 @@ const rutasApp: Routes = [
     PerfilComponent,
     HomeAdoptionComponent,
     FooterComponent,
+    FormularioComponent,
+    EditarPerfilComponent,
     AdopcionComponent,
     PerfilMasComponent,
     MapaComponent,

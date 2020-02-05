@@ -11,23 +11,23 @@ import { HttpService } from "../../servicios/http.service";
 export class RegistroComponent /*implements OnInit*/ {
   usuarioNuevo: UsuarioEnt;
   camposInvalid = false;
-  
+
   constructor(private infUsu: HttpService ) {
     this.usuarioNuevo = new UsuarioEnt();
     this.usuarioNuevo.nombre = "";
     this.usuarioNuevo.apellidos = "";
     this.usuarioNuevo.edad;
     this.usuarioNuevo.email = "";
-    this.usuarioNuevo.tlf = "";
+    this.usuarioNuevo.telefono = "";
     this.usuarioNuevo.dni = "";
     this.usuarioNuevo.ciudad = "";
-    this.usuarioNuevo.codPostal;
+    this.usuarioNuevo.cp;
     this.usuarioNuevo.password = "";
-    
+
    }
 
   registroComponentClick(): void{
-    
+
     this.infUsu.insertarUsuariosBD(this.usuarioNuevo);
     /*Esto nos permite crear un nuevo Usuario vacio, no hace falta la clonacion del usuario */
     this.usuarioNuevo = new UsuarioEnt();
@@ -40,7 +40,7 @@ export class RegistroComponent /*implements OnInit*/ {
 
   alSaberSiEmailExiste(valido: boolean) {
     if(valido){
-      
+
       alert("Este email ya existe");
 
     }else{
@@ -50,13 +50,5 @@ export class RegistroComponent /*implements OnInit*/ {
   }
   ngOnInit() {
   }
- /*
-  getClass(opcion){
-    if(opcion){
-      return "pinta-rojo"
-    }else{
-      return "pinta-verde"
-    }
-  }*/
 
 }

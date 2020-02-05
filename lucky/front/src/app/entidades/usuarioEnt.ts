@@ -5,9 +5,9 @@ export class UsuarioEnt {
     public edad: Number;
     public dni: String;
     public email: String;
-    public tlf: String;
+    public telefono: String;
     public ciudad: String
-    public codPostal: Number
+    public cp: Number
     public password: String
 
  }

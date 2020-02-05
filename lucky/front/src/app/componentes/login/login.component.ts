@@ -15,12 +15,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private clientHttp: HttpService, private route : Router) {
     this.usuario = new UsuarioEnt();
-    this.usuario.email = "guillermino@gmail.com";
-    this.usuario.password = "8910";
+    this.usuario.email = "";
+    this.usuario.password = "";
   }
 
   clickIniciarSesion() {
-    //console.log('Click OK')
     this.clientHttp.iniciarUsuarioBD(this.usuario);
     this.usuario = this.clientHttp.obtenerUsuario();
     this.route.navigate(["/home"]);

@@ -68,8 +68,24 @@ export class HttpService {
           //this.guardarLocalStrg();
         }
 
+
     });
 
+  }
+
+  modificarUsuario(usuario: UsuarioEnt){
+
+    let id = usuario._id;
+
+    let modificado = this.clientHttp.put<Mensaje>("http://127.0.0.1:4000/api/lucky/modificar/"+id,usuario);
+
+    modificado.subscribe(datos => {
+      if(datos.valido === true){
+        this.guardarUsuario(datos.usuario);
+      }else{
+        alert(datos.mensaje);
+      }
+    })
   }
 
   obtenerTodosAnimales(){
@@ -91,7 +107,7 @@ export class HttpService {
   obtenerAnimal(idAnimal: String){
     let id=this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
     id.subscribe(datos=>{
-      alert(datos.valido);
+      // alert(datos.valido);
       if(datos.valido === true){
         this.guardarAnimal(datos.animal);
       }else{
@@ -101,25 +117,16 @@ export class HttpService {
     });
   }
 
-  obtenerSolicitudesAdopciones(idUsuario: String){
-
-    let misAdopciones = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/misAdopciones/", idUsuario);
-    misAdopciones.subscribe(datos =>{
-        if(datos.valido === true){
-          this.guardaMisAdopciones(datos.adopciones);
-        }else{
-          alert(datos.mensaje);
-        }
-    });
-  }
-
-
-
   guardarUsuario(usuario){
     this.usuario = usuario;
+    sessionStorage.setItem("usuario", JSON.stringify(this.usuario));
   }
 
   obtenerUsuario(){
+
+    if(typeof this.usuario === "undefined" || this.usuario === null){
+      this.usuario = JSON.parse(sessionStorage.getItem("usuario"));
+    }
     console.log("Hola" + this.usuario.nombre)
     return this.usuario;
   }
