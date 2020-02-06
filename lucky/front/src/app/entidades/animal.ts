@@ -28,4 +28,5 @@ export class Animal {
             tasa: String
             envio: String
         }
+    public adopcion: Boolean
 }

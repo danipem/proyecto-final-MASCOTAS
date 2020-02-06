@@ -292,4 +292,3 @@ TODO: Mejorar el codigo, html con event y removeChild. Eliminar filtros
   }
   
 }
-
