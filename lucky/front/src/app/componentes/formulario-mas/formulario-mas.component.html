@@ -1,3 +1,16 @@
+<div class="adopcionsolicitud" id="formulariomassolicitudaceptada">
+  <div class="adopcionsolicitud__boton"><button [routerLink]="['/estado-adopcion']">x</button></div>
+  <h2 class="adopcionsolicitud__titulosolicitud">¡Enviado!</h2>
+  <p>Hemos enviado tu formulario a la protectora. Si quieres ponerte en contacto
+    con ellos puedes hacerlo vía email o whatsapp
+  </p>
+  <p>Recuerda que la protectora se pondrá en contacto contigo para poder hacer
+    la entrevista personal
+  </p>
+  <img src="../../../assets/imagenes/undrawPlayfulCatRchv.png" alt="">
+
+</div>
+
 <div *ngIf="primero === true">
   <app-formulario [usuarioNuevo]="usuarioRegistrado"></app-formulario>
   <div>
@@ -6,74 +19,159 @@
 </div>
 
 <div *ngIf="segundo === true">
-      <div class="formu">
-        <div class="formu__titulo">
-          <img src="../../../assets/fotos/flecha-atras.png">
-          <p>Formulario de adopción</p>
-        </div>
-        <div class="formu__titulo2">
-          <h3>Sobre las mascotas</h3>
-        </div>
-        <div class="formu__inputs">
-          <div class="formu__inp">
-            <div class="formu__inp1">
-              <div class="row">  
-                <div class="col-9 col-xs-9">
-                  <p name="" class="formu__p">¿Tienes otros animales?</p>
-                </div>
-                <div class="col-3 col-xs-3">
-                  <div class="formu__prueba">
-                    <div>
-                      <label class="l1">si </label>
-                      <label>no</label>
-                    </div>
-                    <div>
-                      <input class="i1" type="radio" name="sec" value="Si" />
-                      <input type="radio" name="sec" value="No" />
-                    </div>
-                  </div>
-                  
-                </div>
-              
+  <div class="formu">
+    <div class="formu__titulo">
+      <img src="../../../assets/fotos/flecha-atras.png" (click)="primeraVista()">
+      <p>Formulario de adopción</p>
+    </div>
+    <div class="formulariomas__titulo">
+      <h3>Sobre las mascotas</h3>
+    </div>
+    <div class="formu__inputs">
+      <div class="formu__inp">
+          
+            <div class="formulariomas__siono">
+              <p>¿Tienes otros animales?</p>
+              <div class="formulariomas__botones">
+                <label for="si">Sí
+                  <input type="radio" name="tienes-animales" value="si">
+                </label>
+                <label for="si">No
+                  <input type="radio" name="tienes-animales" value="no">
+                </label>
               </div>
-           
-              
             </div>
-            <div>
-              <input class="formu__letra1" type="text" placeholder="¿Cuáles?" />
-            </div>
-            <div>
-              <input class="formu__letra1" type="text" placeholder="¿Se lleva bien con otros animales?" />
-            </div>
-          </div>
-          <div class="formu__inp">
-            <label name="" class="formu__p">¿Por qué has elegido adoptar?</label>
-            <div>
-              <input class="formu__letra" type="text" />
-            </div>
-          </div>
-          <div class="formu__inp">
-            <label name="" class="formu__p">¿Conoces las necesidades del animal?</label>
-            <div>
-              <input class="formu__letra" type="text" />
-            </div>
-          </div>
-          <div class="formu__inp">
-            <label name=""class="formu__p">¿Conoces sus gastos?</label>
-            <div>
-              <input class="formu__letra" type="text" />
-            </div>
+        <div>
+          <input class="formu__letra1" type="text" placeholder="¿Cuáles?" />
         </div>
-        <div class="formu__inp">
-          <label name=""class="formu__p">¿Conoces su alimentación?</label>
-          <div>
-            <input class="formu__letra" type="text" />
-          </div>
-        </div>
-          <div>
-            <input type="submit" value="Continuar" class="formu__btn">
-          </div>
+        <div>
+          <input class="formu__letra1" type="text" placeholder="¿Se lleva bien con otros animales?" />
         </div>
       </div>
+      <div class="formu__inp">
+        <label name="" class="formu__p">¿Por qué has elegido adoptar?</label>
+        <div>
+          <input class="formu__letra" type="text" />
+        </div>
+      </div>
+      <div class="formu__inp">
+        <label name="" class="formu__p">¿Conoces las necesidades del animal?</label>
+        <div>
+          <input class="formu__letra" type="text" />
+        </div>
+      </div>
+      <div class="formu__inp">
+        <label name="" class="formu__p">¿Conoces sus gastos?</label>
+        <div>
+          <input class="formu__letra" type="text" />
+        </div>
+      </div>
+      <div class="formu__inp">
+        <label name="" class="formu__p">¿Conoces su alimentación?</label>
+        <div>
+          <input class="formu__letra" type="text" />
+        </div>
+      </div>
+      <div class="formulariomas__centrarboton">
+        <input type="submit" (click)="terceraVista()" value="Continuar" class="formu__btn">
+      </div>
     </div>
+  </div>
+</div>
 
+<div *ngIf="tercero === true">
+  <div class="formu formulariomas" id="formulariomasacepta">
+    <div class="formu__titulo">
+      <img src="../../../assets/fotos/flecha-atras.png" (click)="segundaVista()">
+      <p>Formulario de adopción</p>
+    </div>
+    <div class="formulariomas__titulo">
+      <h3>Familia y hogar</h3>
+    </div>
+    <div class="formulariomas__inputado">
+      <p>¿Dónde vives?</p>
+      <input type="text" name="donde-vives" placeholder="Piso, casa, chalet...">
+    </div>
+    <div class="formulariomas__siono">
+      <p>¿Vives de alquiler?</p>
+      <div class="formulariomas__botones">
+        <label for="si">Sí
+          <input type="radio" name="alquiler" value="si">
+        </label>
+        <label for="si">No
+          <input type="radio" name="alquiler" value="no">
+        </label>
+      </div>
+    </div>
+    <div class="formulariomas__siono">
+      <p>¿Tu casero permite animales?</p>
+      <div class="formulariomas__botones">
+        <label for="si">Sí
+          <input type="radio" name="casero" value="si">
+        </label>
+        <label for="si">No
+          <input type="radio" name="casero" value="no">
+        </label>
+      </div>
+    </div>
+    <div class="formulariomas__siono">
+      <p>¿Crees que podrías mudarte pronto?</p>
+      <div class="formulariomas__botones">
+        <label for="si">Sí
+          <input type="radio" name="mudar" value="si">
+        </label>
+        <label for="si">No
+          <input type="radio" name="mudar" value="no">
+        </label>
+      </div>
+    </div>
+    <div class="formulariomas__siono">
+      <p>¿Tienes jardín?</p>
+      <div class="formulariomas__botones">
+        <label for="si">Sí
+          <input type="radio" name="jardin" value="si">
+        </label>
+        <label for="si">No
+          <input type="radio" name="jardin" value="no">
+        </label>
+      </div>
+    </div>
+    <div class="formulariomas__siono">
+      <p>¿Vives con otras personas?</p>
+      <div class="formulariomas__botones">
+        <label for="si">Sí
+          <input type="radio" name="personas" value="si">
+        </label>
+        <label for="si">No
+          <input type="radio" name="personas" value="no">
+        </label>
+      </div>
+    </div>
+    <div class="formulariomas__siono">
+      <p>¿Están todos de acuerdo con la adopción?</p>
+      <div class="formulariomas__botones">
+        <label for="si">Sí
+          <input type="radio" name="acuerdo" value="si">
+        </label>
+        <label for="si">No
+          <input type="radio" name="acuerdo" value="no">
+        </label>
+      </div>
+    </div>
+    <div class="formulariomas__siono">
+      <p>¿Estás de acuerdo con que visitemos tu casa?</p>
+      <div class="formulariomas__botones">
+        <label for="si">Sí
+          <input type="radio" name="visita" value="si">
+        </label>
+        <label for="si">No
+          <input type="radio" name="visita" value="no">
+        </label>
+      </div>
+    </div>
+    <div class="formulariomas__centrarboton">
+      <button class="formulariomas__enviar" (click)="acepta()">Enviar</button>
+    </div>
+  </div>
+
+</div>

@@ -71,10 +71,8 @@
         </div>
         <div class="perfil-animales__personalidad" >
             <h2>Personalidad</h2>
-            <div class="perfil-animales__personalidades"  *ngFor="let personalidad of perfilAnimal.datos.personalidad; let i = index">
-                <div>
-                    <p >{{personalidad}}</p>
-                </div>
+            <div class="perfil-animales__personalidades" >
+                    <label *ngFor="let personalidad of perfilAnimal.datos.personalidad; let i = index">{{personalidad}}</label>
             </div>
         </div>
         <div class="perfil-animales__historia">

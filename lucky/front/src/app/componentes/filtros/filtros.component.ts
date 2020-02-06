@@ -239,8 +239,8 @@ TODO: Mejorar el codigo, html con event y removeChild. Eliminar filtros
       this.edad = edad;
 
       let tipo = (<HTMLInputElement>document.getElementById("tipos")).value;
-      this.tipoAnimal = tipo;     
-    
+      this.tipoAnimal = tipo;
+
       let filtros = {
         ciudad: this.ciudad,
         edad: this.edad,
