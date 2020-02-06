@@ -1,5 +1,5 @@
 .mapa {
-  width: 100%;
+  width: 100vw;
   margin-top: 3em;
 }
 
@@ -10,9 +10,10 @@
   font-family: 'Barlow-Medium', sans-serif;
   font-size: 0.83em;
   padding-left: 1em;
-  margin-left: .5em;
+  margin-left: 1em;
   border-style: none;
   border: 1.5px solid #bdd2d6;
+  margin-bottom: 2.1em;
 }
 
 .mapa__foto {
@@ -22,9 +23,9 @@
   height: 6vh;
   width: 8vw;
   float: right;
-  margin-top: -2.17em;
+  margin-top: -3.8em;
   position: absolute;
-  margin-left: 68%;
+  margin-left: 70%;
 }
 
 .mapa__fotoLupa {
@@ -39,11 +40,48 @@
 
 .mapa__map {
   margin-top: 2em;
-  width: 100%;
+  width: 100vw;
   height: 600px;
 }
 
-a {
-  cursor: pointer;
+@media screen and (orientation: landscape) {
+  .mapa {
+    height: 90%;
+    margin-top: 1em;
+  }
+  .mapa__map {
+    margin-top: 1.8em;
+    width: 100vw;
+    height: 230px;
+  }
+  .mapa__buscar {
+    margin-bottom: -1.5em;
+    margin-left: 3em;
+  }
+  .mapa__foto {
+    margin-top: -1.5em;
+    margin-left: 77%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .mapa {
+    width: 90vw;
+  }
+  .mapa__map {
+    margin-top: 1em;
+    width: 100vw;
+    height: 465px;
+  }
+  .mapa__buscar {
+    margin-bottom: -1.5em;
+    margin-left: 8em;
+  }
+  .mapa__foto {
+    margin-top: -1.5em;
+    margin-left: 77%;
+    height: 4vh;
+    width: 3vw;
+  }
 }
 /*# sourceMappingURL=mapa.component.css.map */
