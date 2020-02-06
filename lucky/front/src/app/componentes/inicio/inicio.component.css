@@ -3,6 +3,7 @@
   width: 100vw;
   background-image: url("src/assets/imagenes/fondo.png");
   background-size: cover;
+  font-family: 'Barlow-Medium', sans-serif;
 }
 
 .inicio__contenido {
@@ -20,7 +21,7 @@
 }
 
 .inicio__contenedor {
-  padding-top: 65vh;
+  margin-top: 32em;
   height: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -29,21 +30,23 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .inicio__titulo {
   color: #0e363d;
   font-size: 20pt;
   text-align: center;
+  margin-top: .5em;
 }
 
 .inicio__botones {
   width: 260px;
   text-align: center;
   background-color: #01748e;
-  height: 53px;
+  height: 50px;
   color: white;
   font-size: 21px;
   border-radius: 7px;
@@ -58,125 +61,78 @@
 
 @media screen and (orientation: landscape) {
   .inicio {
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
     background-image: url("src/assets/imagenes/fondo.png");
-    background-size: 100%;
+    background-size: contain;
     background-repeat: no-repeat;
   }
   .inicio__contenedor {
-    padding-top: 0;
-    height: 100vh;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    justify-items: space-around;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .inicio__contenedor {
-    padding-top: 55vh;
-    height: 40%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
-  .inicio__titulo {
-    color: #0e363d;
-    font-size: 40pt;
-    text-align: center;
-  }
-  .inicio__botones {
-    width: 392pt;
-    text-align: center;
-    background-color: #01748e;
-    height: 80pt;
-    color: white;
-    font-size: 32pt;
-    border-radius: 10pt;
-    border: 1px solid #01748e;
-  }
-  .inicio__texto {
-    font-size: 24pt;
+    margin-top: 4em;
+    height: 60vh;
+    margin-left: 1.5%;
   }
 }
 
 @media screen and (min-width: 992px) {
+  .inicio {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("src/assets/imagenes/fondo.png");
+    background-size: contain;
+  }
   .inicio__contenedor {
-    padding-top: 55vh;
-    height: 40%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    margin-top: 10em;
+    height: 50%;
+    margin-left: 28em;
   }
   .inicio__titulo {
     color: #0e363d;
-    font-size: 46pt;
+    font-size: 30pt;
     text-align: center;
   }
   .inicio__botones {
-    width: 400pt;
+    width: 350pt;
     text-align: center;
     background-color: #01748e;
-    height: 80pt;
+    height: 60px;
     color: white;
-    font-size: 38pt;
+    font-size: 21pt;
     border-radius: 10pt;
     border: 1px solid #01748e;
   }
   .inicio__texto {
-    font-size: 30pt;
+    font-size: 17pt;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .inicio__contenedor {
-    padding-top: 0;
+  .inicio {
+    width: 100vw;
     height: 100vh;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    background-image: url("src/assets/imagenes/fondo.png");
+    background-size: contain;
+  }
+  .inicio__contenedor {
+    margin-top: 7em;
+    height: 60%;
+    margin-left: 1.5%;
   }
   .inicio__titulo {
-    color: #0e363d;
-    font-size: 46pt;
-    text-align: center;
+    font-size: 40pt;
   }
   .inicio__botones {
     width: 400pt;
     text-align: center;
     background-color: #01748e;
-    height: 80pt;
+    height: 45pt;
     color: white;
-    font-size: 38pt;
+    font-size: 27pt;
     border-radius: 10pt;
     border: 1px solid #01748e;
   }
   .inicio__texto {
-    font-size: 30pt;
+    font-size: 17pt;
   }
 }
 /*# sourceMappingURL=inicio.component.css.map */
