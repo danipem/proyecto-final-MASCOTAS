@@ -1,21 +1,21 @@
 export class Adopcion{
-    usuarioId: String;
-    animalId: String;
-    masAnimal: {
+    public usuarioId: String
+    public animalId: String
+    public masAnimal: {
         cual: String,
         comportamiento: String		
     }
-    eleccionAdop: String;
-    necesidadesAnim: String;
-    gastosAnim: String;
-    alimentacionAnim: String;
-    dondeVives: String;
-    alquiler: Boolean;
-    caseroPermite: Boolean;
-    mudarse: Boolean;
-    jardin: Boolean;
-    vivesSolo: Boolean;
-    acuerdoAdop: Boolean;
-    visitarCasa: Boolean;
-    proceso: String;
+    public eleccionAdop: String
+    public necesidadesAnim: String;
+    public gastosAnim: String;
+    public alimentacionAnim: String;
+    public dondeVives: String;
+    public alquiler: Boolean;
+    public caseroPermite: Boolean;
+    public mudarse: Boolean;
+    public jardin: Boolean;
+    public vivesSolo: Boolean;
+    public acuerdoAdop: Boolean;
+    public visitarCasa: Boolean;
+    public proceso: String;
 }
