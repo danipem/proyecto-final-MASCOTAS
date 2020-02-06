@@ -4,6 +4,21 @@
   padding: 1em;
 }
 
+.formu__prueba {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.formu__barraPadre {
+  background-color: rgba(250, 156, 147, 0.35);
+  height: 7pt;
+  border-radius: 3.5pt;
+}
+
+.formu__barra {
+  background-color: #fa9c93;
+}
+
 .formu__titulo {
   font-family: 'Barlow-Regular', sans-serif;
   font-size: 16pt;
@@ -103,10 +118,10 @@
 }
 
 .l1 {
-  padding-right: 14px;
+  padding-right: 1px;
 }
 
 .i1 {
-  margin-right: 14px;
+  margin-right: 2px;
 }
 /*# sourceMappingURL=formulario-mas.component.css.map */
