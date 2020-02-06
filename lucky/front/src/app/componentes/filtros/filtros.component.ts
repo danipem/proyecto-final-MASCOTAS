@@ -239,25 +239,30 @@ TODO: Mejorar el codigo, html con event y removeChild. Eliminar filtros
       this.edad = edad;
 
       let tipo = (<HTMLInputElement>document.getElementById("tipos")).value;
-      this.tipoAnimal = tipo;     
+      if(tipo === null || tipo === undefined || tipo === ""){
+        alert("El tipo de animal no puede estar vacío");
+      }else{
+        this.tipoAnimal = tipo;     
     
-      let filtros = {
-        ciudad: this.ciudad,
-        edad: this.edad,
-        especie: this.especie,
-        tipo: this.tipoAnimal,
-        size: this.width,
-        genero: this.genero
+        let filtros = {
+          ciudad: this.ciudad,
+          edad: this.edad,
+          especie: this.especie,
+          tipo: this.tipoAnimal,
+          size: this.width,
+          genero: this.genero
+        }
+        
+        this.objetable2 = this.httpService.obtenerFiltrosAnimal(filtros);
+        this.objetable2.subscribe(datos=>{
+          if(datos.valido === true){
+            this.animales = datos.animales;
+            this.httpService.guardarAnimales(datos.animales);
+            this.route.navigate(["/adopcion/"+this.especie]);
+          }
+        })
       }
       
-      this.objetable2 = this.httpService.obtenerFiltrosAnimal(filtros);
-      this.objetable2.subscribe(datos=>{
-        if(datos.valido === true){
-          this.animales = datos.animales;
-          this.httpService.guardarAnimales(datos.animales);
-          this.route.navigate(["/adopcion/"+this.especie]);
-        }
-      })
 
     }
   }

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { UsuarioEnt } from 'src/app/entidades/usuarioEnt';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-formulario',
@@ -9,6 +10,11 @@ import { UsuarioEnt } from 'src/app/entidades/usuarioEnt';
 export class FormularioComponent{
 
   @Input() usuarioNuevo : UsuarioEnt;
+  @Output() propagarBlur = new EventEmitter<string>();
+
+alPerderFocoEmail() {
   
+  this.propagarBlur.emit("Mensaje");
+}
 
 }

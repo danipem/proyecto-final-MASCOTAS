@@ -42,12 +42,12 @@ export class HttpService {
 
   }
 
-  existeEmail(usuario : UsuarioEnt, funCallbk: any){
+  existeEmail(usuario : UsuarioEnt){
 
     let comprobacion = this.clientHttp.post<Mensaje>(`http://127.0.0.1:4000/api/lucky/compraremail73hg4h4`,usuario);
-    comprobacion.subscribe(datosMsj =>{
+    return comprobacion;/*.subscribe(datosMsj =>{
         funCallbk(datosMsj.valido ) ;
-    });
+    });*/
 
 }
 
