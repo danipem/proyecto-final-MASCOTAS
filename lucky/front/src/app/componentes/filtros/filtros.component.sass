@@ -11,6 +11,7 @@
 
     &__texto
         color: rgb(1,116,142)
+        text-align: center
 
     &__ciudades
         text-align: left
@@ -130,16 +131,58 @@
         padding: 1em
         border: solid
 
+    @media screen and ( orientation: landscape ) //Vista Movil Horizontal
+    
+        &__texto
+            text-align: center
+            margin-left: 20%
+
+    @media screen and (orientation: landscape) //Vista Movil Horizontal
+        &__sexo,
+        &__tamaño
+            text-align: center
+    
+    @media screen and (orientation: landscape) //Vista Movil Horizontal
+        &__ciudad, 
+        &__especie,
+        &__edad
+            text-align: center
+    
+    @media screen and (orientation: landscape) //Vista Movil Horizontal
+        &__select,
+        &__select2
+           margin-left: 40%
+           width: 25%
+    @media screen and(min-width: 1200px) //Vista Desktop
+        width: 30%
+        margin-left: 35%
+        &__select,
+        &__select2
+            width: 55%
+            margin-left: 27%
+
+        &__botones
+            margin-bottom: 1em
+            margin-left: 3em
+           
+
+
+    
+           
 
 .img
     position: absolute
     left: 60%
     
     @media screen and ( orientation: landscape ) //Vista Movil Horizontal
-        margin-left: -15em
+        margin-left: 1em
+        
     @media screen and(min-width: 1200px) //Vista Desktop
-        margin-left: -32em
+       
+        margin-left: -3.2em
 
+
+  
     
 
            
