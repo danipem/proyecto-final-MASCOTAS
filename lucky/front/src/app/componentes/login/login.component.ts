@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.objetable.subscribe(datos => {
       if(datos.valido === true){
         this.usuario = datos.usuario;
-        this.clientHttp.guardarUsuario(this.usuario);
+        this.clientHttp.guardarUsuario(datos.usuario);
         this.route.navigate(["/home"]);
       }
     })

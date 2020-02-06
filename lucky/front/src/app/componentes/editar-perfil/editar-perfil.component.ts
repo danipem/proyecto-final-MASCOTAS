@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class EditarPerfilComponent implements OnInit {
   
   usuarioEditado: UsuarioEnt
+  objetable;
   usuario: UsuarioEnt
   constructor(private infUsu: HttpService, private route: Router){ }
 
@@ -21,12 +22,18 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   editComponent(){
-
-    this.infUsu.modificarUsuario(this.usuarioEditado);
-
-    this.usuarioEditado = this.infUsu.obtenerUsuario();
     
-    this.route.navigate(["/home"]);
+    this.objetable = this.infUsu.modificarUsuario(this.usuarioEditado);
+    this.objetable.subscribe(datos => {
+      
+      console.log(datos)
+      if(datos.valido){
+        this.infUsu.guardarUsuario(datos.usuario);
+        this.route.navigate(["/home"]);
+      }else{
+        alert(datos.mensaje);
+      }
+    })
     
   }
 

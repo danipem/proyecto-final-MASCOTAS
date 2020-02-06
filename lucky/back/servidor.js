@@ -149,31 +149,35 @@ rutasAPI.route("/registro").post((req, res)=>{
 
 });
 
-rutasAPI.route("/modificar/:_id").put((req,res)=>{
-    let user = new Usuario(req.body);
-    console.log(user);
-    Usuario.findByIdAndUpdate({"_id": req.params._id}, (err, usuario)=>{
-        for (const prop in req.body) {
-            usuario[prop] = req.body[prop]
-        }
-        usuario.save()
-        console.log("Obj construido " + usuario);
+rutasAPI.route("/modificar/").put((req,res)=>{
+    user = new Usuario(req.body);
+    
+    Usuario.findById(user._id, (err, usuario)=>{
+        
         if(err){
-                res.json({
+            res.json({
                 valido: false,
                 mensaje: "Error en la consulta a la base de datos"
-                })
+            })
         }else{
+            
             if(usuario === null){
                 res.json({
                 valido: false,
                 mensaje: "Este usuario no existe"
                 })
             }else{
+                for (const prop in req.body) {
+                    usuario[prop] = req.body[prop]
+                    
+                }
+                
+                usuario.save()
+                
                 res.json({
-                valido: true,
-                mensaje: "Correcto",
-                usuario: usuario
+                    valido: true,
+                    mensaje: "Correcto",
+                    usuario: usuario
                 })
             }
         }
