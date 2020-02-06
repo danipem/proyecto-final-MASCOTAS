@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http"
 import { UsuarioEnt } from "../entidades/usuarioEnt"
 import { Mensaje } from '../entidades/mensaje';
 import { Animal } from '../entidades/animal';
+import { Adopcion } from '../entidades/adopcion';
 @Injectable({
   providedIn: 'root'
 })
@@ -151,6 +152,11 @@ export class HttpService {
       }
         
     });*/
+  }
+
+  insertarAdopcion(adopcion: Adopcion){
+    let formularioAdoptado = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/adopcion/",adopcion);
+    return formularioAdoptado;
   }
   
   guardarAnimal(animal: Animal){

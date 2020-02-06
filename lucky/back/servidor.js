@@ -234,14 +234,12 @@ rutasAPI.route('/adoptar/:filtro/:idUsu').get(function(req, res){
                 mensaje: 'err'
             })
         }else{
-            if(adopcion === null){
-                console.log(adopcion);
+            if(adopcion.length === 0){
                 res.json({
                     valido: false,
                     mensaje: "No hay coincidencias en tu busqueda."
                 })
             }else{
-                console.log(adopcion)
                 res.json({
                     valido: true,
                     mensaje:"Resultado de tu busqueda OK.",
@@ -421,7 +419,7 @@ rutasAPI.route("/adopcion").post((req, res) => {
                         })
                     }else{
                         console.log(adopciones);
-                        if(adopciones){
+                        if(adopciones.length !== 0){
                             console.log("ya tienes la solicitud en proceso");
                             res.json({
                                 mensaje: "Ya tienes esta solicitud en proceso",
@@ -437,8 +435,8 @@ rutasAPI.route("/adopcion").post((req, res) => {
                                 console.log('Datos introducidos con exito en BBDD')
                                 res.json({
                                     mensaje: "Petición de adopcion enviada con exito!!",
-                                    valido: true
-                                    //adopciones: adopcionss
+                                    valido: true,
+                                    adopcion: adopcions
                                 })
                             })
                         }
