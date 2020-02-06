@@ -21,9 +21,10 @@ export class EstadoAdopcionComponent implements OnInit {
 
   ngOnInit() {
 
-    this.httpService.obtenerSolicitudesAdopciones(this.usuario);
+  //  this.httpService.obtenerSolicitudesAdopciones(this.usuario);
     this.adopcion = this.httpService.consigoSolicitudes();
 
   }
 
 }
+

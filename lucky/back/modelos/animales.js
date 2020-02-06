@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //El objeto que nos insertará los animales en la base de datos.
 // TODO validaciones.
-let Animal = new Schema({ 
+let Animal = new Schema({
     id: { type: Number },
     foto: { type: String },
     nombre:{ type: String },
@@ -13,7 +13,7 @@ let Animal = new Schema({
             especie:{ type: String },
             tipo: {type: String},
             nacimiento:{ type: String },
-            edad:{ type: Number },
+            edad:{ type: String },
             sexo:{ type: String },
             tamaño:{type: String },
             peso:{type: String},
@@ -30,7 +30,7 @@ let Animal = new Schema({
             identificado:{type: String},
             microchip:{type: String}
          }
-    },  
+    },
     requisitos:{
         type: {
             requisitos: { type: String},
@@ -38,7 +38,7 @@ let Animal = new Schema({
             envio: { ype: String},
         }
     }
-    
+
 });
 
 //como el export default pero para Node
