@@ -73,18 +73,15 @@ export class HttpService {
   }
 
   modificarUsuario(usuario: UsuarioEnt){
+    let modificado = this.clientHttp.put<Mensaje>("http://127.0.0.1:4000/api/lucky/modificar/",usuario);
 
-    let id = usuario._id;
-
-    let modificado = this.clientHttp.put<Mensaje>("http://127.0.0.1:4000/api/lucky/modificar/"+id,usuario);
-
-    modificado.subscribe(datos => {
+    return modificado/*.subscribe(datos => {
       if(datos.valido === true){
         this.guardarUsuario(datos.usuario);
       }else{
         alert(datos.mensaje);
       }
-    })
+    })*/
   }
 
   obtenerTodosAnimales(){
