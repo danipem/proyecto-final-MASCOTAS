@@ -28,7 +28,12 @@ export class RegistroComponent /*implements OnInit*/ {
     
    }
 
-  registroComponentClick(): void{
+   /**
+    * Función que comprueba que ciertos campos no estén vacíos. Si están vacíos no permite
+    * registrar el usuario. Si está rellenos los campos inserta en la base de datos.
+    */
+  registroComponentClick(){
+
     if(this.usuarioNuevo.nombre === "" || this.usuarioNuevo.apellidos === "" ||
       this.usuarioNuevo.edad === 0 || this.usuarioNuevo.email === "" ||
       this.usuarioNuevo.telefono === "" || this.usuarioNuevo.dni === "" || this.usuarioNuevo.password === ""){
@@ -38,12 +43,12 @@ export class RegistroComponent /*implements OnInit*/ {
       this.usuarioNuevo = new UsuarioEnt();
     }
     
-    //
-    /*Esto nos permite crear un nuevo Usuario vacio, no hace falta la clonacion del usuario */
-    
 
   }
 
+  /**
+   * Cuando el usuario escribe el email en el input se le muestra si ya existe o no existe.
+   */
   alPerderFocoEmail() {
     
     this.objetable = this.infUsu.existeEmail(this.usuarioNuevo);
