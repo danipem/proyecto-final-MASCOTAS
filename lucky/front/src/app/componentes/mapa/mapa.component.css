@@ -46,7 +46,7 @@
 
 @media screen and (orientation: landscape) {
   .mapa {
-    height: 90%;
+    height: 100%;
     margin-top: 1em;
   }
   .mapa__map {
@@ -59,14 +59,15 @@
     margin-left: 3em;
   }
   .mapa__foto {
-    margin-top: -1.5em;
-    margin-left: 77%;
+    margin-top: -1.6em;
+    margin-left: 80%;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .mapa {
-    width: 90vw;
+    width: 100vw;
+    margin-top: 2em;
   }
   .mapa__map {
     margin-top: 1em;
@@ -74,12 +75,12 @@
     height: 465px;
   }
   .mapa__buscar {
-    margin-bottom: -1.5em;
+    margin-bottom: 1.7em;
     margin-left: 8em;
   }
   .mapa__foto {
-    margin-top: -1.5em;
-    margin-left: 77%;
+    margin-top: -3.5em;
+    margin-left: 85%;
     height: 4vh;
     width: 3vw;
   }

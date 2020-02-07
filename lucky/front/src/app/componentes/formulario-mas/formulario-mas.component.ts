@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__ } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { UsuarioEnt } from 'src/app/entidades/usuarioEnt';
 import { HttpService } from 'src/app/servicios/http.service';
 import { temporaryDeclaration } from '@angular/compiler/src/compiler_util/expression_converter';
