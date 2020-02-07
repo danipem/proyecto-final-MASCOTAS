@@ -9,7 +9,7 @@
     <div class="perfil-animales-solicitud__solicitudbotones">
         <button (click)="cancelar()" class="perfil-animales-solicitud__cancelar">Cancelar</button>
         <button class="perfil-animales-solicitud__aceptar" [routerLink]="['/formulario-mas']">Continuar</button>
-    </div>/
+    </div>
 </div>
 <div class="perfil-animales" id="perfil-animal">
   
@@ -17,7 +17,8 @@
     <img src="{{perfilAnimal.foto}}" style="width: 100vw; height: 30vh; margin-left: -1em;" alt="">
     <div class="perfil-animales__puntitos bottom-xs"></div>
     <div class="perfil-animales__nombre col-xs-7" id="perfil-animal-nombre">
-        <p class="perfil-animales__sexo">{{perfilAnimal.datos.sexo}}</p>
+        <img *ngIf="perfilAnimal.datos.sexo == 'Macho'" src="../../../assets/iconos/macho.jpg">
+        <img *ngIf="perfilAnimal.datos.sexo == 'Hembra'" src="../../../assets/iconos/hembra.png">  
         <div class="perfil-animales__nc">
             <p class="perfil-animales__nn">{{perfilAnimal.nombre}}</p>
             <p class="perfil-animales__city">{{perfilAnimal.ciudad}}</p>
