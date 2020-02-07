@@ -11,22 +11,39 @@ import { Router } from '@angular/router';
 export class EditarPerfilComponent implements OnInit {
   
   usuarioEditado: UsuarioEnt
+  objetable;
   usuario: UsuarioEnt
   constructor(private infUsu: HttpService, private route: Router){ }
 
+  /**
+   * Cada vez que se viene a esta página se obtiene el usuario llamando a la función que está en la
+   * sessionStorage
+   */
   ngOnInit() {
     
     this.usuarioEditado= this.infUsu.obtenerUsuario();
 
   }
 
+  /**
+   * Función que es llamada cuando el usuario pulsa el botón de editar.
+   * Está función se encarga de editar el usuario en la base de datos haciendo una llamada
+   * al servicio. Si la edición no se realiza correctamente se muestra un mensaje sino se redirije al 
+   * /home
+   */
   editComponent(){
-
-    this.infUsu.modificarUsuario(this.usuarioEditado);
-
-    this.usuarioEditado = this.infUsu.obtenerUsuario();
     
-    this.route.navigate(["/home"]);
+    this.objetable = this.infUsu.modificarUsuario(this.usuarioEditado);
+    this.objetable.subscribe(datos => {
+      
+      console.log(datos)
+      if(datos.valido){
+        this.infUsu.guardarUsuario(datos.usuario);
+        this.route.navigate(["/home"]);
+      }else{
+        alert(datos.mensaje);
+      }
+    })
     
   }
 

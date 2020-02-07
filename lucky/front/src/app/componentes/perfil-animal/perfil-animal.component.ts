@@ -41,6 +41,7 @@ export class PerfilAnimalComponent implements OnInit {
     this.objetable.subscribe(datos => {
       console.log(datos.animal)
       this.perfilAnimal = datos.animal;
+      this.infAnimal.guardarAnimal(datos.animal);
     })
   }
 

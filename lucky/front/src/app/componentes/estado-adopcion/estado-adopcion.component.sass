@@ -1,9 +1,6 @@
 .estado
   width: 100vw
-  height: auto
-  margin-left: 20px
-
-
+  height: 100vh
 
 
   &__flexsearch--wrapper
@@ -33,68 +30,76 @@
     -webkit-appearance: none
 
   &__img_arrow
-
     width: 12pt
     height: 20.05pt
-  &__foto
-    margin-top: -20px
-    height: 3vh
-    width: 6vw
-
-  &__foto1
-    margin-top: -30px
-    height: 3vh
-    width: 6vw
-
-  &__img-rayas
-    margin-left: 300px
-    margin-top: -50px
-  &__containers
-    margin: auto
-  &__imgBlue
-    width: 310px
-    height: 130pt
-    margin-top: 15pt
-    margin-bottom: 13pt
-    padding-inline-start: 15pt
+  &__contenedor
+    width: 80%
     border: 2pt solid rgb(189,210, 214)
     background-color: #ffffff
-    margin: 20 10 30
-    flex-direction : row
-    color: rgb(1,116 ,142 )
-    font-family: 'Barlow-Regular', sans-serif
-    justify-content: space-between
-  img
-    margin-top: 15px
-    margin-bottom: 15px
 
-  &__lugar-adopcion
-    font-family: 'Barlow-Regular', sans-serif
-    font-size: 12pt
-    color: rgb(45,45 ,45 )
+  &__cabecera
+    padding-top: 5%
+    padding-bottom: 2%
+    width:100%
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+
+  &__texto
+    color: blue
+    font-size: 16pt
+
+  &__enProceso
+    color: orange
+  &__aceptado
+    color: green
+  &__rechazado
+    color: red
+
+  &__imagenYtexto
+    padding-top: 5%
+    padding-bottom: 2%
+    margin-bottom: 3%
+    width:100%
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+
+  &__textos
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+
+  &__nombreAnimal
     text-align: right
-
-  &__lugar-adoptar
-    text-align: -webkit-right
-    margin-top: -47px
-    margin-right: 81px
-    font-family: 'Barlow-Regular', sans-serif
     font-size: 12pt
-    color: rgb(45,45 ,45 )
+    color: black
+    font-family: "Barlow-Regular", sans-serif
+    font-size: 10pt
 
-  h5
-    margin: 0
+  &__circulo
+    height:50%
+    width:50%
+    border: radius 50%
+    color: orange
+    background-color: orange
+
+  &__adop-prinesa
+    text-align: left
+    font-size: 13pt
     margin-top: 10px
-    font-size: 100%
-    font: inherit
-    vertical-align: baseline
-
-
-
-
-
-
-
+  &__texto
+    text-align: right
+    font-size: 12pt
+    font-color: black
+  &__img
+    width: 150px
+    height: 150px
+    border-radius: 110px
+    border: 1px solid black
+  &__lugar-adoptar
+    font-size: 12pt
+    text-align: right
 
 
 

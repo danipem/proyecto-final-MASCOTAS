@@ -29,6 +29,7 @@ export class AdopcionComponent implements OnInit {
       if(datos.valido === true){
 
         this.animal = datos.animales;
+        this.httpService.guardarAnimales(datos.animales);
 
       }else{
 
