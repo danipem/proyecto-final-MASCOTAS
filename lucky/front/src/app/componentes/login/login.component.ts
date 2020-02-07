@@ -20,16 +20,26 @@ export class LoginComponent implements OnInit {
     this.usuario.password = "";
   }
 
+  /**
+   * Función que al pulsar iniciar sesión comprueba que el email y password introducidos
+   * son unos datos correctos y que están en la base de datos.
+   */
   clickIniciarSesion() {
     this.objetable = this.clientHttp.iniciarUsuarioBD(this.usuario);
     this.objetable.subscribe(datos => {
+      
       if(datos.valido === true){
         this.usuario = datos.usuario;
-        this.clientHttp.guardarUsuario(this.usuario);
+        //guardo el usuario obtenido cuando inicio sesión en la sessionStorage
+        this.clientHttp.guardarUsuario(datos.usuario);
+        //redirijo a /home
         this.route.navigate(["/home"]);
+
+      }else{
+        alert(datos.mensaje);
       }
     })
-    //this.usuario = this.clientHttp.obtenerUsuario();
+
   }
 
   ngOnInit() {
