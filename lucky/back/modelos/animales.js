@@ -37,7 +37,8 @@ let Animal = new Schema({
             tasa: { type: String},
             envio: { ype: String},
         }
-    }
+    },
+    adopcion : { type: Boolean }
 
 });
 

@@ -1,0 +1,54 @@
+.registro {
+  padding: 1em;
+}
+
+.registro__entrada {
+  padding: .2em;
+  margin-bottom: 1em;
+  border-style: none;
+  border-bottom: 1px solid gray;
+  font-size: 1em;
+  width: 95%;
+  font-family: 'Barlow-Medium';
+}
+
+.registro__btn {
+  width: 95%;
+  background: #fa9c93;
+  font-family: 'Barlow-Medium', sans-serif;
+  font-size: 1.33em;
+  color: white;
+  margin-top: 1em;
+  border-radius: 5px;
+  border-style: none;
+  height: 40pt;
+}
+
+.registro__privacidad {
+  font-family: 'Barlow-Medium', sans-serif;
+  font-size: 15px;
+  color: black;
+}
+
+.registro__check {
+  border-radius: 12px;
+  padding: 1em;
+}
+
+.registro__p {
+  font-size: 20pt;
+  font-family: 'Barlow-Medium', sans-serif;
+  color: #01748e;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.registro__h2 {
+  color: black;
+  font-size: 16pt;
+  text-align: center;
+  margin-bottom: 2em;
+  margin-top: 1.5em;
+  font-family: 'Barlow-Regular', sans-serif;
+}
+/*# sourceMappingURL=editar-perfil.component.css.map */

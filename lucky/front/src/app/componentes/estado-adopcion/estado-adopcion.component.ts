@@ -16,13 +16,13 @@ export class EstadoAdopcionComponent implements OnInit {
   usuario: String;
 
   constructor(private httpService: HttpService) {
-    this.usuario = this.httpService.obtenerUsuario()._id;
+    //this.usuario = this.httpService.obtenerUsuario()._id;
   }
 
   ngOnInit() {
 
   //  this.httpService.obtenerSolicitudesAdopciones(this.usuario);
-    this.adopcion = this.httpService.consigoSolicitudes();
+    //this.adopcion = this.httpService.consigoSolicitudes();
 
   }
 

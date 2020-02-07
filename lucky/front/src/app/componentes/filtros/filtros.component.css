@@ -16,6 +16,10 @@
   border-radius: 5px;
 }
 
+.filtros__texto {
+  color: #01748e;
+}
+
 .filtros__ciudades {
   text-align: left;
   font-size: 1em;
@@ -173,8 +177,32 @@
           justify-content: space-between;
 }
 
+.filtros__borrar {
+  background-color: white;
+  width: 100%;
+  margin-top: 5%;
+  border-radius: 10px;
+  color: #fa9c93;
+  font-size: 18px;
+  font-family: "Barlow-Regular", sans-serif;
+  padding: 1em;
+  border: solid;
+}
+
 .img {
   position: absolute;
   left: 60%;
+}
+
+@media screen and (orientation: landscape) {
+  .img {
+    margin-left: -15em;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .img {
+    margin-left: -32em;
+  }
 }
 /*# sourceMappingURL=filtros.component.css.map */

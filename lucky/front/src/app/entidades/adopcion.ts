@@ -18,5 +18,5 @@ export class Adopcion{
   public vivesSolo:Boolean;
   public acuerdoAdop:Boolean;
   public visitarCasa:Boolean;
-  public estado: String;
+  public proceso: String;
 }

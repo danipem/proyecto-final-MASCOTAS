@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class PerfilAnimalComponent implements OnInit {
 
-  perfilAnimal: Animal
+  perfilAnimal: Animal;
+  objetable
   urlTree ;
   arrayRuta;
   obtenRuta;
@@ -26,19 +27,21 @@ export class PerfilAnimalComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.datosAnimal();
+
+  }
+
+  datosAnimal(){
     this.obtenRuta = ""+this.urlTree
     this.arrayRuta = new Array();
     this.arrayRuta = this.obtenRuta.split("/")
     this.id = this.arrayRuta[2];
-    this.infAnimal.obtenerAnimal(this.id);
-    this.perfilAnimal = this.infAnimal.consigoAnimal()
-    //alert(this.cargaAnimal());
-  }
-
-  cargaAnimal(){
-    this.infAnimal.obtenerAnimal(this.id);
-    this.perfilAnimal = this.infAnimal.consigoAnimal()
-    return this.perfilAnimal;
+    this.objetable = this.infAnimal.obtenerAnimal(this.id);
+    this.objetable.subscribe(datos => {
+      console.log(datos.animal)
+      this.perfilAnimal = datos.animal;
+    })
   }
 
   oculta1(){

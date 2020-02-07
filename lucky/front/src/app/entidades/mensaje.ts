@@ -8,8 +8,6 @@ export class Mensaje {
     usuario: UsuarioEnt;
     animal: Animal;
     animales: Animal[];
+    adopcion: Adopcion;
     adopciones: Adopcion[];
-
-
-
 }

@@ -9,7 +9,7 @@
     <div class="perfil-animales-solicitud__solicitudbotones">
         <button (click)="cancelar()" class="perfil-animales-solicitud__cancelar">Cancelar</button>
         <button class="perfil-animales-solicitud__aceptar" [routerLink]="['/formulario-mas']">Continuar</button>
-    </div>
+    </div>/
 </div>
 <div class="perfil-animales" id="perfil-animal">
   
@@ -71,9 +71,9 @@
         </div>
         <div class="perfil-animales__personalidad" >
             <h2>Personalidad</h2>
-            <div class="perfil-animales__personalidades"  *ngFor="let ani of perfilAnimal.datos.personalidad; let i = index">
+            <div class="perfil-animales__personalidades"  *ngFor="let personalidad of perfilAnimal.datos.personalidad; let i = index">
                 <div>
-                    <p >{{perfilAnimal.datos.personalidad[i]}}</p>
+                    <p >{{personalidad}}</p>
                 </div>
             </div>
         </div>

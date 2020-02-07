@@ -10,19 +10,38 @@ import { Router } from '@angular/router';
 })
 export class AdopcionComponent implements OnInit {
 
-  animal: Animal[]
+  animal : Animal[]
+  obtenerObservable;
+  mensajeError: String;
+  existeError: Boolean;
 
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor(private httpService: HttpService, private router: Router) {
+    this.mensajeError = "";
+    this.existeError = false;
+  }
 
   ngOnInit() {
-    this.httpService.obtenerTodosAnimales();
-    this.animal = this.httpService.consigoAnimales();
+
+    this.obtenerObservable = this.httpService.obtenerTodosAnimales();
+
+    this.obtenerObservable.subscribe(datos =>{
+
+      if(datos.valido === true){
+
+        this.animal = datos.animales;
+
+      }else{
+
+        this.existeError = true;
+        this.mensajeError = datos.mensaje;
+
+      }
+    })
+
   }
 
   redirige(id){
     this.router.navigate(["/perfil-animal/"+id]);
   }
-
-
 
 }

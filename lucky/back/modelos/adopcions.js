@@ -7,6 +7,7 @@ adopcion en la BBDD. */
 
 let Adopcions = new Schema({
     usuarioId: { type: mongoose.ObjectId },  //Con (type: mongoose.ObjectId) obtenemos la referencia al Id del usuario.
+    animalId: { type: mongoose.ObjectId },
     masAnimal: {
                 type:
                     {
@@ -25,7 +26,8 @@ let Adopcions = new Schema({
     jardin: { type:Boolean },
     vivesSolo: { type:Boolean },
     acuerdoAdop: { type:Boolean },
-    visitarCasa: { type:Boolean }
+    visitarCasa: { type:Boolean },
+    proceso: { type: String}
 
 });
 

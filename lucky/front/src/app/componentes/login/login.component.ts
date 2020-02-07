@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   usuario: UsuarioEnt;
+  objetable;
 
   constructor(private clientHttp: HttpService, private route : Router) {
     this.usuario = new UsuarioEnt();
@@ -20,10 +21,15 @@ export class LoginComponent implements OnInit {
   }
 
   clickIniciarSesion() {
-    this.clientHttp.iniciarUsuarioBD(this.usuario);
-    this.usuario = this.clientHttp.obtenerUsuario();
-    this.route.navigate(["/home"]);
-
+    this.objetable = this.clientHttp.iniciarUsuarioBD(this.usuario);
+    this.objetable.subscribe(datos => {
+      if(datos.valido === true){
+        this.usuario = datos.usuario;
+        this.clientHttp.guardarUsuario(this.usuario);
+        this.route.navigate(["/home"]);
+      }
+    })
+    //this.usuario = this.clientHttp.obtenerUsuario();
   }
 
   ngOnInit() {

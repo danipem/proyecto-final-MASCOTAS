@@ -10,7 +10,7 @@
     border-radius: 5px
 
     &__texto
-        color:#01748E
+        color: rgb(1,116,142)
 
     &__ciudades
         text-align: left
@@ -119,6 +119,30 @@
         flex-direction: row
         justify-content: space-between
 
+    &__borrar
+        background-color: white
+        width: 100%
+        margin-top: 5%
+        border-radius: 10px
+        color: rgb(250,156,147)
+        font-size: 18px
+        font-family: "Barlow-Regular", sans-serif
+        padding: 1em
+        border: solid
+
+
 .img
     position: absolute
     left: 60%
+
+    @media screen and ( orientation: landscape ) //Vista Movil Horizontal
+        margin-left: -15em
+    @media screen and(min-width: 1200px) //Vista Desktop
+        margin-left: -32em
+
+
+
+
+
+
+

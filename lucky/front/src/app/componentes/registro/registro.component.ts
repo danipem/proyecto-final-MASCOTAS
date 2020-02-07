@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioEnt } from "../../entidades/usuarioEnt";
 import { HttpService } from "../../servicios/http.service";
+import { isEmptyExpression } from '@angular/compiler';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { HttpService } from "../../servicios/http.service";
 export class RegistroComponent /*implements OnInit*/ {
   usuarioNuevo: UsuarioEnt;
   camposInvalid = false;
+  objetable;
 
   constructor(private infUsu: HttpService ) {
     this.usuarioNuevo = new UsuarioEnt();
@@ -27,27 +29,34 @@ export class RegistroComponent /*implements OnInit*/ {
    }
 
   registroComponentClick(): void{
+    if(this.usuarioNuevo.nombre === "" || this.usuarioNuevo.apellidos === "" ||
+      this.usuarioNuevo.edad === 0 || this.usuarioNuevo.email === "" ||
+      this.usuarioNuevo.telefono === "" || this.usuarioNuevo.dni === "" || this.usuarioNuevo.password === ""){
+      alert("Hay campos obligatorios");
+    }else{
+      this.infUsu.insertarUsuariosBD(this.usuarioNuevo);
+      this.usuarioNuevo = new UsuarioEnt();
+    }
 
-    this.infUsu.insertarUsuariosBD(this.usuarioNuevo);
+    //
     /*Esto nos permite crear un nuevo Usuario vacio, no hace falta la clonacion del usuario */
-    this.usuarioNuevo = new UsuarioEnt();
+
 
   }
 
   alPerderFocoEmail() {
-     this.infUsu.existeEmail(this.usuarioNuevo, this.alSaberSiEmailExiste);
-  }
 
-  alSaberSiEmailExiste(valido: boolean) {
-    if(valido){
+    this.objetable = this.infUsu.existeEmail(this.usuarioNuevo);
 
-      alert("Este email ya existe");
+    this.objetable.subscribe(datos=>{
+      if(datos.valido === true){
+       alert("Este email ya existe");
+      }else{
+        alert("No existe");
+      }
+    })
+ }
 
-    }else{
-
-      alert("no existe");
-    }
-  }
   ngOnInit() {
   }
 

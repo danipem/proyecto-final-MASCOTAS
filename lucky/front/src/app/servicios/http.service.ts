@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
-import {UsuarioEnt} from "../entidades/usuarioEnt"
+import { UsuarioEnt } from "../entidades/usuarioEnt"
 import { Mensaje } from '../entidades/mensaje';
 import { Animal } from '../entidades/animal';
 import { Adopcion } from '../entidades/adopcion';
@@ -20,12 +20,12 @@ export class HttpService {
 
   constructor(private clientHttp: HttpClient) {
     //this.nombreUsuario = [];
-    this.listaUsuarios = [];
+    /*this.listaUsuarios = [];
     //this.cargaLocalStrg();
 
     if(this.listaUsuarios == null || typeof this.listaUsuarios === "undefined"){
       this.listaUsuarios =[];
-    }
+    }*/
 
   }
 
@@ -44,20 +44,20 @@ export class HttpService {
 
   }
 
-  existeEmail(usuario : UsuarioEnt, funCallbk: any){
+  existeEmail(usuario : UsuarioEnt){
 
     let comprobacion = this.clientHttp.post<Mensaje>(`http://127.0.0.1:4000/api/lucky/compraremail73hg4h4`,usuario);
-    comprobacion.subscribe(datosMsj =>{
+    return comprobacion;/*.subscribe(datosMsj =>{
         funCallbk(datosMsj.valido ) ;
-    });
+    });*/
 
 }
 
   iniciarUsuarioBD(usuario: UsuarioEnt){
 
     let login = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/login", usuario);
-    let datos;
-    login.subscribe(datosMsj =>{
+
+    return login; /*login.subscribe(datosMsj =>{
         if(datosMsj.mensaje === "error" && datosMsj.valido=== false){
           alert("Error")
         }else if(datosMsj.mensaje === "incorrecto" && datosMsj.valido === false){
@@ -69,7 +69,7 @@ export class HttpService {
         }
 
 
-    });
+    });*/
 
   }
 
@@ -92,7 +92,7 @@ export class HttpService {
 
     let todosAnimales = this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/animales");
 
-    todosAnimales.subscribe(datos => {
+    return todosAnimales;/*.subscribe(datos => {
 
       if(datos.valido === true){
         this.guardarAnimales(datos.animales);
@@ -100,35 +100,60 @@ export class HttpService {
         alert(datos.mensaje);
       }
 
-    });
+    });*/
 
   }
 
+
   obtenerAnimal(idAnimal: String){
-    let id=this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
-    id.subscribe(datos=>{
-      // alert(datos.valido);
+     //console.log(idAnimal);
+
+    let id = this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+     return id/*.subscribe(datos=>{
+   async obtenerAnimal(idAnimal: String){
+     //console.log(idAnimal);
+
+    let id= await this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/perfil-animal/"+idAnimal)
+
+    await id.subscribe(datos=>{
       if(datos.valido === true){
-        this.guardarAnimal(datos.animal);
+        return datos.animal;
+        //this.guardarAnimal(datos.animal);
+        //sessionStorage.setItem("animal", JSON.stringify(datos.animal))
       }else{
         alert(datos.mensaje)
       }
 
-    });
+    })*/
   }
 
-  guardarUsuario(usuario){
-    this.usuario = usuario;
-    sessionStorage.setItem("usuario", JSON.stringify(this.usuario));
+  obtenerTipoAnimal(especie : String){
+
+    let tipos = this.clientHttp.get<Mensaje>("http://127.0.0.1:4000/api/lucky/tiposAnimales/"+especie);
+    return tipos/*.subscribe(datos =>{
+      if(datos.valido === true){
+
+        this.guardarAnimales(datos.animales)
+
+      }else{
+        alert(datos.mensaje);
+      }
+    })*/
   }
 
-  obtenerUsuario(){
 
-    if(typeof this.usuario === "undefined" || this.usuario === null){
-      this.usuario = JSON.parse(sessionStorage.getItem("usuario"));
-    }
-    console.log("Hola" + this.usuario.nombre)
-    return this.usuario;
+  obtenerFiltrosAnimal(filtros){
+    let id= this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/filtros/",filtros);
+    return id/*.subscribe(datos=>{
+      alert(datos.valido);
+      if(datos.valido === true){
+        this.guardarAnimales(datos.animales);
+      }else{
+        alert(datos.mensaje)
+      }
+
+    });*/
+
   }
 
   guardarAnimal(animal: Animal){
@@ -137,10 +162,23 @@ export class HttpService {
   }
 
   consigoAnimal(){
-    if(typeof this.animal === "undefined" || this.animal === null){
+    //if(typeof this.animal === "undefined" || this.animal === null){
       this.animal = JSON.parse(sessionStorage.getItem("animal"))
-    }
+    //}
     return this.animal;
+  }
+
+  guardarUsuario(usuario){
+    this.usuario = usuario;
+    sessionStorage.setItem("usuario", JSON.stringify(usuario));
+  }
+
+  obtenerUsuario(){
+    if (typeof this.usuario === "undefined"  || this.usuario == null) {
+      this.usuario = JSON.parse(sessionStorage.getItem("usuario"));
+    }
+    console.log("Hola" + JSON.stringify(this.usuario));
+    return this.usuario;
   }
 
   guardarAnimales(animal : Animal[]){
@@ -157,10 +195,11 @@ export class HttpService {
   }
 
   guardaMisAdopciones(adopciones : Adopcion[]){
-
+   //let adopcions = this.clientHttp.post<Mensaje>("http://127.0.0.1:4000/api/lucky/adopcions/",adopcions)
     this.adopciones = adopciones;
     sessionStorage.setItem("adopciones", JSON.stringify(this.adopciones))
   }
+
 
   consigoSolicitudes(){
     if(typeof this.adopciones === "undefined" || this.adopciones === null){
