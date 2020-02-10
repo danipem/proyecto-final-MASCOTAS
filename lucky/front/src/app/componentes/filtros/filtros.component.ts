@@ -45,7 +45,7 @@ export class FiltrosComponent implements OnInit {
 TODO: Mejorar el codigo, html con event y removeChild. Eliminar filtros
 */
   muestraAlgo(){
-
+    const animal = event.currentTarget.dataset.tipo;
     this.especie = animal.charAt(0).toUpperCase() + animal.slice(1);
     this.botonFiltros = true;
     this.selectTipo = true;
